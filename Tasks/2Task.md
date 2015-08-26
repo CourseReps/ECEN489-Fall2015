@@ -46,7 +46,7 @@ CMake generates native makefiles and workspaces that can be used in various comp
 
 * __Read__: The [CMake tutorial](http://www.cmake.org/cmake-tutorial/).
 * __Peruse__: The Introduction to [CMake Course](http://www.cmake.org/webinars/).
-* __Download and Install__: [CMake](http://cmake.org/cmake/resources/software.html).
+* __Download and Install__: [CMake](http://www.cmake.org/download/).
 * __Create, Build, and Run__: HelloWorld using CMake.
 
 ### Structure
