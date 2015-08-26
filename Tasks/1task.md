@@ -62,7 +62,7 @@ You will need write permission before you can proceed further.
 Add your GitHubID next to you name.
 
 ```
-* <Full Name>, [GitHubID](https://github.com/GitHubID)
+* Full Name, TAMU NetID, [GitHubID](https://GitHubID.github.io/)
 ```
 
 * __Clone__: Once you have been added to the list of collaborators, use `git` to clone the master repository.
