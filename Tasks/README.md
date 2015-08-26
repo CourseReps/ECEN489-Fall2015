@@ -24,7 +24,7 @@ Task 4: Data Management
 
 Task 5: Data Visualization
 --------------------------
-* [Qt Project](http://qt-project.org/)
+* [Qt Project](http://www.qt.io/developers/)
 * [QCustomPlot](http://www.qcustomplot.com/)
 
 Task 6: Networking
