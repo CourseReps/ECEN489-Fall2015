@@ -63,3 +63,21 @@ This will prevent the `duplicate symbol` error that may otherwise occur at `link
 * __Documentation__: Annotate your code appropriately, and remember that comments should be decipherable by someone else than the original programmer.
 * __Libraries__: Only include cross-platform libraries for greater compatibility, e.g., `Boost`.
 
+
+## Integrated Development Environments
+
+An integrated development environment (IDE) is a software application that provides comprehensive tools for software development.
+An IDE often provides a source code editor, build automation tools, and a debugger.
+A major benefit of IDEs is a significant reduction in establishing proper build configurations.
+
+There are manyIDE options for C++ development.
+This includes Microsoft Visual Studio, Apple Xcode, Eclipse.
+In addition, one can program in code editors such as Notepad++, TextWrangler, GNU Emacs, and Vim.
+The preferred IDE for this course is [CLion](https://www.jetbrains.com/clion/) from [JetBrains](https://www.jetbrains.com/).
+This IDE helps you develop in C++ on Linux, OS X and Windows, enhancing your productivity with a smart editor, code quality assurance, automated refactorings, and deep integration with the [CMake](http://www.cmake.org/) build system.
+
+### Action Items
+
+* __Take__: [Short tour](https://www.jetbrains.com/clion/).
+* __Request__: [Academic license](https://www.jetbrains.com/student/).
+* __Download and Install__: CLion.
