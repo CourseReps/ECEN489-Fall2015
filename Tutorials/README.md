@@ -11,7 +11,8 @@ The tutorial should be given directly from the corresponding wiki page.
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide)
 * [Teensy](https://github.com/CourseReps/ECEN489-Fall2015/wiki/teensy) Development Boards
-* [H-Bridges](https://github.com/CourseReps/ECEN489-Fall2015/wiki/hbridge)
+* [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning)
+* [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid)
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart)
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
@@ -19,4 +20,5 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth)
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite)
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad)
+* [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks)
 * [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot)
