@@ -81,3 +81,15 @@ Within this directory, create a file labeled `README.md` that contains the follo
 ```
 
 Finally, `add` and `commit` your modifications to your local repository, then `pull` the latest revisions from the master repository and `push` your contribution to the master repository.
+
+
+## GitHub Pages
+
+Every user with a GitHub account can get a website.
+[GitHub Pages](https://pages.github.com/) are hosted directly from GitHub repositories.
+
+### Action Items
+
+* __Read__: [GitHub Pages](https://pages.github.com/).
+* __Create__: Repository `GitHubID.github.io`.
+* __Edit and Push__: Changes.
