@@ -11,6 +11,7 @@ As part of this exercise, a presenter must create or enhance a [wiki](https://gi
 * [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake)
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
 * [H-Bridges](https://github.com/CourseReps/ECEN489-Fall2015/wiki/hbridge)
+* [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid)
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart)
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost)
