@@ -7,8 +7,10 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Git](https://github.com/CourseReps/ECEN489-Fall2015/wiki/git)
 * [GitHub](https://github.com/CourseReps/ECEN489-Fall2015/wiki/github)
 * [C++](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cplusplus)
+* [LLVM](https://github.com/CourseReps/ECEN489-Fall2015/wiki/llvm)
 * [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake)
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
+* [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries)
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide)
 * [Teensy](https://github.com/CourseReps/ECEN489-Fall2015/wiki/teensy) Development Boards
 * [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning)
