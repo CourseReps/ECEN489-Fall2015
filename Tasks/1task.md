@@ -9,8 +9,6 @@ In this sense, it trades off space for speed.
 Git is primarily developed on Linux, although it also supports most major operating systems including BSD, OS X, and Microsoft Windows.
 Pertinent information about Git can be found on the project website.
 
-http://git-scm.com/
-
 ### Action Items
 
 * __Peruse__: [Git documentation](http://git-scm.com/doc/).
