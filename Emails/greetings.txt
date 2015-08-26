@@ -1,0 +1,27 @@
+Greetings,
+
+Welcome to Data Acquisition & Embedded Systems. This course is somewhat unusual compared to more traditional offerings at Texas A&M University. The emphasis is on experiential and project-based learning. You should come to every class with a laptop, and you will be expected to read pertinent material and perform tasks before coming to lecture.  This course will build on our collective knowledge of engineering and science, and we will leverage the complementary backgrounds of registered students.
+
+The main site for this course is a git repository hosted on GitHub:
+
+	https://github.com/CourseReps/ECEN489-Fall2015
+
+On this site, you will find a description along with course objectives. Under Tasks, you will find a synopsis of the tools needed to partake in course activities. Tasks 1 & 2 should be completed by Wednesday, September 2; and Task 3 should be completed by Friday, September 4. These tasks aim at transforming your personal computer into a world-class development station. Luckily, the necessary tools are either available for free, or are made accessible to you through educational licenses. You will NOT have to purchase software for the course.
+
+Tasks, assignments, challenges, tutorials and projects will be submitted through GitHub. As such, you will be required to Sign up for GitHub. This is also free. You should do this rapidly and send me an email with your GitHubID, as you will need read access to our repository to submit work. The subject line of your email should read Data Acquisition & Embedded Systems. While you are at it, you may want to get the student developer pack (free for students).
+
+	https://education.github.com/pack
+
+There is an important programming component to the course and several hands-on laboratories.  In every exercise, we expect some students to breeze through challenges, while other members may have to devote more time to specific topics.  Suggested readings will be assigned out of the following book.
+
+	C++ Primer (5th Edition)
+	by Stanley B. Lippman, Josée Lajoie, Barbara E. Moo
+
+This book is available electronically through the library.  The reading assignments are only necessary for those who need a primer/review of the C++ programming language.  Purchasing a textbook for the class is optional; there are many other excellent resources on the subject.
+
+Attendance is mandatory for this course, except under special circumstances.  We will be meeting in the Engineering Innovation Center (EIC).  You will eventually be given keycard access to the building.  Exceptionally, on our first meeting, we will meet at the front door of the EIC located on Ireland St.
+
+You will find below a copy of the syllabus for the class; it is also available through the Howdy portal.
+
+Best regards,
+Jean-Francois Chamberland and Gregory Huff
