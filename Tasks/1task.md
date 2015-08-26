@@ -59,7 +59,7 @@ Complete the GitHub fields `Name`, `Public email`, and upload a picture.
 Email your GitHubID to your instructor via your TAMU account.
 You will need write permission before you can proceed further.
 * __Web__: Locate the `README.md` under `Students`.
-Add your GitHubID next to you name.
+Add your TAMU NetID and GitHubID next to you name.
 
 ```
 * Full Name, TAMU NetID, [GitHubID](https://GitHubID.github.io/)
