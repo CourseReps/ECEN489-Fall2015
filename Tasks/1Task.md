@@ -54,7 +54,6 @@ Alternatively, one can use the  `mergetool` command, which initiates a visual to
 * __Status__:
 The `status` command lists the status of working files and directories.
 
-
 ### Action Items
 
 * __Account__: Go to [GitHub](https://github.com) and create a developer account (if needed).
@@ -69,16 +68,16 @@ Add your GitHubID next to you name.
 ```
 
 * __Clone__: Once you have been added to the list of collaborators, use `git` to clone the master repository.
-* __Directory__: Under `Students` (in the master branch), make a directory named `<GitHubID>`.
+* __Directory__: Under `Students` (in the master branch), make a directory named `GitHubID`.
 This location is where you will commit all your individual work.
 Within this directory, create a file labeled `README.md` that contains the following information.
 
 ```
 # Identity
 
-* Name: <Full Name>
-* GitHubID: <GitHub ID>
-* NetID: <TAMU NetID>
+* Name: Full Name
+* GitHubID: GitHub ID
+* NetID: TAMU NetID
 ```
 
 Finally, `add` and `commit` your modifications to your local repository, then `pull` the latest revisions from the master repository and `push` your contribution to the master repository.
