@@ -6,6 +6,7 @@ These tasks consist in installing and mastering pertinent software packages.
 ## [Task 1](./1task.md): Code Management System
 * Source Code Management with [Git](http://git-scm.com/)
 * [GitHub](https://github.com/)
+* [GitHub Pages](https://pages.github.com/)
 
 ## [Task 2](./2task.md): Programming Language
 * [C++](http://www.cplusplus.com/)
