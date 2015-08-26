@@ -1,6 +1,6 @@
 # Emails
 
-Email correspondence for this course is communicated through the following moderated group(s) at Texas A&M University.
+Email correspondence for this course is communicated through the following moderated groups at Texas A&M University.
 
 * cs-ecen489501-fall2015
 * cs-ecen689605-fall2015
