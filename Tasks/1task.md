@@ -81,6 +81,17 @@ Within this directory, create a file labeled `README.md` that contains the follo
 Finally, `add` and `commit` your modifications to your local repository, then `pull` the latest revisions from the master repository and `push` your contribution to the master repository.
 
 
+## GitHub Profile Picture
+
+Your profile picture helps identify you across GitHub.
+When you sign up for an account, GitHub provides you with a randomly generated identicon.
+Change your profile picture to a picture that represents you, your likeness, or your spirit animal.
+
+### Action Item
+
+* __Change__: [Profile picture](https://help.github.com/articles/how-do-i-set-up-my-profile-picture/) to identifiable avatar.
+
+
 ## GitHub Pages
 
 Every user with a GitHub account can get a website.
