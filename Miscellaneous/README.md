@@ -1,5 +1,22 @@
 # Miscellaneous
 
+
+## Course Syllabus
+
+Outline of the subjects in this course.
+```
+ProjectDAES-Syllabus.tex
+```
+
+
+## Task Evaluation
+
+Students will evaluate the completion of tasks through peer grading.
+```
+src/evaluation-tasks.tex
+```
+
+
 ## Peer Evaluation
 
 As part of every project, students are required to complete a Peer Evaluation Form to assess the individual contributions of their team members.
@@ -13,3 +30,7 @@ Ingenious, imaginative, resourceful and efficient.
 Share responsibilities, prepare for meetings, eloquent and precise in interactions, conscientious, respectful, enthusiastic and positive.
 * __Deliverables & Timeliness:__
 Present and punctual during work sessions, respect deadlines, work on assigned targets.
+
+```
+src/evaluation-peers.tex
+```
