@@ -1,0 +1,236 @@
+\documentclass{article}
+
+%%  Dimensions and URL
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+%%  Definitions
+\renewcommand{\baselinestretch}{1.1}
+\pagestyle{plain}
+
+
+\begin{document}
+\begin{center}
+{\LARGE \sc Special Topics in Data Acquisition\\
+\& Embedded Systems\\[5mm]}
+\end{center}
+
+\noindent
+\begin{tabular}{llll}
+\textbf{Number:} & ECEN 489/689 \tabularnewline[1mm]
+\textbf{Term:} & Fall 2015 \tabularnewline[1mm]
+\textbf{Lecture:} & MW 3:00 pm -- 3:50 pm & {Location:} & EIC \tabularnewline[1mm]
+\textbf{Laboratory:} & F 2:00 pm -- 5:00 pm & {Location:} & EIC \tabularnewline[1mm]
+\textbf{Prerequisites:} &  Junior or Senior Classification \tabularnewline[1mm]
+\textbf{Instructors:} & Dr.~Jean-Francois Chamberland & \texttt{chmbrlnd@tamu.edu} & Phone: 979-845-6204 \tabularnewline[1mm]
+& Dr.~Gregory Huff & \texttt{ghuff@tamu.edu} & Phone: 979-862-4161 \tabularnewline[1mm]
+\textbf{Department:} & Electrical \& Computer Engineering \tabularnewline[1mm]
+\textbf{Office Hours:} & F 2:00 pm -- 5:00 pm & {Location:} & EIC \tabularnewline[1mm]
+\end{tabular}
+
+
+\paragraph{Course Description:}
+The goal of this multidisciplinary project-based laboratory course is to provide instruction on data acquisition, system-level integration and design through a range of hands-on activities that complement the traditional classroom experience.
+This includes circuit prototyping, PCB fabrication, microcontrollers and C++ programming, networking, and data visualization.
+The main focus is on modular application development, algorithms, information management, control and actuation.
+In addition, emphasis is put on team work, presentation skills, time management, creativity and innovation.
+
+
+%% Stacked Courses:
+%% Syllabus must clearly indicate additional work
+%% required for graduate students.
+%%
+\paragraph{Additional Material (ECEN 689):}
+Students enrolled in the graduate section of the course will apply statistical inference techniques, vector space methods, optimization and/or linear control within the context of each project.
+They will have to demonstrate proficiency in these areas through challenges aimed at graduate students, the creation of additional tutorials, and select project components focused on information processing, control and optimization.
+
+
+% Required Syllabus Section
+% Learning Outcomes (required for undergraduate courses only)
+%
+\paragraph{Learning Outcomes:}
+\begin{enumerate}
+\item
+Enhance engineering education by facilitating learning through engineering projects.
+
+\item
+Review the basics of circuit building, programming concepts, computer-aided design tools, the fundamentals of microcontrollers.
+
+\item
+Foster leadership and team work, with division of labor, complementary tasks, discussion and integration.
+
+\item
+Develop the ability to bridge theoretical concepts and practical tasks.
+
+\item
+Master elements of experiential learning such as abstract conceptualization, active experimentation, concrete experience, reflective observation.
+
+\item
+Improve transferable engineering skills and the ability to integrate different concepts.
+
+\item
+Develop confidence and leadership.
+
+\item
+Promote creativity and critical thinking.
+
+\item
+Refine presentation skills and the ability to conduct and manage projects.
+\end{enumerate}
+
+
+\paragraph{Assignment:}
+Tasks, assignments, challenges, and tutorials should be anticipated by participants.
+Students are encouraged to work in groups for many assignments, but required to complete certain tasks independently.
+Coded solutions must be submitted as CMake projects or Arduino sketches using \texttt{git} and \texttt{GitHub}, a distributed revision control and source code management system.
+
+
+\paragraph*{Course Topics:}
+\begin{center}
+\begin{tabular}{|c|p{8cm}|c|}
+\hline
+Unit & Topics & Hours \tabularnewline
+\hline
+1 & The Basics of C++ & 4 \tabularnewline
+& Variables and Basic Types & \tabularnewline
+& Toolchains, CMake, and CLion & \tabularnewline
+\hline
+2 & Strings, Vectors, and Arrays & 4 \tabularnewline
+& C++ Expressions and Operations & \tabularnewline
+& Git, GitHub and the Arduino Prototyping Platform & \tabularnewline
+\hline
+3 & C++ Statements and Functions & 4 \tabularnewline
+& Circuit Design and Soldering & \tabularnewline
+& Microcontroller IO Management, 3D Design & \tabularnewline
+\hline
+4 & C++ Classes & 4 \tabularnewline
+& PCB and EDA Software & \tabularnewline
+\hline
+5 & The IO Library & 4 \tabularnewline
+& Sensing, Control, and Actuation & \tabularnewline
+\hline
+6 & Sequential Containers & 4 \tabularnewline
+& Data Management and Archiving & \tabularnewline
+\hline
+7 & Generic Algorithms & 4 \tabularnewline
+& Building Interfaces & \tabularnewline
+\hline
+8 & Overloaded Operations and Conversions & 4 \tabularnewline
+& Design Strategies & \tabularnewline
+\hline
+9 & Object-Oriented Programming & 10 \tabularnewline
+& Design Projects & \tabularnewline
+\hline
+& \textbf{Total} & 42 \tabularnewline
+\hline
+\end{tabular}
+\end{center}
+
+
+\paragraph{Recommended Texts:}
+There exist many books that offer an excellent treatment of the technologies surveyed in this course.
+Several such books are available at the \href{http://library.tamu.edu}{library}.
+\begin{center}
+\begin{tabular}{ll}
+\emph{C++ Primer, 5th edition} & Stanley B. Lippman, Jos\'{e}e Lajoie, Barbara E. Moo \tabularnewline[1mm]
+\emph{Thinking in C++: Volume One, 2nd edition} & Bruce Eckel \tabularnewline[1mm]
+\emph{The C++ Programming Language, 4th Edition} & Bjarne Stroustrup \tabularnewline[1mm]
+\end{tabular}
+\end{center}
+
+
+% Required Syllabus Section
+% Grading policies
+%
+\paragraph{Grade Policies:}
+The major grade components for \emph{Data Acquisition \& Embedded Systems} and their respective weights are listed below.
+Assignment and project grades will only be discussed after class or during office hours.
+We reserve the right to ask students to present their concerns or arguments in writing.
+Failure to meet a deadline may result in a grade of zero for the corresponding work.
+\begin{center}
+\begin{tabular}{lp{15mm}lp{15mm}}
+\multicolumn{4}{c}{\textbf{Grading Rule}} \\
+Tutorials & 10 \% & Tasks, Quizzes, Presentations, \& Media & 20 \% \\
+Participation & 10 \% & Projects & 50 \% \\
+Assignments \& Challenges & 10 \%
+\end{tabular}
+\end{center}
+The grading rule for ECEN 689 features the same percentages, but the requirements and grading schemes within components differ to accommodate additional work.
+If your overall grade falls within one of the prescribed ranges, then you are guaranteed to receive at least the letter grade indicated.
+\begin{center}
+\begin{tabular}{lp{25mm}lp{25mm}lp{25mm}}
+\multicolumn{6}{c}{\textbf{Grading Scale}} \\
+A: & 90 -- 100 \% & C: & 70 -- 79 \% & F: & 0 -- 59 \% \\
+B: & 80 -- 89 \% & D: & 60 -- 69 \%
+\end{tabular}
+\end{center}
+The Academic Rules website at Texas A\&M University, and its section on Grading in particular, discusses possible grades and their respective meaning:
+\begin{quote}
+\url{http://student-rules.tamu.edu/rule10}.
+\end{quote}
+
+
+% Required Syllabus Section
+% Attendance and make-up policies
+%
+\paragraph{Attendance and Make-Up Policies:}
+If an absence is excused, the instructor will either provide the student an opportunity to make up any quiz, exam or other work that contributes to the final grade or provide a satisfactory alternative by a date agreed upon by the student and instructor.
+If the instructor has a regularly scheduled make up exam, students are expected to attend unless they have a university approved excuse.
+The make-up work must be completed in a timeframe not to exceed 30 calendar days from the last day of the initial absence. 
+The student is responsible for providing satisfactory evidence to the instructor to substantiate the reason for the absence.
+\begin{quote}
+\url{http://student-rules.tamu.edu/rule07}.
+\end{quote}
+Failure to notify and/or document properly may result in an unexcused absence.
+Falsification of documentation is a violation of the Honor Code. 
+In cases where prior notification is not feasible (e.g., accident or emergency) the student must provide notification by the end of the second working day after the absence, including an explanation of why notice could not be sent prior to the class. 
+
+
+% http://registrar.tamu.edu/Current/ClassrmConcerns.aspx
+%
+\paragraph{Classroom Communication Concerns:}
+A student desiring to report a classroom communication concern should initiate the process within the first 12 class days of the semester, whenever possible, in order to identify an alternative course, if necessary.
+The last date a student may initiate the classroom communication concerns procedure is the same as the Q-drop deadline.
+For more information, consult the \href{http://registrar.tamu.edu/}{Office of the Registrar} and related \href{http://registrar.tamu.edu/Registrar/media/REGI_Forms/UGClsrmCommConcern.pdf}{form}.
+
+
+\paragraph{Miscellaneous:}
+Student dress, behavior, and speech are expected to be courteous and professional.
+Any deviation from this deemed inappropriate by the professor or any disruptive behavior will result in immediate ejection from the class period with swift and appropriate disciplinary measures.
+
+
+% Required Syllabus Section
+% Academic Integrity Statement and Policy
+% 
+\paragraph{Academic Integrity:}
+\emph{``An Aggie does not lie, cheat or steal, or tolerate those who do.''}
+\begin{quote}
+\url{http://aggiehonor.tamu.edu}.
+\end{quote}
+It is the Mission of the Aggie Honor System Office to serve as a centralized organization established to educate about the Aggie Code of Honor, respond to reported academic violations of the Aggie Code of Honor, and facilitate remediation efforts for students found responsible for violations of the Aggie Code of Honor.
+
+
+% Required Syllabus Section
+% Americans with Disabilities Act (ADA) Policy Statement
+%
+\paragraph{Americans with Disabilities Act (ADA) Policy Statement:}
+The Americans with Disabilities Act (ADA) is a federal anti-discrimination statute that provides comprehensive civil rights protection for persons with disabilities.
+Among other things, this legislation requires that all students with disabilities be guaranteed a learning environment that provides for reasonable accommodation of their disabilities.
+If you believe you have a disability requiring an accommodation, please contact Disability Services, in Cain Hall, Room B118, or call 845-1637.
+For additional information visit
+\begin{quote}
+\url{http://disability.tamu.edu}.
+\end{quote}
+
+
+% Required Syllabus Section
+% Helpful links for syllabus construction
+% 
+\paragraph{Helpful Links:}
+\href{http://registrar.tamu.edu/General/Calendar.aspx}{Academic Calendar},
+\href{http://registrar.tamu.edu/General/FinalSchedule.aspx}{Final Exam Schedule},
+\href{http://student-rules.tamu.edu/}{Student Rules},
+\href{http://dof.tamu.edu/content/religious-observance}{Religious Observances}.
+
+\end{document}
+
