@@ -67,7 +67,7 @@ int main() {
   cout << endl << "==== Graders and Students ===="  << endl << endl;
   giterator = ecen489graders.begin();
   for (string name : ecen489names) {
-    cout << *giterator << " will grade work by " << name << endl;
+    cout << "Grader: " << *giterator << ";    Student: " << name << endl;
     giterator++;
   }
   cout << endl;
@@ -75,7 +75,7 @@ int main() {
   cout << endl << "==== Students and Graders ===="  << endl << endl;
   giterator = ecen489graders.begin();
   for (string name : ecen489names) {
-    cout << name << " will be graded by " << *giterator << endl;
+    cout << "Student: " << name << ";    Grader: " << *giterator << endl;
     giterator++;
   }
   cout << endl;
