@@ -21,7 +21,7 @@
 
 ## Graduate Students
 
-* Abhay Anand, abhaysanand, [abhaysanand](https://github.com/abhaysanand)
+* Abhay Anand, abhaysanand, [abhaysanand](https://abhaysanand.github.io/)
 * Pranay Eedara, epranaykumar, [epranaykumar](https://epranaykumar.github.io/)
 * Rohit Gangrade
 * Kartic Kaveripuram Ramasamy
