@@ -1,6 +1,6 @@
-# CMake on the Command Line
+# CMake Command Line Build
 
-For small projects, it is possible to employ CMake to build applications in a non-interactive manner.
+For small C++ projects, it is possible to employ CMake to build applications in a non-interactive manner.
 It may be a good idea to use separate build directories.
 
 ```
