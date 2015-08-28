@@ -6,9 +6,9 @@ The main site for this course is a git repository hosted on GitHub:
 
 	https://github.com/CourseReps/ECEN489-Fall2015
 
-On this site, you will find a description along with course objectives. Under Tasks, you will find a synopsis of the tools needed to partake in course activities. Tasks 1 & 2 should be completed by Wednesday, September 2; and Task 3 should be completed by Friday, September 4. These tasks aim at transforming your personal computer into a world-class development station. Luckily, the necessary tools are either available for free, or are made accessible to you through educational licenses. You will NOT have to purchase software for the course.
+On this site, you will find a course description along with pedagogical objectives. Under Tasks, you will find a synopsis of the tools needed to partake in course activities. Tasks 1 & 2 should be completed by Wednesday, September 2; and Task 3 should be completed by Friday, September 4. These tasks aim at transforming your personal computer into a world-class development station. Luckily, the necessary tools are either available for free, or are made accessible to you through educational licenses. You will NOT have to purchase software for the course.
 
-Tasks, assignments, challenges, tutorials and projects will be submitted through GitHub. As such, you will be required to Sign up for GitHub. This is also free. You should do this rapidly and send me an email with your GitHubID, as you will need read access to our repository to submit work. The subject line of your email should read Data Acquisition & Embedded Systems. While you are at it, you may want to get the student developer pack (free for students).
+Tasks, assignments, challenges, tutorials and projects will be submitted through GitHub. As such, you will be required to Sign up for GitHub. This is also free. You should do this rapidly and send me an email with your GitHubID, as you will need write access to our repository to submit work. The subject line of your email should read Data Acquisition & Embedded Systems. While you are at it, you may want to get the student developer pack (free for students).
 
 	https://education.github.com/pack
 
