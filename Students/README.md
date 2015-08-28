@@ -25,12 +25,13 @@
 * Pranay Eedara, epranaykumar, [epranaykumar](https://epranaykumar.github.io/)
 * Rohit Gangrade
 * Kartic Kaveripuram Ramasamy
-* Udaya Bhaskar Kothapalli
+* Udaya Bhaskar Kothapalli, udaybhaskar.k, [ubkothapalli](http://ubkothapalli.github.io/)
 * Hai Li, lh1234, [lihai1991](https://lihai1991.github.io/)
 * Shashank Naphade
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
 * Kan Zheng
+
 
 
 ## Faculty Members
