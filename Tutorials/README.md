@@ -17,18 +17,9 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor) Kyle Malone
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid)
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart)
-<<<<<<< HEAD
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
-* [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost)
-=======
-* [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
-<<<<<<< HEAD
->>>>>>> 275f1cdb137d7da230c635c08b1b38d00f91d629
-* [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth)
-=======
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Keaton Brown
->>>>>>> 5cd4ed361b2a179002cedc457589d0a1c8b7aa57
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite)
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad)
