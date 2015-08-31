@@ -4,7 +4,7 @@
 ## Undergraduate Students
 
 * _Full Name_, _TAMU NetID_, _GitHubID_
-* Thomas Branyon
+* Thomas Branyon, aggiebass2015, [tbranyon](https://tbranyon.github.io/)
 * Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
 * Nathaniel Glaser
 * Karl Griesser
