@@ -6,7 +6,7 @@ The tutorial should be given directly from the corresponding wiki page.
 
 * [Git](https://github.com/CourseReps/ECEN489-Fall2015/wiki/git)
 * [GitHub](https://github.com/CourseReps/ECEN489-Fall2015/wiki/github)
-* [C++](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cplusplus)
+* [C++](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cplusplus) - Abhay Shankar Anand
 * [LLVM](https://github.com/CourseReps/ECEN489-Fall2015/wiki/llvm)
 * [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - Pranay Kumar
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
