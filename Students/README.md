@@ -8,7 +8,7 @@
 * Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
 * Nathaniel Glaser
 * Karl Griesser
-* Kyle Malone
+* Kyle Malone, malokyle, [malokyle](https://malokyle.github.io/)
 * Nneamaka Njoku
 * Steven Porter
 * Anthony Ramirez, agramir16, [agramir16](https://agramir16.github.io/)
