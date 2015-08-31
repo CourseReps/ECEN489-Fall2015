@@ -5,7 +5,7 @@
 
 * _Full Name_, _TAMU NetID_, _GitHubID_
 * Thomas Branyon
-* Keaton Brown
+* Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
 * Nathaniel Glaser
 * Karl Griesser
 * Kyle Malone
