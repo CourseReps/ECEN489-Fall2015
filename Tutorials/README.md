@@ -8,7 +8,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [GitHub](https://github.com/CourseReps/ECEN489-Fall2015/wiki/github)
 * [C++](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cplusplus)
 * [LLVM](https://github.com/CourseReps/ECEN489-Fall2015/wiki/llvm)
-* [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake)
+* [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - Pranay Kumar
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
 * [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries)
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide)
@@ -17,8 +17,13 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor) Kyle Malone
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid)
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart)
+<<<<<<< HEAD
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost)
+=======
+* [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
+* [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
+>>>>>>> 275f1cdb137d7da230c635c08b1b38d00f91d629
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth)
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite)
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
