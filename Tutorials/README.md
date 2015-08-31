@@ -11,7 +11,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - Pranay Kumar
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
 * [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries)
-* [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide)
+* [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide) - Udaya Bhaskar Kothapalli
 * [Teensy](https://github.com/CourseReps/ECEN489-Fall2015/wiki/teensy) Development Boards
 * [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning)
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
