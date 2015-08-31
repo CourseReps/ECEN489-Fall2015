@@ -5,7 +5,7 @@ As part of this exercise, a presenter must create or enhance a [wiki](https://gi
 The tutorial should be given directly from the corresponding wiki page.
 
 * [Git](https://github.com/CourseReps/ECEN489-Fall2015/wiki/git)
-* [GitHub](https://github.com/CourseReps/ECEN489-Fall2015/wiki/github)
+* [GitHub](https://github.com/CourseReps/ECEN489-Fall2015/wiki/github) - Travis Taghavi
 * [C++](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cplusplus) - Abhay Shankar Anand
 * [LLVM](https://github.com/CourseReps/ECEN489-Fall2015/wiki/llvm)
 * [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - Pranay Kumar
