@@ -18,7 +18,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid)
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart)
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
-* [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost)
+* [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth)
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite)
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
