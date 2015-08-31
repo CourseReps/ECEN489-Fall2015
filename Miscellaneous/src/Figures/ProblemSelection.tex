@@ -1,0 +1,39 @@
+\begin{tikzpicture}[mindmap]
+  \begin{scope}[
+    every node/.style={concept},
+    Root/.append style={
+      concept color=black, fill=white, line width=4pt, font=\Large},
+    Education/.style={concept color=red!40,grow=30},
+    Society/.style={concept color=blue!40,grow=330},
+    Interest/.style={concept color=orange!40,grow=210},
+    Pragmatism/.style={concept color=green!40,grow=150},
+    grow cyclic,
+    level 1/.append style={level distance=4cm,font=\large},
+    level 2/.append style={level distance=3cm,sibling angle=90}]
+    \node [Root] {Research Problem Selection} %  root
+      child [Education] { node {Education}
+        child [grow=120] { node {Math Tools} }
+        child [grow=75] { node {Stuent Learning} }
+        child [grow=30] { node {Valued Skills} }
+        child [grow=345] { node {Future Trends} }
+      }
+      child [Society] { node {Societal Benefits}
+        child [grow=15] { node {Economic Driver} }
+        child [grow=330] { node {Demand} }
+        child [grow=285] { node {Adoption Rate} }
+        child [grow=240] { node {Tech Edge} }
+      }
+      child [Interest] { node {Personal Interest}
+        child [grow=165] { node {Curiosity} }
+        child [grow=210] { node {Co-Authors} }
+        child [grow=255] { node {Outlet for Creativity} }
+        child [grow=300] { node {Novelty} }
+      }
+      child [Pragmatism] { node {Pragmatic Aspects}
+        child [grow=60] { node {Positions} }
+        child [grow=105] { node {Ability to Publish} }
+        child [grow=150] { node {Funding} }
+        child [grow=195] { node {Expertise} }
+      };
+  \end{scope}
+\end{tikzpicture}

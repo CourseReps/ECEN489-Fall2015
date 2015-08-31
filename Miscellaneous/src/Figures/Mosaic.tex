@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+[draw=black, line width=2pt, >=stealth',
+author/.style={circle, draw, inner sep=0pt, minimum size=10mm},
+contribution/.style={rectangle, draw, inner sep=0pt, minimum size=8mm, fill=blue!20, rounded corners}]
+
+\node[author, fill=red!20] (author1) at (0,2) {};
+\node[contribution] (contribution1) at (2,2) {}
+  edge [<-] (author1);
+\node[author, fill=gray!20] (author2) at (2,0) {};
+\node[contribution] (contribution2) at (0.6,-1.4) {}
+  edge [<-] (author2);
+\node[author, fill=green!20] (author3) at (8,2.5) {};
+\node[author, fill=magenta!20] (author4) at (12,2.5) {};
+\node[contribution, minimum size=12mm] (contribution3) at (10,2.5) {}
+  edge [<-] (author3)
+  edge [<-] (author4);
+\node[author, fill=yellow!20] (author5) at (5,-0.5) {};
+\node[contribution] (contribution5) at (6.4,0.9) {}
+  edge [<-] (author5);
+\node[author, fill=cyan!20] (author6) at (10,0) {};
+\node[contribution] (contribution6) at (8.38,-1) {}
+  edge [<-] (author6);
+\end{tikzpicture}
+

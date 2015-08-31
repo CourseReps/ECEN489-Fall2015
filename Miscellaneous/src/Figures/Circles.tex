@@ -1,0 +1,60 @@
+\begin{tikzpicture}
+[draw=black, line width=2pt, >=stealth',
+author/.style={circle, draw, inner sep=0pt, minimum size=10mm},
+contribution/.style={rectangle, draw, inner sep=0pt, minimum size=18mm, fill=blue!20, rounded corners}]
+
+\node[author, fill=gray!10] (author10) at (0,-2) {};
+\node[author, fill=gray!25] (author11) at (2,0) {}
+  edge [<-] (author10);
+\node[author, fill=gray!40] (author12) at (4,2) {}
+  edge [<-] (author11);
+\node[author, fill=magenta!10] (author20) at (2,-2) {}
+  edge [<-, dashed] (author11);
+\node[author, fill=magenta!25] (author21) at (4,0) {}
+  edge [<-, dashed] (author12)
+  edge [<-] (author20);
+\node[author, fill=magenta!40] (author22) at (6,2) {}
+  edge [<-] (author21);
+\node[author, fill=green!10] (author30) at (4,-2) {}
+  edge [<-, dashed, bend right=30] (author12)
+  edge [<-, dashed] (author21);
+\node[author, fill=green!25] (author31) at (6,0) {}
+  edge [<-, dashed] (author22)
+  edge [<-] (author30);
+\node[author, fill=green!40] (author32) at (8,2) {}
+  edge [<-] (author31);
+\node[author, fill=yellow!10] (author40) at (6,-2) {}
+  edge [<-, dashed, bend right=30] (author22)
+  edge [<-, dashed] (author31);
+\node[author, fill=yellow!25] (author41) at (8,0) {}
+  edge [<-, dashed] (author32)
+  edge [<-] (author40);
+\node[author, fill=yellow!40] (author42) at (10,2) {}
+  edge [<-] (author41);
+\node[author, fill=red!10] (author50) at (8,-2) {}
+  edge [<-, dashed, bend right=30] (author32)
+  edge [<-, dashed] (author41);
+\node[author, fill=red!25] (author51) at (10,0) {}
+  edge [<-, dashed] (author42)
+  edge [<-] (author50);
+\node[author, fill=red!40] (author52) at (12,2) {}
+  edge [<-] (author51);
+\node[author, fill=cyan!10] (author60) at (10,-2) {}
+  edge [<-, dashed, bend right=30] (author42)
+  edge [<-, dashed] (author51);
+\node[author, fill=cyan!25] (author61) at (12,0) {}
+  edge [<-, dashed] (author52)
+  edge [<-] (author60);
+\node[author, fill=cyan!40] (author62) at (14,2) {}
+  edge [<-] (author61);
+\node[author, dashed] (author70) at (12,-2) {}
+  edge [<-, dashed, bend right=30] (author52)
+  edge [<-, dashed] (author61);
+\node[author, dashed] (author71) at (14,0) {}
+  edge [<-, dashed] (author62)
+  edge [<-, dashed] (author70);
+\node[author, dashed] (author80) at (14,-2) {}
+  edge [<-, dashed, bend right=30] (author62)
+  edge [<-, dashed] (author71);
+\end{tikzpicture}
+

@@ -1,0 +1,169 @@
+%\RequirePackage{atbegshi}
+\documentclass{beamer}
+
+\usetheme{default}
+\usepackage{amssymb}
+%\usepackage[cmex10]{amsmath}
+\usepackage{stmaryrd}
+\usepackage[english]{babel}
+\usepackage{tikz,pgf,pgfplots}
+\pgfplotsset{compat=newest}
+\usepgflibrary{shapes}
+\usepgfplotslibrary{polar}
+\usetikzlibrary{%
+  arrows,%
+  mindmap,%mindmap
+  calendar,%calendar
+  decorations,%decorations
+  snakes,%snakes
+  shapes.misc,% wg. rounded rectangle
+  shapes.arrows,%
+	shapes.callouts, %
+  shapes,%
+  chains,%
+  matrix,%
+  positioning,% wg. " of "
+  scopes,%
+  decorations.pathmorphing,% /pgf/decoration/random steps | erste Graphik
+	decorations.text, %
+  shadows,%
+  backgrounds,%
+  fit,%
+  petri%
+}
+
+% Radius of regular polygons
+\newdimen\R
+\R=0.8cm
+
+\definecolor{tutorial}{RGB}{50,93,61}
+\definecolor{forest}{RGB}{34,139,34}
+\definecolor{tamu}{RGB}{80,0,0}
+
+
+\title{Data Acquisition and Embedded Systems}
+\author{Jean-Francois Chamberland\\
+Gregory H. Huff}
+\institute{Electrical and Computer Engineering}
+\date{Texas A\&M University\\ August 31, 2015}
+
+\setbeamertemplate{footline}[page number]
+\setbeamertemplate{navigation symbols}{}
+%\textcolor{black}{\insertframenumber / \inserttotalframenumber}}
+
+\newlength\tikzheight
+\newlength\tikzwidth
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{\textcolor{tamu}{Texas A{\&}M University}}
+
+\begin{block}{\textcolor{tamu}{Mission Statement}}
+\begin{footnotesize}
+\begin{quotation}
+\noindent
+``Texas A{\&}M University is dedicated to the \textbf{discovery}, development, communication, and application of \textbf{knowledge} in a wide range of academic and professional fields.
+Its mission of providing the highest quality undergraduate and graduate programs is inseparable from its mission of developing new understandings through \textbf{research and creativity}.
+It prepares students to assume roles in leadership, responsibility, and service to society.
+Texas A{\&}M assumes as its historic trust the maintenance of \textbf{freedom of inquiry} and an intellectual environment nurturing the human mind and spirit.
+[...]''
+\end{quotation}
+\end{footnotesize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textcolor{tamu}{Selection Considerations for Research Problems}}
+
+  \begin{center}
+  \scalebox{0.65}{\input{Figures/ProblemSelection}}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Education: Seeking Long-Term Impact}
+
+  \begin{center}
+  \scalebox{0.5}{\input{Figures/Mosaic}} \\
+  \emph{Isolated efforts result in duplicated tasks}
+  \end{center}
+  \begin{block}{Collective Opportunities}
+    \begin{enumerate}
+    \item Devoting time to building lasting tools enhances productivity of instructors and elevate quality of programs over time
+    \item Working jointly in cohesive framework leads to great achievements whose values far exceed individual contributions
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Education: Lessons from Software Development}
+
+  \begin{center}
+  \scalebox{0.5}{\input{Figures/Versioning}} \\
+  \emph{Pushing resources forward with version control}
+  \end{center}
+  \begin{block}{A Source of Inspiration}
+    \begin{enumerate}
+    \item Best practices can be inferred from software engineering and large open projects, e.g., GNU/Linux, FreeBSD, Apache, Mozilla/Firefox
+    \item Software versioning and revision control systems can manage changes to educational documents and source files, e.g., \texttt{GitHub.com}
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Education: Shedding Light on the Snowball Effect}
+
+  \begin{block}{Positive Points}
+    \begin{enumerate}
+    \item \emph{EduDocs:} Several instructor employ framework to create and maintain documents
+    \item Hundreds of students have used notes
+    \item Licensing facilitates content reuse
+    \end{enumerate}
+  \end{block}
+  \vfill
+  \begin{block}{Drawbacks}
+    \begin{enumerate}
+    \item Lack of \emph{synchronizing agent}
+    \item Barriers to entry appear high
+    %\item Several competing initiatives
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Education: Project-Based Courses}
+
+  \begin{center}
+  \scalebox{0.5}{\input{Figures/Circles}} \\
+  \emph{Foster cultures where students help students}
+  \end{center}
+  \begin{block}{Transferable Skills}
+    \begin{enumerate}
+    \item Engineering students must develop several facets: teamwork, programming and marketing skills, time management, creativity
+    \item Project-based learning complements traditional classroom and assists students acquire these skills
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Education: Align Deliverables and Valuables}
+
+  \begin{center}
+  \scalebox{0.5}{\input{Figures/Deliverables}} \\
+  \emph{Trust students to produce useful documents}
+  \end{center}
+  \begin{block}{Transferable Skills}
+    \begin{enumerate}
+    \item Reports get low readership, whereas tutorials can have broader appeal and can be leveraged to bootstrap future projects
+    \item Setting goals that fulfill curriculum requirements and yield valuable outcomes can elevate quality of programs
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\end{document}
+

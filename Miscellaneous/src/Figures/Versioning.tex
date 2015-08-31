@@ -1,0 +1,38 @@
+\begin{tikzpicture}
+[draw=black, line width=2pt, >=stealth',
+author/.style={circle, draw, inner sep=0pt, minimum size=10mm},
+contribution/.style={rectangle, draw, inner sep=0pt, minimum size=18mm, fill=blue!20, rounded corners}]
+
+\node[contribution, minimum size=4mm] (project1) at (0,0.2) {};
+\node[contribution, minimum size=6mm] (project2) at (0.8,0.3) {}
+  edge [<-] (project1);
+\node[contribution, minimum size=8mm] (project3) at (1.9,0.4) {}
+  edge [<-] (project2);
+\node[contribution, minimum size=10mm] (project4) at (3.3,0.5) {}
+  edge [<-] (project3);
+\node[contribution, minimum size=12mm] (project5) at (5,0.6) {}
+  edge [<-] (project4);
+\node[contribution, minimum size=14mm] (project6) at (7,0.7) {}
+  edge [<-] (project5);
+\node[contribution, minimum size=16mm] (project7) at (9.3,0.8) {}
+  edge [<-] (project6);
+\node[contribution, minimum size=18mm] (project8) at (11.9,0.9) {}
+  edge [<-] (project7);
+\node[author, fill=cyan!20] (author1) at (-1.4142,0.2) {}
+  edge [->, dashed] (project1);
+\node[author, fill=magenta!20] (author2) at (-0.7247,1.3071) {}
+  edge [->, dashed] (project2);
+\node[author, fill=yellow!20] (author3) at (0.5,1.8) {}
+  edge [->, dashed] (project3);
+\node[author, fill=green!20] (author5) at (1.8,2.0) {}
+  edge [->, dashed] (project4);
+\node[author, fill=red!20] (author5) at (3.4,2.2) {}
+  edge [->, dashed] (project5);
+\node[author, fill=cyan!20] (author6) at (5.3,2.4) {}
+  edge [->, dashed] (project6);
+\node[author, fill=gray!20] (author7) at (7.5,2.6) {}
+  edge [->, dashed] (project7);
+\node[author, fill=magenta!20] (author8) at (10,2.8) {}
+  edge [->, dashed] (project8);
+\end{tikzpicture}
+

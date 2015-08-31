@@ -1,0 +1,47 @@
+\begin{tikzpicture}
+[draw=black, line width=2pt, >=stealth',
+author/.style={circle, draw, inner sep=0pt, minimum size=10mm},
+contribution/.style={rectangle, draw, inner sep=0pt, minimum size=8mm, fill=blue!20, rounded corners}]
+
+\node[author, fill=gray!40] (author12) at (0,2.5) {};
+\node[contribution] (project1) at (0,0.5) {}
+  edge [<-] (author12);
+\node[author, fill=magenta!40] (author22) at (2,2.5) {};
+\node[contribution] (project2) at (2,0.5) {}
+  edge [<-] (author22);
+\node[author, fill=green!40] (author32) at (4,2.5) {};
+\node[contribution] (project3) at (4,0.5) {}
+  edge [<-] (author32);
+\node[author, fill=yellow!40] (author42) at (6,2.5) {};
+\node[contribution] (project4) at (6,0.5) {}
+  edge [<-] (author42);
+\node[author, fill=red!40] (author52) at (8,2.5) {};
+\node[contribution] (project5) at (8,0.5) {}
+  edge [<-] (author52);
+\node[author, fill=cyan!40] (author62) at (10,2.5) {};
+\node[contribution] (project6) at (10,0.5) {}
+  edge [<-] (author62);
+
+\node[author, fill=gray!10] (author10) at (-2,-2) {}
+  edge [->] (author12);
+\node[author, fill=magenta!10] (author20) at (0,-2) {}
+  edge [->] (author22);
+\node[author, fill=green!10] (author30) at (2,-2) {}
+  edge [->] (author32);
+  \path (author30) edge[<-, dashed] (project1.south);
+\node[author, fill=yellow!10] (author40) at (4,-2) {}
+  edge [->] (author42);
+  \path (author40) edge[<-, dashed] (project2.south);
+  \path (author40) edge[<-, dashed] (project1.south);
+\node[author, fill=red!10] (author50) at (6,-2) {}
+  edge [->] (author52);
+  \path (author50) edge[<-, dashed] (project1.south);
+\node[author, fill=cyan!10] (author60) at (8,-2) {}
+  edge [->] (author62);
+  \path (author60) edge[<-, dashed] (project3.south);
+  \path (author60) edge[<-, dashed] (project4.south);
+\node[author] (author70) at (10,-2) {};
+  \path (author70) edge[<-, dashed] (project4.south);
+  \path (author70) edge[<-, dashed] (project5.south);
+\end{tikzpicture}
+
