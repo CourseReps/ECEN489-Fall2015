@@ -11,7 +11,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - Pranay Kumar
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
 * [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries)
-* [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide)
+* [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide) - Udaya Bhaskar Kothapalli
 * [Teensy](https://github.com/CourseReps/ECEN489-Fall2015/wiki/teensy) Development Boards
 * [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning)
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor) Kyle Malone
@@ -23,8 +23,12 @@ The tutorial should be given directly from the corresponding wiki page.
 =======
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
+<<<<<<< HEAD
 >>>>>>> 275f1cdb137d7da230c635c08b1b38d00f91d629
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth)
+=======
+* [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Keaton Brown
+>>>>>>> 5cd4ed361b2a179002cedc457589d0a1c8b7aa57
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite)
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad)
