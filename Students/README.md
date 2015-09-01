@@ -30,7 +30,7 @@
 * Shashank Naphade
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
-* Kan Zheng
+* Kan Zheng, wszk1992, [wszk1992]( http://wszk1992.github.io/Kan-Zheng)
 
 
 
