@@ -30,9 +30,7 @@
 * Shashank Naphade
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
-* Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Kan Zheng, wszk1992,  [wszk1992](http://wszk1992.github.io/Kan-Zheng)
-
 
 
 
