@@ -15,8 +15,10 @@
 * Cooper Rehn, cooper95, [Cooper95](https://Cooper95.github.io/)
 * April Walker
 * Kaimen Walters, kaimen.walters, [kaimen-walters](https://kaimen-walters.github.io/)
+* Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
 * Xiangdong Yu
+
 
 
 ## Graduate Students
