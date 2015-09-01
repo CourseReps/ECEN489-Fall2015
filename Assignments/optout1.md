@@ -1,4 +1,4 @@
-# Hamming codes
+# Hamming Codes
 
 [Hamming codes](https://en.wikipedia.org/wiki/Hamming_code) are a family of linear error-correcting codes, the most famous of which is the (7,4)-code.
 This latter code can be employed to detect up to two-bit errors or correct one-bit errors without detection of uncorrected errors.
