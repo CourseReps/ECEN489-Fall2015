@@ -1,0 +1,11 @@
+Dear Students,
+
+You will find attached to this email Assignment 1.  The first assignment should be rather straightforward.  It is acceptable and encouraged to write your answers directly on the question sheet. You must submit a hard copy of the question sheet with your work, as it will be used to grade your answers. In addition, you will need to submit your C++ code and CMake file through GitHub. Do NOT submit a printed version of your source code.
+
+For graduate students and temerarious undergraduate student, you should complete Opt-Out Challenge 1 instead of Assignment 1. In this latter case, you simply need to submit your code through GitHub.
+
+Cheers,
+Jean-Francois Chamberland, Gregory Huff
+
+Due Date: Sep 7, 2015.
+GitHub: https://github.com/CourseReps/ECEN489-Fall2015/tree/master/Assignments

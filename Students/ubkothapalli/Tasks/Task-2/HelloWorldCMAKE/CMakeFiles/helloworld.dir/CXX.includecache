@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/uday/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE/helloworld.cpp
+iostream
+-
+
