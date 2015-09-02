@@ -15,7 +15,6 @@
 * Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
 * Xiangdong Yu
-
 * Abhay Shankar Anand
 * Vaishali Swaminathan
 
