@@ -4,19 +4,21 @@
 ## Undergraduate Students
 
 * _Full Name_, _TAMU NetID_, _GitHubID_
-* Thomas Branyon
+* Thomas Branyon, aggiebass2015, [tbranyon](https://tbranyon.github.io/)
 * Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
 * Nathaniel Glaser
 * Karl Griesser
-* Kyle Malone
+* Kyle Malone, malokyle, [malokyle](https://malokyle.github.io/)
 * Nneamaka Njoku
 * Steven Porter
 * Anthony Ramirez, agramir16, [agramir16](https://agramir16.github.io/)
 * Cooper Rehn, cooper95, [Cooper95](https://Cooper95.github.io/)
 * April Walker
 * Kaimen Walters, kaimen.walters, [kaimen-walters](https://kaimen-walters.github.io/)
+* Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
 * Xiangdong Yu
+
 
 
 ## Graduate Students
@@ -30,7 +32,7 @@
 * Shashank Naphade
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
-* Kan Zheng
+* Kan Zheng, wszk1992,  [wszk1992](http://wszk1992.github.io/Kan-Zheng)
 
 
 
