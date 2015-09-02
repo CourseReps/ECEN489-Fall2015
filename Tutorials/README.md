@@ -23,7 +23,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite) - Hai Li
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad)
-* [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks) - Kan Zheng
+* [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks)
 * [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot)
 * [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt)
 
