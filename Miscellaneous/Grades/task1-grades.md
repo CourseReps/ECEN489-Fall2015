@@ -9,7 +9,7 @@
 * Student: Kaimen Walters: PASS
 * Student: Steven Jinpeng You:
 * Student: Henry Xiangdong Yu:
-* Student: Blade Roybal:
+* Student: Blade Roybal: PASS
 * Student: Yoon:
 * Student: Abhay Anand:
 * Student: Pranay Eedara:
