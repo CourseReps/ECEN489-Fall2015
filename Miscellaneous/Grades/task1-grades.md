@@ -10,7 +10,7 @@
 * Student: Steven Jinpeng You:
 * Student: Henry Xiangdong Yu:
 * Student: Blade Roybal: PASS
-* Student: Yoon:
+* Student: Yoon: PASS
 * Student: Abhay Anand: Pass
 * Student: Pranay Eedara:
 * Student: Udaya Bhaskar Kothapalli: Pass
