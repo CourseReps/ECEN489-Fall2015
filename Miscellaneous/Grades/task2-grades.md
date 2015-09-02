@@ -5,7 +5,7 @@
 * Student: Karl Griesser:
 * Student: Kyle Malone: PASS
 * Student: Anthony Ramirez:
-* Student: Cooper Rehn:
+* Student: Cooper Rehn: PASS
 * Student: Kaimen Walters: PASS
 * Student: Steven Jinpeng You:
 * Student: Henry Xiangdong Yu: PASS
