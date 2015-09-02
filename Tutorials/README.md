@@ -15,7 +15,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Teensy](https://github.com/CourseReps/ECEN489-Fall2015/wiki/teensy) Development Boards
 * [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning)
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor) Kyle Malone
-* [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid)
+* [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart) - Jinpeng you
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
