@@ -12,7 +12,7 @@
 * Student: Blade Roybal: PASS
 * Student: Yoon: PASS
 * Student: Abhay Anand: Pass
-* Student: Pranay Eedara:
+* Student: Pranay Eedara:Pass
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li: Pass
 * Student: Shashank Naphade: PASS
@@ -20,3 +20,4 @@
 * Student: Travis Taghavi:
 * Student: Kan Zheng: PASS
 * Student: Vaishali Swaminathan:
+
