@@ -1,0 +1,28 @@
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ ls
+CMakeLists.txt  helloworld.cpp
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ cmake .
+-- The C compiler identification is GNU 4.8.4
+-- The CXX compiler identification is GNU 4.8.4
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++
+-- Check for working CXX compiler: /usr/bin/g++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/uday/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ make
+Scanning dependencies of target helloworld
+[100%] Building CXX object CMakeFiles/helloworld.dir/helloworld.cpp.o
+Linking CXX executable helloworld
+[100%] Built target helloworld
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ ls -l helloworld
+-rwxrwxr-x 1 uday uday 9173 Sep  2 11:03 helloworld
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ ./helloworld
+Hello World 
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ D^C
+uday@uday-Inspiron-5558:~/Dropbox/Documents/Acads/DAES/Tasks/task-2/HelloWorldCMAKE$ 
+
