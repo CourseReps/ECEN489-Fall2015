@@ -14,10 +14,11 @@
 * Kaimen Walters, kaimen.walters, [kaimen-walters](https://kaimen-walters.github.io/)
 * Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
-* Xiangdong Yu
+* Xiangdong Yu, henryyu8, [henryyu8](https://github.com/henryyu8)
 * Abhay Shankar Anand
 * Vaishali Swaminathan
-
+* Blade Roybal, bladero, [bladeroybal](https://github.com/Bladeroybal)
+* Anthony Ramirez, agramir16, [agramir16] (https://github.com/agramir16)
 ## Graduate Students
 
 * Abhay Anand, abhaysanand, [abhaysanand](https://abhaysanand.github.io/)
@@ -25,7 +26,7 @@
 * Kartic Kaveripuram Ramasamy
 * Udaya Bhaskar Kothapalli, udaybhaskar.k, [ubkothapalli](http://ubkothapalli.github.io/)
 * Hai Li, lh1234, [lihai1991](https://lihai1991.github.io/)
-* Shashank Naphade
+* Shashank Naphade, shashank.naphade, [shashanknaphade](https://shashanknaphade.github.io/)
 * Madhukarreddy Pappireddy
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
