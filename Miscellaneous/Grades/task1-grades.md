@@ -6,7 +6,7 @@
 * Student: Kyle Malone:
 * Student: Anthony Ramirez:
 * Student: Cooper Rehn:
-* Student: Kaimen Walters:
+* Student: Kaimen Walters: PASS
 * Student: Steven Jinpeng You:
 * Student: Henry Xiangdong Yu:
 * Student: Blade Roybal:
