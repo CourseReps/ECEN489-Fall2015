@@ -14,7 +14,7 @@
 * Kaimen Walters, kaimen.walters, [kaimen-walters](https://kaimen-walters.github.io/)
 * Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
-* Xiangdong Yu
+* Xiangdong Yu, henryyu8, [henryyu8](https://github.com/henryyu8)
 * Abhay Shankar Anand
 * Vaishali Swaminathan
 * Blade Roybal, bladero, [bladeroybal](https://github.com/Bladeroybal)
