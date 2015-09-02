@@ -3,7 +3,7 @@
 * Student: Thomas Branyon:
 * Student: Keaton Brown:
 * Student: Karl Griesser:
-* Student: Kyle Malone:
+* Student: Kyle Malone: Pass
 * Student: Anthony Ramirez:
 * Student: Cooper Rehn:
 * Student: Kaimen Walters: PASS
