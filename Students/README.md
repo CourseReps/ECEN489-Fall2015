@@ -17,7 +17,7 @@
 * Xiangdong Yu
 * Abhay Shankar Anand
 * Vaishali Swaminathan
-* Blade Roybal, bladeroybal, [bladeroybal](https://github.com/Bladeroybal)
+* Blade Roybal, bladero, [bladeroybal](https://github.com/Bladeroybal)
 
 ## Graduate Students
 
