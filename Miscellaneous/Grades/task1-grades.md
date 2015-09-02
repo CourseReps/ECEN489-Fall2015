@@ -11,7 +11,7 @@
 * Student: Henry Xiangdong Yu:
 * Student: Blade Roybal: PASS
 * Student: Yoon:
-* Student: Abhay Anand:
+* Student: Abhay Anand: Pass
 * Student: Pranay Eedara:
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li: Pass
