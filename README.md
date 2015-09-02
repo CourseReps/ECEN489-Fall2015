@@ -20,3 +20,4 @@ In addition, emphasis is put on team work, presentation skills, time management,
 7. Develop confidence and leadership.
 8. Promote creativity and critical thinking.
 9. Refine presentation skills and the ability to conduct and manage projects.
+# malokyle.github.io 

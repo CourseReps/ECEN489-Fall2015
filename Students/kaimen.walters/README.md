@@ -1,3 +1,5 @@
-Name: Kaimen Walters
-NetID: kaimen.walters
-githubid: kaimen-walters
+# Identity
+
+* Name: Kaimen Walters	
+* GitHubID: kaimen-walters
+* NetID: kaimen.walters
