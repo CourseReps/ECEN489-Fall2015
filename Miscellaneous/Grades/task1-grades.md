@@ -13,7 +13,7 @@
 * Student: Yoon:
 * Student: Abhay Anand:
 * Student: Pranay Eedara:
-* Student: Udaya Bhaskar Kothapalli:
+* Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li:
 * Student: Shashank Naphade: PASS
 * Student: Austin Taghavi:
