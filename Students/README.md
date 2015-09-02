@@ -18,7 +18,7 @@
 * Abhay Shankar Anand
 * Vaishali Swaminathan
 * Blade Roybal, bladero, [bladeroybal](https://github.com/Bladeroybal)
-
+* Anthony Ramirez, agramir16, [agramir16] (https://github.com/agramir16)
 ## Graduate Students
 
 * Abhay Anand, abhaysanand, [abhaysanand](https://abhaysanand.github.io/)
