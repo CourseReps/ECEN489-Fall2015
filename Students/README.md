@@ -20,16 +20,15 @@
 * Xiangdong Yu
 
 
-
 ## Graduate Students
 
 * Abhay Anand, abhaysanand, [abhaysanand](https://abhaysanand.github.io/)
 * Pranay Eedara, epranaykumar, [epranaykumar](https://epranaykumar.github.io/)
-* Rohit Gangrade
 * Kartic Kaveripuram Ramasamy
 * Udaya Bhaskar Kothapalli, udaybhaskar.k, [ubkothapalli](http://ubkothapalli.github.io/)
 * Hai Li, lh1234, [lihai1991](https://lihai1991.github.io/)
 * Shashank Naphade
+* Madhukarreddy Pappireddy
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
 * Kan Zheng, wszk1992,  [wszk1992](http://wszk1992.github.io/Kan-Zheng)
