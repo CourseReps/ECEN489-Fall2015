@@ -16,28 +16,25 @@ int main() {
   // Undergraduate Students 489
   ecen489names.push_back("Thomas Branyon");
   ecen489names.push_back("Keaton Brown");
-  ecen489names.push_back("Nathaniel Glaser");
   ecen489names.push_back("Karl Griesser");
   ecen489names.push_back("Kyle Malone");
-  ecen489names.push_back("Nneamaka Njoku");
-  ecen489names.push_back("Steven Porter");
   ecen489names.push_back("Anthony Ramirez");
   ecen489names.push_back("Cooper Rehn");
-  ecen489names.push_back("April Walker");
   ecen489names.push_back("Kaimen Walters");
-  ecen489names.push_back("Jinpeng You");
-  ecen489names.push_back("Xiangdong Yu");
+  ecen489names.push_back("Steven Jinpeng You");
+  ecen489names.push_back("Henry Xiangdong Yu");
+  ecen489names.push_back("Blade Roybal");
+  ecen489names.push_back("Yoon");
   // Graduate Students 689
   ecen489names.push_back("Abhay Anand");
   ecen489names.push_back("Pranay Eedara");
-  ecen489names.push_back("Rohit Gangrade");
-  ecen489names.push_back("Kartic Kaveripuram Ramasamy");
   ecen489names.push_back("Udaya Bhaskar Kothapalli");
   ecen489names.push_back("Hai Li");
   ecen489names.push_back("Shashank Naphade");
   ecen489names.push_back("Austin Taghavi");
   ecen489names.push_back("Travis Taghavi");
   ecen489names.push_back("Kan Zheng");
+  ecen489names.push_back("Vaishali Swaminathan");
 
   // initialize vector with grader names.
   vector<string> ecen489graders;
