@@ -8,7 +8,7 @@
 * Student: Cooper Rehn:
 * Student: Kaimen Walters: PASS
 * Student: Steven Jinpeng You:
-* Student: Henry Xiangdong Yu:
+* Student: Henry Xiangdong Yu: PASS
 * Student: Blade Roybal: PASS
 * Student: Yoon: PASS
 * Student: Abhay Anand: Pass
