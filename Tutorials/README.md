@@ -8,7 +8,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [GitHub](https://github.com/CourseReps/ECEN489-Fall2015/wiki/github) - Travis Taghavi - Friday, Sep 4
 * [C++](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cplusplus) - Abhay Shankar Anand - Friday, Sep 4
 * [LLVM](https://github.com/CourseReps/ECEN489-Fall2015/wiki/llvm) - Austin Taghavi - Friday, Sep 4
-* [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - 
+* [CMake](https://github.com/CourseReps/ECEN489-Fall2015/wiki/cmake) - Blade Roybal - Monday, Sep 6
 * [CLion](https://github.com/CourseReps/ECEN489-Fall2015/wiki/clion)
 * [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries)
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide) - Udaya Bhaskar Kothapalli
