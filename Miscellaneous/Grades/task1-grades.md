@@ -15,8 +15,8 @@
 * Student: Pranay Eedara:
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li:
-* Student: Shashank Naphade: PASS
+* Student: Shashank Naphade: BLANK
 * Student: Austin Taghavi:
-* Student: Travis Taghavi: PASS
+* Student: Travis Taghavi:
 * Student: Kan Zheng: PASS
 * Student: Vaishali Swaminathan:
