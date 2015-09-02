@@ -20,7 +20,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Keaton Brown
-* [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite)
+* [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite) - Hai Li
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad)
 * [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks)
