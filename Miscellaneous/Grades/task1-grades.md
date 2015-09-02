@@ -1,6 +1,6 @@
 # Grades Task 1 (pass or blank)
 
-* Student: Thomas Branyon:
+* Student: Thomas Branyon: Pass
 * Student: Keaton Brown:
 * Student: Karl Griesser:
 * Student: Kyle Malone: Pass
