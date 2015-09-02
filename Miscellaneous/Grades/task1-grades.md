@@ -17,6 +17,6 @@
 * Student: Hai Li:
 * Student: Shashank Naphade: PASS
 * Student: Austin Taghavi:
-* Student: Travis Taghavi:
+* Student: Travis Taghavi: PASS
 * Student: Kan Zheng: PASS
 * Student: Vaishali Swaminathan:
