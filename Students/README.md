@@ -17,7 +17,7 @@
 * Xiangdong Yu, henryyu8, [henryyu8](https://github.com/henryyu8)
 * Abhay Shankar Anand
 * Vaishali Swaminathan
-* Blade Roybal, bladero, [bladeroybal](https://github.com/Bladeroybal)
+* Blade Roybal, bladero, [bladeroybal](http://bladeroybal.github.io/)
 * Anthony Ramirez, agramir16, [agramir16] (https://github.com/agramir16)
 ## Graduate Students
 
