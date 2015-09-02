@@ -26,7 +26,7 @@
 * Kartic Kaveripuram Ramasamy
 * Udaya Bhaskar Kothapalli, udaybhaskar.k, [ubkothapalli](http://ubkothapalli.github.io/)
 * Hai Li, lh1234, [lihai1991](https://lihai1991.github.io/)
-* Shashank Naphade
+* Shashank Naphade, shashank.naphade, [shashanknaphade](https://shashanknaphade.github.io/)
 * Madhukarreddy Pappireddy
 * Austin Taghavi, ataghavi, [ATaghavi](https://ATaghavi.github.io/)
 * Travis Taghavi, travistag, [travistag](https://travistag.github.io/)
