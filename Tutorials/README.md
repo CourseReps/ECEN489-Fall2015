@@ -13,7 +13,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries)
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide) - Udaya Bhaskar Kothapalli
 * [Teensy](https://github.com/CourseReps/ECEN489-Fall2015/wiki/teensy) Development Boards
-* [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning)
+* [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning) -Kan Zheng
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor) Kyle Malone
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon
 * [Serial/UART] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart) - Jinpeng you
