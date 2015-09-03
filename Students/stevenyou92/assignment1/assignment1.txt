@@ -1,0 +1,49 @@
+Student Name: Jinpeng You
+Student UIN: 720009953
+
+Assignment 1
+T/F
+1. True
+2. True
+3. True
+4. True
+
+Short Answer:
+1. cin, cout, cerr, clog are the 4 objects that are standard in C++.
+2. Namespace helps save time by helping organize objects in code.
+3. For(x; x<100; x++). The first variable indicates the factor that is changing, the 2nd is the condition/parameters of the loop, 
+and the last is the incremental change between loops
+
+Assignment:
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+int main()
+{
+    string input;
+    int Num1, Num2;
+    Num1 = 0;
+    Num2 = 0;
+
+    while(true) {
+        cout << "Please input first number: ";
+        getline(cin, input);
+        stringstream myStream(input);
+        if (myStream >> Num1)
+            break;
+        cout << "Invalid number, please try again" << endl;
+    }
+    while(true){
+        cout << "Please input second number: ";
+        getline(cin, input);
+        stringstream myStream(input);
+        if (myStream >> Num2)
+            break;
+        cout << "Invalid number, please try again" << endl;
+    }
+    cout << "Your numbers are " << Num1 << " and " << Num2 << endl;
+    return 0;
+}
