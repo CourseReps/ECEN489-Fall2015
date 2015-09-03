@@ -15,7 +15,6 @@
 * Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
 * Xiangdong Yu, henryyu8, [henryyu8](https://github.com/henryyu8)
-* Abhay Shankar Anand
 * Vaishali Swaminathan
 * Blade Roybal, bladero, [bladeroybal](http://bladeroybal.github.io/)
 * Anthony Ramirez, agramir16, [agramir16] (https://github.com/agramir16)
