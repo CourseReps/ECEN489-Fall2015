@@ -4,7 +4,7 @@
 * Student: Keaton Brown: PASS
 * Student: Karl Griesser:
 * Student: Kyle Malone: PASS
-* Student: Anthony Ramirez:
+* Student: Anthony Ramirez: PASS
 * Student: Cooper Rehn: PASS
 * Student: Kaimen Walters: PASS
 * Student: Steven Jinpeng You:
