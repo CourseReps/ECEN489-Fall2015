@@ -2,7 +2,7 @@
 
 * Student: Thomas Branyon: PASS
 * Student: Keaton Brown: PASS
-* Student: Karl Griesser:
+* Student: Karl Griesser: PASS
 * Student: Kyle Malone: PASS
 * Student: Anthony Ramirez: 
 * Student: Cooper Rehn: PASS
