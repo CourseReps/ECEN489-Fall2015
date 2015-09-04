@@ -1,0 +1,3 @@
+C:/Users/Karl/Documents/ECEN 489/GitHub/ECEN489-Fall2015/Students/ksgriesser11/Task 2/CMakeFiles/HelloWorld.dir
+C:/Users/Karl/Documents/ECEN 489/GitHub/ECEN489-Fall2015/Students/ksgriesser11/Task 2/CMakeFiles/ALL_BUILD.dir
+C:/Users/Karl/Documents/ECEN 489/GitHub/ECEN489-Fall2015/Students/ksgriesser11/Task 2/CMakeFiles/ZERO_CHECK.dir

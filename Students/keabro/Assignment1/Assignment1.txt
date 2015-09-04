@@ -1,0 +1,16 @@
+True False
+1. True
+2. True
+3. False
+4. True
+
+Short Answer
+1. Cin, Cout, Cerr, Clog
+2. Namespaces allow us to avoid inadvertent collisions between the names we define and uses of those same names inside a library.
+3. an init-statement, a condition, and an expression
+
+1. Pseudocode
+Asks for input of two numbers from user.
+Takes the two numbers and adds them together
+outputs the answer in the form "x1 plus x2 is x3"
+
