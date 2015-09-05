@@ -22,7 +22,7 @@
 
 * Abhay Anand, abhaysanand, [abhaysanand](https://abhaysanand.github.io/)
 * Pranay Eedara, epranaykumar, [epranaykumar](https://epranaykumar.github.io/)
-* Kartic Kaveripuram Ramasamy
+* Kartic Bhargav, karticbhargav170, [karticbhargav](https://karticbhargav.github.io/)
 * Udaya Bhaskar Kothapalli, udaybhaskar.k, [ubkothapalli](http://ubkothapalli.github.io/)
 * Hai Li, lh1234, [lihai1991](https://lihai1991.github.io/)
 * Shashank Naphade, shashank.naphade, [shashanknaphade](https://shashanknaphade.github.io/)
