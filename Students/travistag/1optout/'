@@ -1,0 +1,7 @@
+#include "testclass.h"
+#include <iostream>
+
+int main(){
+	int a = testclass.getNumber();
+	std::cout<<a<<"\n";
+}
