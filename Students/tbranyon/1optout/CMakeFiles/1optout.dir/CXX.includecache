@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tbranyon/Documents/ECEN489-Fall2015/Students/tbranyon/1optout/src/Hamming74.cpp
+Hamming74.h
+/home/tbranyon/Documents/ECEN489-Fall2015/Students/tbranyon/1optout/src/Hamming74.h
+
+/home/tbranyon/Documents/ECEN489-Fall2015/Students/tbranyon/1optout/src/Hamming74.h
+string.h
+-
+
+/home/tbranyon/Documents/ECEN489-Fall2015/Students/tbranyon/1optout/src/main.cpp
+iostream
+-
+string
+-
+Hamming74.h
+/home/tbranyon/Documents/ECEN489-Fall2015/Students/tbranyon/1optout/src/Hamming74.h
+
