@@ -6,6 +6,7 @@
 using namespace std;
 	
 
+//Returns the G matrix for the Hamming(7,4) code, which is multiplied by the data to produce the encoded word
 std::vector<std::vector<int> > hamming::getHammingGMatrix(){
   std::vector<std::vector<int> > ret = matrixTT::create2DArray(7, 4);
   ret[0][0]=1;
@@ -25,6 +26,7 @@ std::vector<std::vector<int> > hamming::getHammingGMatrix(){
   return ret;
 }
 
+//Returns the H matrix for the Hamming(7,4) code, which is multiplied by the encoded word to check for errors
 std::vector<std::vector<int> > hamming::getHammingHMatrix(){
   std::vector<std::vector<int> > ret = matrixTT::create2DArray(3, 7);
   ret[0][0]=1;
@@ -43,6 +45,7 @@ std::vector<std::vector<int> > hamming::getHammingHMatrix(){
   return ret;
 }
 
+//Returns the R matrix, used for reconstruction
 std::vector<std::vector<int> > hamming::getHammingRMatrix(){
   std::vector<std::vector<int> > ret = matrixTT::create2DArray(4, 7);
   ret[0][2]=1;
@@ -53,10 +56,11 @@ std::vector<std::vector<int> > hamming::getHammingRMatrix(){
   return ret;
 }
 
+//Takes in an encoded word, and checks for/corrects errors
 std::vector<std::vector<int> > hamming::hammingErrorCorrect(std::vector<std::vector<int> > mat){
   std::vector<std::vector<int> > z = matrixTT::matrixMultiply(getHammingHMatrix(), mat);
-  z = matrixTT::matrixMod2(z);
-  int error=z[2][0]*4+z[1][0]*2+z[0][0]*1;
+  z = matrixTT::matrixMod2(z);			//Obtain the z Matrix by multiplying the data by the H matrix
+  int error=z[2][0]*4+z[1][0]*2+z[0][0]*1;	//Z matrix tells the error by 
   if(error!=0){
     std::cout<<"Error detected in bit "<<error<<", correcting.\n";
     mat[error-1][0]=1-mat[error-1][0];
