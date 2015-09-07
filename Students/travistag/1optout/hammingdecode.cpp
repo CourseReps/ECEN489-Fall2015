@@ -17,7 +17,6 @@ int main(int argc, char* argv[]){
 	vector<vector<int> > codewords;
 	if(myfile.is_open()){
 		while(getline(myfile, line) ){
-			cout<<"line length: "<<line.length()<<"\n";
 			for(int i=0; (i+6)<line.length(); i+=7){
 				vector<int> currentCodeword;
 				for(int j=0; j<7; j++){
@@ -33,12 +32,10 @@ int main(int argc, char* argv[]){
 		}
 		myfile.close();
 	}
-	matrixTT::print2DArray(codewords);
 	vector<vector<int> > decoded;
         for(int i=0; i<codewords.size(); i++){
 		decoded.push_back(hamming::decode7Bits(codewords[i]));
 	}
-	matrixTT::print2DArray(decoded);
 	ofstream myoutput(argv[2]);
 	if(myoutput.is_open()){
 		for(int i=0; i<decoded.size(); i++){
