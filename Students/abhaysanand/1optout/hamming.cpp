@@ -1,10 +1,10 @@
 #include"hamming.h"
 
-void main()
+int main(int argc, char **argv)
 {
 	int data[7], rec[7], i, c1, c2, c3, c;
 
-	std::cout<<"Hamming(7, 4) Encoding & Decoding.\nEnter message bit one after another (MSB first)\n";
+	std::cout<<"\n\nHamming(7, 4) Encoding & Decoding.\nEnter message bit one after another (MSB first)\n";
 	std::cin>>data[4]>>data[2]>>data[1]>>data[0];
 	std::cout<<"\nEntered message: " << data[4] << data[2] << data[1] << data[0];
 
@@ -57,7 +57,7 @@ void main()
 		}
 	}
 
-	std::cout << "\nDecoded message after correction: " << rec[4] << rec[2] << rec[1] << rec[0];
+	std::cout << "\nDecoded message after correction: " << rec[4] << rec[2] << rec[1] << rec[0] << "\n\n";
 
 	getchar();
 }
