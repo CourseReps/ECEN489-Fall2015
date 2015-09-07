@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/uday/ClionProjects/Hamming/main.cpp
+iostream
+-
+vector
+-
+tgmath.h
+-
+ctime
+-
+cstdlib
+-
+
