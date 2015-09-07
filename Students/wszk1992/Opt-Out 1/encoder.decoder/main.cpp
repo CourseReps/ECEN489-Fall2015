@@ -8,8 +8,8 @@ using namespace std;
 
 int main()
 {
-	int p_srccode[4];
-	int i,j;
+    int p_srccode[4];
+    int i,j;
     int decode[4];
     for(i=0;i<16;i++) {
         int p_trsmtcode[7] = {0};
