@@ -1,1 +1,0 @@
-/usr/bin/g++    -std=c++11    CMakeFiles/Hamming74.dir/main.cpp.o  -o Hamming74 -rdynamic 
