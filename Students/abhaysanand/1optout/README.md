@@ -1,4 +1,4 @@
-# Out-put #1: Hamming Code (7, 4)
+# Opt-out #1: Hamming Code (7, 4)
 
 This program allows the user to enter a 4-bit data and encode it using Hamming (7, 4) encoder.
 
