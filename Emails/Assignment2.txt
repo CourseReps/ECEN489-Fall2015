@@ -1,6 +1,6 @@
 Hello,
 
-You will find below Assignment 2, and a link to Opt-Out Challenge 2.As usual, you must commit your code on GitHub as CMake projects.
+You will find below Assignment 2, and a link to Opt-Out Challenge 2. As usual, you must commit your code on GitHub as CMake projects.
 
 Best regards,
 Jean-Francois Chamberland, Gregory Huff
