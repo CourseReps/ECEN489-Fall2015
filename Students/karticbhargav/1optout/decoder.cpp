@@ -3,7 +3,7 @@
 //
 
 #include "decoder.h"
-#include <string>
+#include <cstring>
 
 void decoder ( int* m, int* r )
 {
@@ -16,10 +16,10 @@ void decoder ( int* m, int* r )
     {
         for(int i=0; i<7; i++)
         {
-            s[i][j] += r[i]*HT[i][j];
+            s[j] += r[i]*HT[i][j];
         }
 
-        s[i][j] = s[i][j]%2;
+        s[j] = s[j]%2;
     }
 
     for (int i=0; i<7; i++)
