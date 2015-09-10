@@ -168,6 +168,24 @@ int main() {
     }
     // Checking and Correcting Errors
 
+    // Inducing the errors
+    int position;
+    cout << "\n enter the bit number to be invert\n";
+    cin >> position;
+
+    enCode[position] = (enCode[position] +1 ) %2;
+
+
+    cout << "Errored Codeword: \n";
+
+    for (i=0;i<enCode.size();i++) {
+
+        cout << enCode[i] << "\t";
+
+    }
+
+
+
     cout <<"\n Error Checking: \n";
 
     Row errorVec(numParBit);
