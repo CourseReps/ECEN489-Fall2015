@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 2.6)
+project (assignment2)
+add_executable (assignment2 ./main.cpp ./SpeedData.cpp)
+add_executable (assignment2_2 ./main_2.cpp)
+#target_compile_features (<EXEC> PUBLIC cxx_generalized_initializers)
