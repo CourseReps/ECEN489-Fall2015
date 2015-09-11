@@ -1,0 +1,8 @@
+cmake_minimum_required (VERSION 2.6)
+project (Testmain)
+#include_directories(./)
+#set(HEADERS testclass.h)
+#set(SOURCES testclass.cpp )
+add_executable(Encode matrixTT.cpp hamming.cpp hammingencode.cpp)
+add_executable(Decode matrixTT.cpp hamming.cpp hammingdecode.cpp)
+add_executable(BinaryGenerate binaryGenerator.cpp)

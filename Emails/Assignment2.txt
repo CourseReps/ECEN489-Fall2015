@@ -1,0 +1,9 @@
+Hello,
+
+You will find below Assignment 2, and a link to Opt-Out Challenge 2. As usual, you must commit your code on GitHub as CMake projects.
+
+Best regards,
+Jean-Francois Chamberland, Gregory Huff
+
+Due Date: Sep 11, 2015
+GitHub: https://github.com/CourseReps/ECEN489-Fall2015/tree/master/Assignments

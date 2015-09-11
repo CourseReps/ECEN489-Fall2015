@@ -1,0 +1,20 @@
+Thomas Branyon
+9/9/15
+
+[***8.5/10***]
+
+True or False:
+1) True
+2) True
+3) False. It is possible to declare a variable without initializing. This will compile and run but will often cause problems with one's computed results.
+4) False. All identifiers in C++ are case-sensitive (i.e. int data and int Data are different)
+
+Short Questions:
+1) Initialization is giving a variable a default value upon declaration, to ensure it is in a known state rather than being full of whatever garbage that memory location happens to hold when a pointer is assigned to it. Assignment refers to when a meaningful value is actually assigned to the variable.
+2) A variable or object name is valid only within the context in which it is created (simply put, within the "curly braces" inside which it is created). Outside of that function or class, the variable or object is inaccessible.
+3) (a) ip is an int pointer without an explicitly assigned value, i is an int, and r is an int but points to the memory location equal to the value of i.
+   (b) i is an int, ip is a pointer to an int whose value is 0.
+   (c) ip and ip2 are both int pointers without explicit initialization [***ip2 is just an integer***]
+4) A pointer to a constant points to some memory location that holds a value that cannot be changed. The pointer itself can be redirected to point at something else, however. A constant pointer points to some memory location and can ONLY point at that memory location; it cannot be redirected to point at any other location.
+
+code: for the second application, gave the larger number instead of smaller and didn't account for scale, 3/4

@@ -1,0 +1,19 @@
+1. True
+2. True
+3. False
+4. False
+
+1.
+Initialization is when you create a new object and give it a starting value
+
+Assignment is when an existing object is given a different value
+
+2.
+C++ variable and function names can be used only in certain regions of the program. This area is called the scope of the name.
+
+3.
+a. ip is a pointer to int, i is an int, r is a reference to i
+b. i is an int, ip is a valid null pointer
+c. ip is a pointer to int, and ip2 is an int
+
+4. A pointer to a constant means the constant cant change, but the pointer can. A constant pointer means the pointer cannot change where its pointing to.

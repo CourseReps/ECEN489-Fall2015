@@ -1,22 +1,25 @@
-# Grades Task 2 (pass or blank)
+# Grades Task 2
 
-* Student: Thomas Branyon:
-* Student: Keaton Brown: PASS
-* Student: Karl Griesser:
-* Student: Kyle Malone: PASS
-* Student: Anthony Ramirez:
-* Student: Cooper Rehn: PASS
-* Student: Kaimen Walters: PASS
-* Student: Steven Jinpeng You:
-* Student: Henry Xiangdong Yu: PASS
-* Student: Blade Roybal: PASS
-* Student: Yoon: PASS
+## Undergraduate Students
+
+* Student: Thomas Branyon: Pass
+* Student: Keaton Brown: Pass
+* Student: Anthony Ramirez: 
+* Student: Cooper Rehn: Pass
+* Student: Blade Roybal: Pass
+* Student: Kaimen Walters: Pass
+* Student: Seungwon Yoon: Pass
+* Student: Steven Jinpeng You: Pass
+* Student: Henry Xiangdong Yu: Pass
+
+
+## Graduate Students
+
 * Student: Abhay Anand: Pass
 * Student: Pranay Eedara: Pass
+* Student: Kartic Kaveripuram Ramasamy:
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li: Pass
-* Student: Shashank Naphade: BLANK
-* Student: Austin Taghavi: PASS
-* Student: Travis Taghavi: PASS
-* Student: Kan Zheng: PASS
-* Student: Vaishali Swaminathan:
+* Student: Austin Taghavi: Pass
+* Student: Travis Taghavi: Pass
+* Student: Kan Zheng: Pass
