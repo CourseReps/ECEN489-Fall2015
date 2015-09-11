@@ -1,4 +1,4 @@
-# Grades Task 2 (pass or blank)
+# Grades Task 2
 
 ## Undergraduate Students
 
