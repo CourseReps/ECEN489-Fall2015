@@ -17,6 +17,7 @@
 
 * Student: Abhay Anand: Pass
 * Student: Pranay Eedara: Pass
+* Student: Kartic Kaveripuram Ramasamy:
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li: Pass
 * Student: Austin Taghavi: Pass
