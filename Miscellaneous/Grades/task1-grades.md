@@ -4,7 +4,7 @@
 * Student: Thomas Branyon: Pass
 * Student: Keaton Brown:Pass
 * Student: Pranay Eedara:Pass
-* Student: Kartic Kaveripuram Ramasamy:
+* Student: Kartic Kaveripuram Ramasamy: Pass
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li: Pass
 * Student: Anthony Ramirez:Pass
