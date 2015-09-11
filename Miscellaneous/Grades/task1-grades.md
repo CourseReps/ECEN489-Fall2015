@@ -13,7 +13,7 @@
 * Student: Austin Taghavi: Pass
 * Student: Travis Taghavi: Pass
 * Student: Kaimen Walters: Pass
-* Student: Seungwon Yoon: Pass
+* Student: Seungwon Yoon: Pass (GitHubPage missing).
 * Student: Steven Jinpeng You: Pass
 * Student: Henry Xiangdong Yu: Pass
 * Student: Kan Zheng: Pass
