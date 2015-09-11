@@ -1,4 +1,4 @@
-# Grades Task 1
+# Grades Quiz 1
 
 ## Undergraduate Students
 
@@ -8,7 +8,8 @@
 * Student: Cooper Rehn: Pass
 * Student: Blade Roybal: 
 * Student: Kaimen Walters: 
-* Student: Seungwon Yoon: 
+* Student: Seungwon Yoon:
+* Steven Jinpeng You:
 * Student: Henry Xiangdong Yu: 
 
 
