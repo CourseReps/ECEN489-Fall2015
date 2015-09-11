@@ -9,7 +9,7 @@
 * Blade Roybal, bladero, [bladeroybal](http://bladeroybal.github.io/)
 * Cooper Rehn, cooper95, [Cooper95](https://Cooper95.github.io/)
 * Kaimen Walters, kaimen.walters, [kaimen-walters](https://kaimen-walters.github.io/)
-* Seungwon Yoon, ysw0927, [buttonsense](https://github.com/buttonsense/)
+* Seungwon Yoon, ysw0927, [buttonsense](https://yoon.github.io/)
 * Jinpeng You, stevenyou92, [stevenyou92](https://stevenyou92.github.io/)
 * Xiangdong Yu, henryyu8, [henryyu8](http://henryyu8.github.io./)
 
