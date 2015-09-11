@@ -9,7 +9,6 @@
 * Student: Blade Roybal: 
 * Student: Kaimen Walters: 
 * Student: Seungwon Yoon: 
-* Student: Seungwon Yoon: 
 * Student: Henry Xiangdong Yu: 
 
 
