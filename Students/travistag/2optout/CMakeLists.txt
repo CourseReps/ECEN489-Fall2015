@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 2.6)
+project (Testmain)
+#include_directories(./)
+add_executable(cURLtoJSON curlToJSON.cpp)
+add_executable(JSONtoMarkdown JSONtoMarkdown.cpp)

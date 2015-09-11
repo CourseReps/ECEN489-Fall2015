@@ -1,23 +1,25 @@
-# Grades Task 1 (pass or blank)
+# Grades Task 1
+
+## Undergraduate Students
 
 * Student: Thomas Branyon: Pass
-* Student: Keaton Brown:Pass
-* Student: Karl Griesser:
-* Student: Kyle Malone: Pass
-* Student: Anthony Ramirez:Pass
-* Student: Cooper Rehn: PASS
-* Student: Kaimen Walters: PASS
-* Student: Steven Jinpeng You: PASS
+* Student: Keaton Brown: Pass
+* Student: Anthony Ramirez: GitHub name missing
+* Student: Cooper Rehn: Pass
+* Student: Blade Roybal: Pass
+* Student: Kaimen Walters: Pass
+* Student: Seungwon Yoon: Pass
+* Student: Seungwon Yoon: GitHub name, page, and picture missing
 * Student: Henry Xiangdong Yu: Pass
-* Student: Blade Roybal: PASS
-* Student: Yoon: PASS
+
+
+## Graduate Students
+
 * Student: Abhay Anand: Pass
-* Student: Pranay Eedara:Pass
+* Student: Pranay Eedara: Pass
+* Student: Kartic Kaveripuram Ramasamy: Pass
 * Student: Udaya Bhaskar Kothapalli: Pass
 * Student: Hai Li: Pass
-* Student: Shashank Naphade: PASS
-* Student: Austin Taghavi: PASS
-* Student: Travis Taghavi:
-* Student: Kan Zheng: PASS
-* Student: Vaishali Swaminathan:
-
+* Student: Austin Taghavi: Pass
+* Student: Travis Taghavi: Pass
+* Student: Kan Zheng: Pass

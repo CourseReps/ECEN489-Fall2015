@@ -12,11 +12,11 @@ The tutorial should be given directly from the corresponding wiki page.
 * [C++ Libraries](https://github.com/CourseReps/ECEN489-Fall2015/wiki/libraries) - Xiangdong Yu (Henry) - Monday, Sep 6
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide) - Udaya Bhaskar Kothapalli - Friday, Sep 11
 * [Teensy Development Boards](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Teensy-Development-Boards) - Kartic Bhargav - Friday, Sep 11
-* [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/conditioning) - Kan Zheng, Friday Sep 11
+* [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Signal Conditioning) - Kan Zheng, Friday Sep 11
 * [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks) - Keaton Brown, Friday, Sep 18
 * Fabrication - Anthony Ramirez, Friday, Sep 18
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad) - Cooper, Friday, Sep 18
-* [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
+* [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor) - Seungwon Yoon
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon
 * [Serial/UART](https://github.com/CourseReps/ECEN489-Fall2015/wiki/uart) - Jinpeng You, Monday Sep 14
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
