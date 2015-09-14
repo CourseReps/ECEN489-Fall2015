@@ -4,12 +4,12 @@
 
 * Student: Thomas Branyon: Pass
 * Student: Keaton Brown: Pass
-* Student: Anthony Ramirez: GitHub name missing
+* Student: Anthony Ramirez: Pass
 * Student: Cooper Rehn: Pass
 * Student: Blade Roybal: Pass
 * Student: Kaimen Walters: Pass
 * Student: Seungwon Yoon: Pass
-* Student: Seungwon Yoon: GitHub name, page, and picture missing
+* Student: Steven Jinpeng You: Pass
 * Student: Henry Xiangdong Yu: Pass
 
 
