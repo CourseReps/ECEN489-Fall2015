@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <bits/stl_algo.h>
 
 using namespace std;
 
@@ -43,15 +44,16 @@ int main(){
         if (posS != string::npos) {
             //cout << posS << "\t";
             string Temp = line; // Backingup the line string
-
+            //cout << line << "\n";
             string ssRem = line.substr(posS,line.find(titleStart)+4);  // deletable string part
-            //cout << ssRem << "\t";
+            //cout << ssRem << "\n";
 
-            string newSS = line.erase(3,ssRem.length()); // removing the unwanted starting part
+            string newSS = line.erase(0,ssRem.length()-3+6); // removing the unwanted starting part
             //cout << newSS << "\n";
 
+
             string CompName = newSS.substr(0,newSS.find_first_of("\""));   // Extracting Company name
-            //cout << CompName << "\t";
+            //cout << CompName << "\n";
             cTitV.push_back(CompName);
 
             string CompCodeTemp = ssRem.substr(posS,ssRem.find(codeStart)-1);
@@ -119,6 +121,7 @@ int main(){
 
 
 
+
     cPriV.erase(cPriV.begin()+0);
     cPriV.erase(cPriV.begin()+0); // random value in the first three values
     cPriV.erase(cPriV.begin()+0);
@@ -130,7 +133,7 @@ int main(){
 
     //vector< vector<string> > Details;
 
-    myoutput<< "\"StockMarket\":[" ;
+    myoutput<< "\"StockMarket\":[" << "\n";
     for(int i=0;i<cPriV.size();i++){
 
         myoutput << "{\"CompanyName\":";
@@ -153,7 +156,7 @@ int main(){
         myoutput << cChaV[i];
         myoutput << "\"}";
 
-        myoutput << ",";
+        myoutput << "," << "\n";
 
 
 

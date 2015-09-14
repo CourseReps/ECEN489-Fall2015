@@ -1,6 +1,8 @@
 Thomas Branyon
 9/9/15
 
+[***8.5/10***]
+
 True or False:
 1) True
 2) True
@@ -12,5 +14,7 @@ Short Questions:
 2) A variable or object name is valid only within the context in which it is created (simply put, within the "curly braces" inside which it is created). Outside of that function or class, the variable or object is inaccessible.
 3) (a) ip is an int pointer without an explicitly assigned value, i is an int, and r is an int but points to the memory location equal to the value of i.
    (b) i is an int, ip is a pointer to an int whose value is 0.
-   (c) ip and ip2 are both int pointers without explicit initialization
+   (c) ip and ip2 are both int pointers without explicit initialization [***ip2 is just an integer***]
 4) A pointer to a constant points to some memory location that holds a value that cannot be changed. The pointer itself can be redirected to point at something else, however. A constant pointer points to some memory location and can ONLY point at that memory location; it cannot be redirected to point at any other location.
+
+code: for the second application, gave the larger number instead of smaller and didn't account for scale, 3/4
