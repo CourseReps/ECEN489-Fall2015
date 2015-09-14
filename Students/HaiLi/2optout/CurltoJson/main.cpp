@@ -10,8 +10,7 @@ int main(){
     cmd.append(url);
     cmd.append(" >> curldata.txt");
     const char *cm=cmd.c_str();
-    cout<<cm;
-    system("curl www.baidu.com >curldata.txt");
+    system(cm);
     ifstream inputStream("curldata.txt");
     stringstream input;
     input << inputStream.rdbuf();
