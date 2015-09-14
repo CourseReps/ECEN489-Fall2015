@@ -4,5 +4,8 @@ This program curls html data from the internet (Game of Thrones cast webpage, fo
 
 Note: The application requires libcurl.dll to run. So **DO NOT delete** the build folder and the dll file within it.
 
-1. Build and run the application
-2. JSON data file and Markdown files are generated
+1. Extract the lib.zip in the root folder (Extract here)
+2. Create "build" folder.
+3. Copy and paste the dll file from lib into build folder
+4. Build and run the application from build folder
+5. JSON data file and Markdown files are generated
