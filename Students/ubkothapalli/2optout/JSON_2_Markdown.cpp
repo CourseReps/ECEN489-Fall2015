@@ -6,8 +6,8 @@ using namespace std;
 
 int main() {
     string line;
-    ifstream inFile("/home/uday/ClionProjects/trial2opt/MarketVal.json");
-    ofstream outFile("/home/uday/ClionProjects/trial2opt/MarketVal.md");
+    ifstream inFile("MarketVal.json");
+    ofstream outFile("MarketVal.md");
 
    typedef vector<string>  Stock;
     Stock CName, CCode, CPrice, CChange, CHead;
