@@ -7,7 +7,7 @@
 
 using boost::asio::ip::tcp;
 
-std::string getImageFile(){
+std::string getScreenshotFile(){
     system("screencapture screen.jpg\n");
     std::string ret;
     std::ifstream myinput("screen.jpg");
@@ -28,7 +28,7 @@ std::string getImageFile(){
 int main(){
   boost::asio::io_service io_service;
   tcp::acceptor acceptor(io_service, tcp::endpoint(tcp::v4(), 13));
-  for (;;)
+  while(true)
     {
       tcp::socket socket(io_service);
       acceptor.accept(socket);
@@ -41,7 +41,7 @@ int main(){
       std::string comm(buf.begin(), buf.end());
       std::cout<<"Received command: "<<comm<<"\n";
       if(comm.substr(0,9).compare("get_photo")==0){
-        std::string message = getImageFile();
+        std::string message = getScreenshotFile();
         std::cout<<"Captured screenshot\n";
 
         boost::system::error_code ignored_error;
