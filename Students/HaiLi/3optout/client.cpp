@@ -1,6 +1,5 @@
-// ConsoleApplication2.cpp : Defines the entry point for the console application.
 #include "stdafx.h"
-#define _WINSOCK_DEPRECATED_NO_WARNINGS 
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include<stdio.h>
 #include<winsock2.h>
 #include<io.h>
@@ -49,7 +48,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	puts("Data Send\n");*/
-	
+
 	// receive the image
 	FILE *picture;
 	char *buffer;
