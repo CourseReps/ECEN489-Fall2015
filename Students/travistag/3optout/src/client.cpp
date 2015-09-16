@@ -7,7 +7,7 @@ using boost::asio::ip::tcp;
 
 int main(int argc, char* argv[]){
 
-	if(argc<2){
+	if(argc<3){
 		std::cout<<"Must enter a server host and port!\n\n";
 		return 1;
 	}
