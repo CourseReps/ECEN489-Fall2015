@@ -28,7 +28,7 @@ int main(int argc, char* argv[]){
     if (error)
       throw boost::system::system_error(error);
 
-  	for (;;)
+  	while(true)
     {
      // boost::array<char, 1000> buf;
       std::vector<char> buf (1000);
