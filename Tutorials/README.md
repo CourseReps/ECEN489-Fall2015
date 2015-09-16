@@ -13,12 +13,12 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Arduino IDE](https://github.com/CourseReps/ECEN489-Fall2015/wiki/arduinoide) - Udaya Bhaskar Kothapalli - Friday, Sep 11
 * [Teensy Development Boards](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Teensy-Development-Boards) - Kartic Bhargav - Friday, Sep 11
 * [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Signal Conditioning) - Kan Zheng, Friday Sep 11
+* [Serial/UART](https://github.com/CourseReps/ECEN489-Fall2015/wiki/serial-uart) - Steven Jinpeng You, Wednesday Sep 16
 * [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks) - Keaton Brown, Friday, Sep 18
 * Fabrication - Anthony Ramirez, Friday, Sep 18
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad) - Cooper, Friday, Sep 18
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon
-* [Serial/UART](https://github.com/CourseReps/ECEN489-Fall2015/wiki/serial-uart) - Jinpeng You, Wednesday Sep 16
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon
