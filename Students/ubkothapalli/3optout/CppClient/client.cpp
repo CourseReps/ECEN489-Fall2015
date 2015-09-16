@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
     {
         std::cout << "Exception: " << e.what() << std::endl;
     }
-    system("eog *.jpg");
+    system("display *.jpg");
 
     return 0;
 }
