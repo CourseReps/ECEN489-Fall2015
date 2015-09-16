@@ -6,11 +6,11 @@ using namespace std;
 int main() {
     cout << "Enter a list of speeds in mph, stop by typing -1:" << endl;
     const double kmh = 1.60934;
-    double in;
+    double speed;
     vector<double> speeds;
-    while (in != -1) {
-        cin >> in;
-        speeds.push_back(in);
+    while (speed != -1) {
+        cin >> speed;
+        speeds.push_back(speed);
     }
     cout << "The size of speed you enter is: " << speeds.size()-1 << endl;
     cout << "The sets of speed you enter in mph are: " << endl;

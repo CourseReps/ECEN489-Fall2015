@@ -1,0 +1,21 @@
+assignment3
+
+1. true
+2. false
+3. True
+4. true
+5. false
+6. False
+
+
+1. there are a couple of ways to add elements to a vector. 
+vector<int> numbers;
+numbers.pushback()
+numbers.insert()
+
+2. a compares the strings to see if they are the same
+	b. concatenates the two strings
+	c. inserts one string into another
+	d. deliniates the strings size in integer form
+3.
+4. it*->mem
