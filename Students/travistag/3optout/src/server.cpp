@@ -8,7 +8,7 @@
 using boost::asio::ip::tcp;
 
 std::string getScreenshotFile(){
-    system("screencapture screen.jpg\n");
+    system("screencapture -t jpg screen.jpg\n");
     std::string ret;
     std::ifstream myinput("screen.jpg");
     if(myinput.is_open()){
