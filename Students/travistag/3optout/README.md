@@ -1,5 +1,7 @@
 # C++ TCP Sockets
 
+This project uses the Boost library, if it is not installed then the project will not compile.
+
 Making this project will yield two executables
 
 ### Server
