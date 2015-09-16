@@ -19,3 +19,11 @@ Before performing this challenge, we must agree as a group on the interface betw
 You should leverage available libraries for that project.
 Your solution does not need to work on different OS.
 Using Git and GitHub, commit your code as a CMake project in a directory labeled `3optout`.
+
+### Interoperability
+
+We have established the following standards for interoperability (not required):
+
+1. The following command should be sent from the client to the server to retrieve a photo: "get_photo"
+2. The server should send the photo (and only the photo, no other data) to the client in a byte array.
+3. The photo should be in jpeg format.

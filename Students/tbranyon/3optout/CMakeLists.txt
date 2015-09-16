@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.6)
+project(server)
+project(client)
+add_executable(server ./CppServer.cpp)
+add_executable(client ./CppClient.cpp)
