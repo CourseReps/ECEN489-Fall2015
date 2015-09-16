@@ -11,24 +11,24 @@ int main(int argc, char* argv[])
     try
     {
 
-        const char *port = "13"; //the port we connect
-        const unsigned int buff_size = 65536; //the size of the read buffer
+        //const char *port = "1036"; //the port we connect
+        const unsigned int buff_size = 65536; //16384;//65536; //the size of the read buffer
 
-        if (argc != 3)
+        if (argc != 4)
         {
-            std::cerr << "Usage: file_client <host> <filename>" << std::endl;
+            std::cerr << "Usage: file_client <host> <port> <filename>" << std::endl;
             return 1;
         }
         boost::asio::io_service io_service; //asio main object
         tcp::resolver resolver(io_service); //a resolver for name to @
-        tcp::resolver::query query(argv[1], port); //ask the dns for this resolver
+        tcp::resolver::query query(argv[1], argv[2]); //ask the dns for this resolver
         tcp::resolver::iterator endpoint_iterator = resolver.resolve(query); //iterator if multiple answers for a given name
         tcp::resolver::iterator end;
 
         tcp::socket socket(io_service); //attach a socket to the main asio object
         socket.connect(*endpoint_iterator); //connect to the first returned object
 
-        std::fstream f(argv[2],std::fstream::out); //open in write mode the output file
+        std::fstream f(argv[3],std::fstream::out); //open in write mode the output file
         unsigned int count = 0; //a counter
         std::string mess;
         std::cin>>mess;
@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
     {
         std::cout << "Exception: " << e.what() << std::endl;
     }
+    system("eog *.jpg");
 
-	system("eog *.jpg");
     return 0;
 }

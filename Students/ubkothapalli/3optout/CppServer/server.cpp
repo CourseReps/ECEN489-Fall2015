@@ -13,7 +13,7 @@ int main()
     try
     {
         const unsigned int port = 13; //port the server listen
-        const unsigned int buff_size = 16384; //size of the send buffer
+        const unsigned int buff_size = 65536;//16384; //size of the send buffer
 
         boost::asio::io_service io_service; //main asio object
         tcp::endpoint endpoint(tcp::v4(), port); //endpoint
