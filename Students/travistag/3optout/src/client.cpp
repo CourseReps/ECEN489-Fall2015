@@ -7,14 +7,14 @@ using boost::asio::ip::tcp;
 
 int main(int argc, char* argv[]){
 
-	if(argc<2){
-		std::cout<<"Must enter a server host!\n\n";
+	if(argc<3){
+		std::cout<<"Must enter a server host and port!\n\n";
 		return 1;
 	}
 
 	boost::asio::io_service io_service;
 	tcp::resolver resolver(io_service);
-	tcp::resolver::query query(argv[1], "daytime");
+	tcp::resolver::query query(argv[1], argv[2]);
 	tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
     tcp::resolver::iterator end;
 
