@@ -22,10 +22,10 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
-* [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon
+* [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon, Sep 25
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot)
-* [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt) - Anthony Ramirez
+* [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt)
 
 ## ECEN 303 Exceptions
 
