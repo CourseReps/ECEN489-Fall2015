@@ -18,8 +18,8 @@ The tutorial should be given directly from the corresponding wiki page.
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad) - Cooper, Friday, Sep 18
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite) - Hai Li, Friday, Sep 18
 * [Fabrication](https://github.com/CourseReps/ECEN489-Fall2015/wiki/fabrication) - Anthony Ramirez, Monday, Sep 21
+* [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon, Monday, Sep 21
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
-* [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon
