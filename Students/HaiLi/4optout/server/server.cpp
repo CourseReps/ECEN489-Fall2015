@@ -1,6 +1,3 @@
-// server.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include<stdio.h>
@@ -57,7 +54,7 @@ int main(int argc, char *argv[])
 	}
 	puts("Data Send\n");*/
 
-	// receive the image
+	// receive the json
 	FILE *json;
 	char *buffer;
 	char *sizec;
