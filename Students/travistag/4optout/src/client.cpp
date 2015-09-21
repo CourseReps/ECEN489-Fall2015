@@ -13,9 +13,12 @@
 #include <boost/asio.hpp>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <stdlib.h>
 
 
 using boost::asio::ip::udp;
+using namespace std;
 
 std::string getJSON(std::vector<std::string> stuff){
   std::string ret;
@@ -30,14 +33,28 @@ std::string getJSON(std::vector<std::string> stuff){
   return ret;
 }
 
+std::string getCurrentIP(){
+  system("ifconfig en0 | grep \"inet \" > currentip.txt");
+  ifstream myinput("currentip.txt");
+  std::string line;
+  if(myinput.is_open()){
+      getline(myinput, line);
+      line = line.substr(line.find_first_of("inet")+5);
+      line = line.substr(0, line.find_first_of(" "));
+      myinput.close();
+      return line;
+  }
+  else
+    return "0.0.0.0";
+}
+
 int main(int argc, char* argv[])
 {
-
   std::vector<std::string> inf;
   inf.push_back("Travis");
-  inf.push_back("Taghavire");
+  inf.push_back("Taghavi");
   inf.push_back("travistag");
-  inf.push_back("127.0.0.1");
+  inf.push_back(getCurrentIP());
 
   std::string infojson = getJSON(inf);
 
@@ -56,6 +73,8 @@ int main(int argc, char* argv[])
     {
         socket.set_option(boost::asio::ip::udp::socket::reuse_address(true));
         socket.set_option(boost::asio::socket_base::broadcast(true));
+
+        //std::cout<<socket.remote_endpoint().address().to_string()<<"\n";
 
         boost::asio::ip::udp::endpoint senderEndpoint(boost::asio::ip::address_v4::broadcast(), 2015); 
 
