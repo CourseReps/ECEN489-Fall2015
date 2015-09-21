@@ -14,3 +14,6 @@ An opt-out challenge is graded as satisfactory (full credit) or unsatisfactory (
 ## Progression of Opt-Out Challenges
 
 1. [Hamming Codes](./1optout.md)
+2. [JSON](./2optout.md)
+3. [Stream Socket](./3optout.md)
+4. [Identity Broadcast](./4optout.md)
