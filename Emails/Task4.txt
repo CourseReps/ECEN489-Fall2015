@@ -1,0 +1,9 @@
+Students:
+
+You will find below a link to Task 4, which focuses on getting familiar with SQLite. This is due on Wednesday, Sep 23. By the due date, several of you will have completed the requirements of Task 4 through Opt-Out Challenges.  Nevertheless, to make sure that everyone is on the same page and gets credit for their work, we will be grading Task 4.
+
+Best regards,
+Jean-Francois Chamberland and Gregory Huff
+
+Due Date: Sep 23.
+GitHub: https://github.com/CourseReps/ECEN489-Fall2015
