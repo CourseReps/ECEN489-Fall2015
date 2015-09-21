@@ -1,5 +1,4 @@
 # Opt-out #4: UDP Broadcast
 
-1. Extract the lib.zip in the root folder (Extract here)
-2. Create "build" folder.
-3. Build and run the application from build folder
+1. Create "build" folder.
+2. Build and run the application from build folder
