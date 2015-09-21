@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -57,6 +56,8 @@ int main() {
     {
         cout<< m_r[i];
     }
+
+    cout<<endl;
 
     return 0;
 }
