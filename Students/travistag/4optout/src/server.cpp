@@ -83,8 +83,14 @@ void addStudentInfo(std::vector<std::string> inf, sqlite3 *db){
   sqlite3_close(db);
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+
+  if(argc<2){
+    std::cout<<"\nPlease enter a port # to listen on!\n\n";
+    return 1;  
+  }
+
   sqlite3 *db;
   char *err_msg = 0;
   sqlite3_stmt *stmt;
@@ -110,7 +116,7 @@ int main()
   {
     boost::asio::io_service io_service;
 
-    udp::socket socket(io_service, udp::endpoint(udp::v4(), 2015));
+    udp::socket socket(io_service, udp::endpoint(udp::v4(), atoi(argv[1])));
 
 
     while(true)
