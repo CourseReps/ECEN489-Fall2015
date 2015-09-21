@@ -65,13 +65,22 @@ void addStudentInfo(std::vector<std::string> inf, sqlite3 *db){
   comm+=" SELECT '"+inf[0]+"', '"+inf[1]+"', '"+inf[2]+"', '"+inf[3]+"'";
   comm+=" WHERE NOT EXISTS (SELECT FirstName FROM Students WHERE FirstName='"+inf[0]+"' AND LastName='"+inf[1]+"' AND GitUserName='"+inf[2]+"' AND IPAddress='"+inf[3]+"')";
   char *err_msg = 0;
-  int rc = sqlite3_exec(db, comm.c_str(), 0, 0, &err_msg);
+
+  int rc = sqlite3_open("students.db", &db);
+
+  if (rc != SQLITE_OK) {
+    std::cout<<"Cannot open database: "<<sqlite3_errmsg(db);
+    sqlite3_close(db);
+  }
+
+  rc = sqlite3_exec(db, comm.c_str(), 0, 0, &err_msg);
   if (rc != SQLITE_OK) {
 
     fprintf(stderr, "SQL error: %s\n", err_msg);
 
     sqlite3_free(err_msg);
   }
+  sqlite3_close(db);
 }
 
 int main()
@@ -86,6 +95,16 @@ int main()
     sqlite3_close(db);
     return 1;
   }
+
+  std::string com = "CREATE TABLE IF NOT EXISTS Students(FirstName TEXT, LastName TEXT, GitUserName TEXT, IPAddress TEXT)";
+  rc = sqlite3_exec(db, com.c_str(), 0, 0, &err_msg);
+  if (rc != SQLITE_OK) {
+
+    fprintf(stderr, "SQL error: %s\n", err_msg);
+
+    sqlite3_free(err_msg);
+  }
+  sqlite3_close(db);
 
   try
   {
@@ -121,7 +140,6 @@ int main()
   {
     std::cerr << e.what() << std::endl;
   }
-  sqlite3_close(db);
 
   return 0;
 }
