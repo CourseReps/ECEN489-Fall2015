@@ -125,8 +125,7 @@ int main(int argc, char* argv[])
       std::vector<char> buf(2000);
       udp::endpoint remote_endpoint;
       boost::system::error_code error;
-      int x =socket.receive_from(boost::asio::buffer(buf),
-          remote_endpoint, 0, error);
+      int x =socket.receive_from(boost::asio::buffer(buf),remote_endpoint, 0, error);
       for(int i=0; i<x; i++){
         studentjson+=buf[i];
       }
