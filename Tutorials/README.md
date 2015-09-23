@@ -17,8 +17,8 @@ The tutorial should be given directly from the corresponding wiki page.
 * [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks) - Keaton Brown, Friday, Sep 18
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad) - Cooper, Friday, Sep 18
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite) - Hai Li, Friday, Sep 18
-* [Fabrication](https://github.com/CourseReps/ECEN489-Fall2015/wiki/fabrication) - Anthony Ramirez, Monday, Sep 21
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon, Monday, Sep 21
+* [Fabrication](https://github.com/CourseReps/ECEN489-Fall2015/wiki/fabrication) - Anthony Ramirez, Wednesday, Sep 23
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
