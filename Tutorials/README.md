@@ -25,7 +25,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon, Sep 25
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot)
-* [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt)
+* [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt) - Anthony Ramirez
 
 ## ECEN 303 Exceptions
 
