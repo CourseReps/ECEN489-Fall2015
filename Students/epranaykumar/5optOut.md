@@ -16,7 +16,7 @@ Lets say there are 4 clients and one server. Clients will be using UDP to broadc
   
 4. As it is UDP, the server has to reply back to make sure the client message has received the server. So,the format of the reply message ?     
    
-5. As there are multiple clients, we have to implement asynchronous UDP server ?
+5. As there are multiple clients, we have to implement asynchronous UDP server 
 
 6. What has to be done to ensure secure communication?    
 
