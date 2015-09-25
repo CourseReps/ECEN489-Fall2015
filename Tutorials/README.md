@@ -17,15 +17,15 @@ The tutorial should be given directly from the corresponding wiki page.
 * [SolidWorks](https://github.com/CourseReps/ECEN489-Fall2015/wiki/solidworks) - Keaton Brown, Friday, Sep 18
 * [KiCad](https://github.com/CourseReps/ECEN489-Fall2015/wiki/kicad) - Cooper, Friday, Sep 18
 * [SQLite](https://github.com/CourseReps/ECEN489-Fall2015/wiki/sqlite) - Hai Li, Friday, Sep 18
-* [Fabrication](https://github.com/CourseReps/ECEN489-Fall2015/wiki/fabrication) - Anthony Ramirez, Monday, Sep 21
 * [PID controller](https://github.com/CourseReps/ECEN489-Fall2015/wiki/pid) - Thomas Branyon, Monday, Sep 21
-* [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/motor)
-* [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c) Cooper Rehn
-* [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
+* [Fabrication](https://github.com/CourseReps/ECEN489-Fall2015/wiki/fabrication) - Anthony Ramirez, Wednesday, Sep 23
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon, Sep 25
+* [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt) - Anthony Ramirez, Friday, Sep 25
+* [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Motor-Control) - Cooper Rehn, Friday, Sep 25
+* [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
+* [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
 * [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot)
-* [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt)
 
 ## ECEN 303 Exceptions
 

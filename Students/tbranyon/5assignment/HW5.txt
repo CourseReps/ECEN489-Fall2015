@@ -1,0 +1,13 @@
+True/False
+
+1) False
+2) True, unless they are declared outside the loop
+
+Short Questions
+
+1) When multiple conditions must be true for a certain action to be taken
+2) The program evaluates the boolean condition statement and branches into the loop if it is true and branches
+	to just after the loop if false
+3) for, while, goto, switch
+4) An exception is an event that may be picked up by a handler in the calling process to detect an error
+5) A string description of the error
