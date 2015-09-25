@@ -3,23 +3,24 @@
 using namespace std;
 
 int main() {
-    int x=0;
-    int y=0;
-    int ans=0;
+    float x=0;
+    float y=0;
+    float ans=0;
     cout << "Hello, User! Enter two numbers, hitting enter after each one" << endl;
-    while (ans == 0) {
+    while (true) {
     cin >> x >> y;
     try {
         ans = x / y;
-        if (ans == 0) {
+        if (y == 0) {
             throw 0;
         }
         else {
             cout << "Your answer is " << ans << endl;
+            break;
         }
     }
     catch (int e) {
-        cout << "An exception has occurred. The answer provided was 0. Please enter new numbers"<<endl;
+        cout << "An exception has occurred. Divide by 0. Please enter new numbers"<<endl;
     }
 }
 
