@@ -48,9 +48,10 @@ int main()
     WSAStartup(MAKEWORD(2, 2), &wsaData);
     sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 
-    char broadcast = 'a';
+    int optval = true;
+    //char broadcast = 'a';
 
-    if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &broadcast, sizeof(broadcast)) < 0)
+    if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, (char *)&optval, sizeof(int)) < 0)
     {
         cerr << "\nBroadcast socket creation error...\nExiting...";
         _getch();
@@ -83,13 +84,13 @@ int main()
     objJSON[lastName] = "Anand";
     objJSON[gitUserName] = "abhaysanand";
     objJSON[currentIP] = ip;
-    
-    cout << endl << objJSON << endl;
+
+    //cout << endl << objJSON << endl;
 
     /* Write JSON object to file */
     ofstream jsonFileWrite;
 
-    jsonFileWrite.open("Broadcast.json", ios_base::trunc | ios_base::binary);
+    jsonFileWrite.open("Broadcast.json", ios_base::trunc);
     jsonFileWrite << objJSON << endl;
     jsonFileWrite.close();
 
@@ -97,27 +98,29 @@ int main()
     ifstream jsonFileRead;
     char readBuffer;
     char *readBuffer_p = new char;
-    uint16_t filesize = 0;
+    size_t filesize = 0;
     int sendto_retval;
 
-    jsonFileRead.open("Broadcast.json", ios_base::in | ios_base::binary);
+    jsonFileRead.open("Broadcast.json", ios_base::in);
 
     cout << "\nBroadcasting JSON object on port: "<< port;
-    
-    while (!jsonFileRead.eof())
+
+    stringstream strStream;
+    strStream << jsonFileRead.rdbuf();//read the file
+    string jsonStr = strStream.str();//str holds the content of the file
+
+    cout << endl << jsonStr << endl;
+
+    filesize = jsonStr.size();
+
+    sendto_retval = sendto(sock, jsonStr.c_str(), filesize, 0, (sockaddr *)&Sender_addr, len);
+    if (sendto_retval < 0)
     {
-        filesize++;
-        jsonFileRead.get(readBuffer);
-        readBuffer_p = &readBuffer;
-        sendto_retval = sendto(sock, readBuffer_p, sizeof(char), 0, (sockaddr *)&Sender_addr, len);
-        if (sendto_retval < 0)
-        {
-            cerr << "Broadcast error...\nExiting...";
-            _getch();
-            closesocket(sock);
-            WSACleanup();
-            return 1;
-        }
+        cerr << "Broadcast error...\nExiting...";
+        _getch();
+        closesocket(sock);
+        WSACleanup();
+        return 1;
     }
 
     cout << "\nBroadcast successful. Transferred: " << filesize << " bytes";

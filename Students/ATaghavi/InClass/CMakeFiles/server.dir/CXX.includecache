@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/austin/dev/ECEN689/ECEN489-Fall2015/Students/ATaghavi/InClass/server.cpp
+ctime
+-
+iostream
+-
+string
+-
+boost/asio.hpp
+-
+boost/array.hpp
+-
+fstream
+-
+sstream
+-
+stdio.h
+-
+stdlib.h
+-
+

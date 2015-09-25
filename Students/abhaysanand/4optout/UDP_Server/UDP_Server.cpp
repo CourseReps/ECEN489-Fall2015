@@ -6,7 +6,6 @@
 using namespace std;
 
 SOCKET sock;
-char recvBuff;
 struct sockaddr_in Recv_addr;
 int len = sizeof(struct sockaddr_in);
 int port;
@@ -82,44 +81,41 @@ int databaseCreate()
 void recvFunct()
 {
     int recvfrom_retval = 0;
-    uint16_t fileSize = 0;
+    char recvBuff[200];
+    string recvStr;
+    size_t fileSize = 0, recvStr_end = 0;
     ofstream broadcastWrite;
     ifstream jsonFileRead;
     Json::Reader objJSONparse;
 
     while (1)
     {
-        recvfrom_retval = recvfrom(sock, &recvBuff, sizeof(char), 0, (sockaddr *)&Recv_addr, &len);
-        if (recvfrom_retval >= 0)
+        recvfrom_retval = recvfrom(sock, recvBuff, sizeof(recvBuff), 0, (sockaddr *)&Recv_addr, &len);
+        if (recvfrom_retval < 0)
         {
-            if ((!broadcastWrite.is_open()) && ('{' == recvBuff))
-            {
-                fileSize = 1;
-                cout << "\nReceiving broadcast data from a source...";
-                broadcastWrite.open("Broadcast.json", ios_base::trunc | ios_base::binary);
-                broadcastWrite.put(recvBuff);
-            }
-            else if (broadcastWrite.is_open())
-            {
-                fileSize++;
-                broadcastWrite.put(recvBuff);
-            }
-            else
-            {
-                /* Do nothing */
-            }
+            cerr << "Receive error...\nExiting...";
+            _getch();
+            closesocket(sock);
+            WSACleanup();
+            break;
         }
-
-        if ('}' == recvBuff)
+        else
         {
+            cout << "\nReceiving broadcast data from a source...";
+            recvStr = (string)recvBuff;
+            recvStr_end = recvStr.find('}', 0) + 1;
+            recvStr.erase(recvStr.begin() + recvStr_end, recvStr.end());
+            cout << endl << recvStr << endl;
+            fileSize = recvStr.length();
+            broadcastWrite.open("Broadcast.json", ios_base::trunc | ios_base::binary);
+            broadcastWrite.write(recvStr.c_str(), fileSize);
             broadcastWrite.close();
-            recvfrom_retval = -1;
+
             cout << "\nReception from the source is completed. Received " << fileSize << " bytes.\n";
+            
             jsonFileRead.open("Broadcast.json", ios_base::in | ios_base::binary);
             objJSONparse.parse(jsonFileRead, objJSONin, true);
             jsonFileRead.close();
-
-            cout << objJSONin << endl;
 
             databaseCreate();
         }
@@ -144,7 +140,7 @@ int main()
     }
 
     cout << "\nCreating Table...";
-    createTable = "CREATE TABLE BroadcastData(FirstName TEXT, LastName TEXT, GitHubID TEXT, CurrentIP TEXT);";
+    createTable = "CREATE TABLE IF NOT EXISTS BroadcastData(FirstName TEXT, LastName TEXT, GitHubID TEXT, CurrentIP TEXT);";
 
     exec_retval = sqlite3_exec(db, createTable, callback, 0, &zErrMsg);
 
@@ -168,9 +164,10 @@ int main()
     WSADATA wsaData;
     WSAStartup(MAKEWORD(2, 2), &wsaData);
     sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    int optval = true;
     char broadcast = 'a';
 
-    if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &broadcast, sizeof(broadcast)) < 0)
+    if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, (char *)&optval, sizeof(int)) < 0)
     {
         cerr << "\nBroadcast socket creation error...\nExiting...";
         _getch();
