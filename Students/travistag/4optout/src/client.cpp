@@ -42,6 +42,8 @@ std::string getCurrentIP(){
       line = line.substr(line.find_first_of("inet")+5);
       line = line.substr(0, line.find_first_of(" "));
       myinput.close();
+      if(line.length()<8)
+        return "0.0.0.0";
       return line;
   }
   else
@@ -50,6 +52,11 @@ std::string getCurrentIP(){
 
 int main(int argc, char* argv[])
 {
+
+  if(argc<2){
+    std::cout<<"\nPlease enter a port # to broadcast on!\n\n";
+    return 1;
+  }
   std::vector<std::string> inf;
   inf.push_back("Travis");
   inf.push_back("Taghavi");
@@ -73,15 +80,8 @@ int main(int argc, char* argv[])
     {
         socket.set_option(boost::asio::ip::udp::socket::reuse_address(true));
         socket.set_option(boost::asio::socket_base::broadcast(true));
-
-        //std::cout<<socket.remote_endpoint().address().to_string()<<"\n";
-
-        boost::asio::ip::udp::endpoint senderEndpoint(boost::asio::ip::address_v4::broadcast(), 2015); 
-
-     //   while(true){
-          socket.send_to(boost::asio::buffer(infojson), senderEndpoint);
-     //   }           
-
+        boost::asio::ip::udp::endpoint senderEndpoint(boost::asio::ip::address_v4::broadcast(), atoi(argv[1])); 
+        socket.send_to(boost::asio::buffer(infojson), senderEndpoint);          
         
         socket.close(error);
     }
