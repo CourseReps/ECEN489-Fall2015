@@ -25,7 +25,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
-* [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot - Xiangdong Yu, Friday, Oct 4
+* [QCustomPlot] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qcustomplot) - Xiangdong Yu, Friday, Oct 4
 
 ## ECEN 303 Exceptions
 
