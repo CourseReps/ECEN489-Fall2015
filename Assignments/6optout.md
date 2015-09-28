@@ -9,7 +9,7 @@ For this opt-out challenge you will be putting together several of the pieces fr
 The first part of this challenge is to read photosensor data using a Teensy. Then  you will read this information via serial connection to your laptop using a C++ client program.
 
 ### JSON wrapping
-Once the client program obtains the photosensor data, you will wrap this into a JSON object along with the client's IP and a timestamp, according to the format laid out in the wiki for [5optOut](https://github.com/CourseReps/ECEN489-Fall2015/wiki/5optOut)
+Once the client program obtains the photosensor data, you will wrap this into a JSON object along with the client's IP and a timestamp, according to the format laid out in the wiki for [5optOut](https://github.com/CourseReps/ECEN489-Fall2015/wiki/5optOut). 
 For this challenge, we can ignore the authentication/security measures, and just transmit relevant data.
 
 Example:
