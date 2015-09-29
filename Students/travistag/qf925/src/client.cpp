@@ -35,7 +35,6 @@ int main(int argc, char* argv[]){
 		return 1;
 	}
 
-  cout<<getValue()<<"\n";
 
 	boost::asio::io_service io_service;
 	tcp::resolver resolver(io_service);
@@ -57,6 +56,7 @@ int main(int argc, char* argv[]){
     {
       std::vector<char> buf (1000);
       boost::system::error_code error;
+      getValue();
 
         std::string message;
         int val;
