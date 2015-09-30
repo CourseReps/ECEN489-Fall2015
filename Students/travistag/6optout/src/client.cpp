@@ -23,7 +23,7 @@ using namespace std;
 
 int getValue(){
   int ret = -999;
-  //system("head -1 /dev/cu.usbmodem1062571 > read.txt");
+  system("head -1 /dev/cu.usbmodem1062571 > read.txt");
   ifstream myinput("read.txt");
   if(myinput.is_open()){
     string line;
