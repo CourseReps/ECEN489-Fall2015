@@ -13,9 +13,10 @@
 #include <fstream>
 #include <sstream>
 #include <boost/asio.hpp>
+#include <stdlib.h>
 #include <ctime>
 
-using boost::asio::ip::tcp;
+using boost::asio::ip::udp;
 using namespace std;
 
 int get_photo_val()
@@ -31,6 +32,11 @@ while(fgets( buff, 128, fp ) != NULL ) {
 
   return atoi(ret.c_str());
 
+}
+
+int get_photo_val_fake()
+{
+  return rand()%1000;
 }
 
 string get_ip()
@@ -66,22 +72,34 @@ int main(int argc, char* argv[])
 {
   try
   {
-    if (argc != 3)
+    if (argc != 2)
     {
-      std::cerr << "Usage: client port" << std::endl;
+      std::cerr << "Usage: port" << std::endl;
       return 1;
     }
 
-    
-
+    unsigned short port = (unsigned short) strtoul(argv[1], NULL, 0);
     boost::asio::io_service io_service;
+    udp::resolver resolver(io_service);  
+    udp::socket socket(io_service);
 
-    tcp::resolver resolver(io_service);
-    tcp::resolver::query query(argv[1], argv[2]);
-    tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-    tcp::resolver::iterator end;
+    int val = get_photo_val_fake();
+    vector< pair<string,string> > json_values;
 
-    tcp::socket socket(io_service);
+    
+    json_values.push_back(pair<string,string>("DeviceID","666")); 
+    json_values.push_back(pair<string,string>("DeviceType","Photosensor")); 
+    json_values.push_back(pair<string,string>("Data",to_string(val)));
+    time_t result = time(nullptr);
+    string timestamp = asctime(localtime(&result));
+    json_values.push_back(pair<string,string>("Timestamp",timestamp));
+    json_values.push_back(pair<string,string>("currentIP",get_ip()));
+
+    string command = get_json(json_values);
+
+    boost::system::error_code error;
+    /*  
+    udp::socket socket(io_service);
     boost::system::error_code error = boost::asio::error::host_not_found;
     while (error && endpoint_iterator != end)
     {
@@ -93,7 +111,7 @@ int main(int argc, char* argv[])
 
     //for (;;)
     {
-      int val = get_photo_val();
+      int val = get_photo_val_fake();
       vector< pair<string,string> > json_values;
       json_values.push_back(pair<string,string>("photoValue",to_string(val)));
       time_t result = time(nullptr);
@@ -124,6 +142,18 @@ int main(int argc, char* argv[])
 
       
     }
+    */
+    socket.open(udp::v4(), error);
+      if (!error)
+      {
+          socket.set_option(udp::socket::reuse_address(true));
+          socket.set_option(boost::asio::socket_base::broadcast(true));
+
+          udp::endpoint senderEndpoint(boost::asio::ip::address_v4::broadcast(), port);            
+
+          socket.send_to(boost::asio::buffer(command), senderEndpoint);
+          socket.close(error);
+      }
   }
   catch (std::exception& e)
   {
