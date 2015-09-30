@@ -12,8 +12,8 @@
 #include <ctime>
 #include <arpa/inet.h>
 
-#define MY_PORT_NUMBER 2015
-#define REM_PORT_NUMBER 1111
+#define MY_PORT_NUMBER 2000
+#define REM_PORT_NUMBER 2015
 
 using namespace std;
 
