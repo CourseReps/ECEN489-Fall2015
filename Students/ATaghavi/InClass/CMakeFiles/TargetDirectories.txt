@@ -1,2 +1,0 @@
-/Users/austin/dev/ECEN689/ECEN489-Fall2015/Students/ATaghavi/InClass/CMakeFiles/client.dir
-/Users/austin/dev/ECEN689/ECEN489-Fall2015/Students/ATaghavi/InClass/CMakeFiles/server.dir
