@@ -6,7 +6,7 @@ The client will read ADC values from the Teensy board over USB and send them wit
 
 The server listens on its own IP for UDP packets and wraps them into an sqlite database.
 
-Usage: server <database name>
-       client <IP address of server>
+Usage: `server <database name> --
+       client <IP address of server>`
        
 The client may also be called continously at 2Hz from the script "runclient"
