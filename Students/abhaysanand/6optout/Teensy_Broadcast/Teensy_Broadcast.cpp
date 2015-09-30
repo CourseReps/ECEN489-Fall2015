@@ -132,13 +132,13 @@ int main()
     string DeviceID = "DeviceID";
     string DeviceType = "DeviceType";
     string Data = "Data";
-    string TimeStamp = "TimeStamp";
+    string Timestamp = "Timestamp";
     string currentIP = "currentIP";
 
     objJSON[DeviceID] = "ASA007";
     objJSON[DeviceType] = "Photosensor";
     objJSON[Data] = convertVolt.str();
-    objJSON[TimeStamp] = convertTime.str();
+    objJSON[Timestamp] = convertTime.str();
     objJSON[currentIP] = ip;
 
     //cout << endl << objJSON << endl;

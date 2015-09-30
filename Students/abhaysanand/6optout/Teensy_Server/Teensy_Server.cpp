@@ -54,16 +54,16 @@ int databaseCreate()
     Data.erase(Data.begin());
     Data.erase(Data.end() - 1, Data.end());
 
-    string TimeStamp = Json::writeString(builder, objJSONin["TimeStamp"]);
-    TimeStamp.erase(TimeStamp.begin());
-    TimeStamp.erase(TimeStamp.end() - 1, TimeStamp.end());
+    string Timestamp = Json::writeString(builder, objJSONin["Timestamp"]);
+    Timestamp.erase(Timestamp.begin());
+    Timestamp.erase(Timestamp.end() - 1, Timestamp.end());
 
     string currentIP = Json::writeString(builder, objJSONin["currentIP"]);
     currentIP.erase(currentIP.begin());
     currentIP.erase(currentIP.end() - 1, currentIP.end());
 
-    insertStr = "INSERT INTO TeensyData (DeviceID, DeviceType, Data, TimeStamp, currentIP) VALUES ('"
-        + DeviceID + "', '" + DeviceType + "', '" + Data + "', '" + TimeStamp + "', '" + currentIP + "' );";
+    insertStr = "INSERT INTO TeensyData (DeviceID, DeviceType, Data, Timestamp, currentIP) VALUES ('"
+        + DeviceID + "', '" + DeviceType + "', '" + Data + "', '" + Timestamp + "', '" + currentIP + "' );";
 
     cout << "\nWriting data into database...";
 
@@ -144,7 +144,7 @@ int main()
     }
 
     cout << "\nCreating Table...";
-    createTable = "CREATE TABLE IF NOT EXISTS TeensyData(DeviceID TEXT, DeviceType TEXT, Data INTEGER, TimeStamp INTEGER, CurrentIP TEXT);";
+    createTable = "CREATE TABLE IF NOT EXISTS TeensyData(DeviceID TEXT, DeviceType TEXT, Data INTEGER, Timestamp INTEGER, CurrentIP TEXT);";
 
     exec_retval = sqlite3_exec(db, createTable, callback, 0, &zErrMsg);
 
