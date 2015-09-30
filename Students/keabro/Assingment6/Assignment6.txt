@@ -1,0 +1,9 @@
+1. True
+2. True
+3. True
+4. False
+
+1. We can use the same name for Different Functions
+2. In general, the inline mechanism is meant to optimize small, straight-line functions that are called frequently. Many compilers will not inline a recursive function. A 75-line function will almost surely not be expanded inline.
+3. If you define the local variable as STATIC
+4. When a function completes, its storage is freed. After a function terminates, references to local objects refer to memory that is no longer valid:
