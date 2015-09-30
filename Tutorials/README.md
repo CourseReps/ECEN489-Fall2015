@@ -22,6 +22,7 @@ The tutorial should be given directly from the corresponding wiki page.
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Fall2015/wiki/bluetooth) - Seungwon Yoon, Sep 25
 * [Motor Control](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Motor-Control) - Cooper Rehn, Friday, Sep 25
 * [Qt] (https://github.com/CourseReps/ECEN489-Fall2015/wiki/qt) - Anthony Ramirez, Monday, Sep 28
+* [Signal Conditioning](https://github.com/CourseReps/ECEN489-Fall2015/wiki/Signal Conditioning) (again) - Kan Zheng, Wednesday, Sep 30
 * [I2C Bus](https://github.com/CourseReps/ECEN489-Fall2015/wiki/i2c)
 * [C++ Boost Library](https://github.com/CourseReps/ECEN489-Fall2015/wiki/boost) - Austin Taghavi
 * [SQL Browser](https://github.com/CourseReps/ECEN489-Fall2015/wiki/browser)
