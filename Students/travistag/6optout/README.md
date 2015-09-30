@@ -1,4 +1,4 @@
-# C++ TCP Sockets
+# Teensy/Serial/UDP broadcast/SQLite
 
 This project uses the Boost library, if it is not installed then the project will not compile.
 
