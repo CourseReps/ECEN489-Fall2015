@@ -29,7 +29,7 @@ int databaseCreate()
     string insertStr;
 
     cout << "\nOpening Database...";
-    open_retval = sqlite3_open("Broadcast.db", &db);
+    open_retval = sqlite3_open("Teensy.db", &db);
     if (open_retval)
     {
         cout << "\nError opening database...\nExiting...";
@@ -62,7 +62,7 @@ int databaseCreate()
     currentIP.erase(currentIP.begin());
     currentIP.erase(currentIP.end() - 1, currentIP.end());
 
-    insertStr = "INSERT INTO BroadcastData (DeviceID, DeviceType, Data, TimeStamp, currentIP) VALUES ('"
+    insertStr = "INSERT INTO TeensyData (DeviceID, DeviceType, Data, TimeStamp, currentIP) VALUES ('"
         + DeviceID + "', '" + DeviceType + "', '" + Data + "', '" + TimeStamp + "', '" + currentIP + "' );";
 
     cout << "\nWriting data into database...";
@@ -105,19 +105,19 @@ void recvFunct()
         }
         else
         {
-            cout << "\nReceiving broadcast data from a source...";
+            cout << "\nReceiving Teensy data from a source...";
             recvStr = (string)recvBuff;
             recvStr_end = recvStr.find('}', 0) + 1;
             recvStr.erase(recvStr.begin() + recvStr_end, recvStr.end());
             cout << endl << recvStr << endl;
             fileSize = recvStr.length();
-            broadcastWrite.open("Broadcast.json", ios_base::trunc | ios_base::binary);
+            broadcastWrite.open("Teensy.json", ios_base::trunc | ios_base::binary);
             broadcastWrite.write(recvStr.c_str(), fileSize);
             broadcastWrite.close();
 
             cout << "\nReception from the source is completed. Received " << fileSize << " bytes.\n";
             
-            jsonFileRead.open("Broadcast.json", ios_base::in | ios_base::binary);
+            jsonFileRead.open("Teensy.json", ios_base::in | ios_base::binary);
             objJSONparse.parse(jsonFileRead, objJSONin, true);
             jsonFileRead.close();
 
@@ -133,8 +133,8 @@ int main()
     char *zErrMsg = 0;
     sqlite3 *db;
 
-    cout << "\nCreating Broadcast Database...";
-    open_retval = sqlite3_open("Broadcast.db", &db);
+    cout << "\nCreating Teensy Database...";
+    open_retval = sqlite3_open("Teensy.db", &db);
     if (open_retval)
     {
         cout << "\nError opening database...\nExiting...";
@@ -144,7 +144,7 @@ int main()
     }
 
     cout << "\nCreating Table...";
-    createTable = "CREATE TABLE IF NOT EXISTS BroadcastData(DeviceID TEXT, DeviceType TEXT, Data INTEGER, TimeStamp INTEGER, CurrentIP TEXT);";
+    createTable = "CREATE TABLE IF NOT EXISTS TeensyData(DeviceID TEXT, DeviceType TEXT, Data INTEGER, TimeStamp INTEGER, CurrentIP TEXT);";
 
     exec_retval = sqlite3_exec(db, createTable, callback, 0, &zErrMsg);
 
