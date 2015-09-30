@@ -18,13 +18,13 @@ void refswap(int &x, int &y)
 }
 
 
-int main() {
-    int x;
-    int y;
+int main(int x, int y) {
+    x;
+    y;
     int *p = &x;
     int *q = &y;
 
-    cout << "Enter two integers: \n";
+    //cout << "Enter two integers: \n";
     cin >> x >>y;
 
     cout << "Before pointer swap: x = " << x << ", y = " << y << endl;

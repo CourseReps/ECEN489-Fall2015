@@ -12,7 +12,7 @@
 
 using namespace std;
 
-#define PORT_NUMBER 1111
+#define PORT_NUMBER 2015
 
 int main(int argc, char* argv[]) //only arg is db name
 {
@@ -33,6 +33,7 @@ int main(int argc, char* argv[]) //only arg is db name
 	if(socketfd < 0)
 	{
 		cerr << "Error opening socket, exiting\n";
+		close(socketfd);
 		return -2;
 	}
 	int brdcstena = 1;
@@ -47,6 +48,7 @@ int main(int argc, char* argv[]) //only arg is db name
 	if(bind(socketfd, (struct sockaddr *)&sa, sizeof(sa)) < 0)
 	{
 		cerr << "Error binding socket, exiting\n";
+		close(socketfd);
 		return -3;
 	}
 
