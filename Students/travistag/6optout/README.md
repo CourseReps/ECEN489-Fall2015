@@ -1,6 +1,6 @@
 # Teensy/Serial/UDP broadcast/SQLite
 
-This project uses the Boost library, if it is not installed then the project will not compile.
+This project uses the Boost and sqlite3 libraries, if they are not installed then the project will not compile.
 
 Making this project will yield two executables
 
