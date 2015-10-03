@@ -15,7 +15,7 @@
 #include <time.h>
 
 #define DEVICEID "Kan Zheng"
-#define DEVICETYPE "Thermistor"
+#define DEVICETYPE "Photosensor"
 
 using namespace std;
 
@@ -34,11 +34,10 @@ int main(int argc, char**argv)
 	int result;
 	char *portname = "/dev/ttyACM0";
 	char IPAddr[16];
-	char buffer[10];
+	char buffer[15];
 	char strjson[100];
 	struct addrinfo* Addr;
 	int sockfd;
-	
 	
 	//check your input
 	if(argc!=2)
@@ -64,6 +63,7 @@ int main(int argc, char**argv)
 	    cout << "Error " << errno << " opening " << portname << ": " << strerror (errno) << endl;
 	    exit(0);
 	}
+	
 	while (1)
 	{
 	    result=read(fd,&buffer,sizeof buffer);
@@ -125,6 +125,17 @@ void init_udp_client_socket(char* IPAddr,char* port,struct addrinfo** paddr,int*
   *paddr=p;
 }
 
+// void init_read(char* buffer,int fd)
+// {
+//   int result;
+//   while(1)
+//   {
+//     result=read(fd,&buffer,sizeof buffer);
+//     if(result>0)
+//       break;
+//   }
+// }
+
 void broadcast_json(char* strjson,int strlenjson,struct addrinfo* Addr, int sockfd)
 {
   if (sendtoall(sockfd, strjson, &strlenjson,Addr) == -1) 
@@ -153,9 +164,10 @@ int sendtoall(int sockfd, char *buf, int *len,struct addrinfo* Addr)
 
 void remove_enter(char* buf,int buflen)
 {
+  buf[buflen]='\0';
   for(int i=0;i<buflen;i++)
   {
-    if(buf[i]=='\r')
+    if(buf[i]=='\r'||buf[i]=='\n')
     {
       buf[i]='\0';
       break;
@@ -182,13 +194,13 @@ void save_json(char* data,char* IPAddr,char* strjson)
     json_object *DeviceType = json_object_new_string(DEVICETYPE);
     json_object *Data = json_object_new_string(data);
     json_object *Timestamp = json_object_new_string(Times);
-//   json_object *currentIP = json_object_new_string(IPAddr);
+   json_object *currentIP = json_object_new_string(IPAddr);
 
     json_object_object_add(jobj,"DeviceID", DeviceID);
     json_object_object_add(jobj,"DeviceType", DeviceType);
     json_object_object_add(jobj,"Data", Data);
     json_object_object_add(jobj,"Timestamp", Timestamp);
-//    json_object_object_add(jobj,"currentIP", currentIP);
+    json_object_object_add(jobj,"currentIP", currentIP);
     strcpy(strjson,json_object_to_json_string(jobj));
 }
 
