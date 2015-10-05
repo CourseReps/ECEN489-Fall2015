@@ -1,0 +1,6 @@
+cmake_minimum_required (VERSION 2.6)
+project(thermside)
+project(request)
+add_executable(thermside ThermPC.cpp)
+add_executable(request requestPC.cpp)
+target_link_libraries(request sqlite3)

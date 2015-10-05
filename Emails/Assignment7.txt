@@ -1,0 +1,9 @@
+Hello,
+
+You will find below Assignment 7. There is no coding for that one. Opt-Out Challenge 7 consists in using the Qt infrastructure to build a visualizer for the data you captured in Opt-Out Challenge 6. The client reads the voltage from the voltage divider circuit with a photo-resistor. This information is wrapped into a JSON object and pushed to an Internet server. The server listens for connections and, upon receiving new data, updates its SQLite database. A Qt application periodically surveys the state of the database and plots the temporal evolution of the remote luminosity. If multiple clients are connected, then several curves show up on the (near) real-time plot, one per remote device.
+
+Best regards,
+Jean-Francois Chamberland, Gregory Huff
+
+Due Date: Oct 5, 2015
+GitHub: https://github.com/CourseReps/ECEN489-Fall2015/tree/master/Assignments

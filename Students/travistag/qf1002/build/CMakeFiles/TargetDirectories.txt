@@ -1,0 +1,2 @@
+/Users/travistaghavi/Documents/gitRepositories/ECEN489-Fall2015/Students/travistag/qf1002/build/CMakeFiles/Client.dir
+/Users/travistaghavi/Documents/gitRepositories/ECEN489-Fall2015/Students/travistag/qf1002/build/CMakeFiles/Server.dir

@@ -13,21 +13,21 @@
 #include <arpa/inet.h>
 
 #define MY_PORT_NUMBER 2000
-#define REM_PORT_NUMBER 2015
+#define REM_PORT_NUMBER 1111
 
 using namespace std;
 
-const char* cmd1 = "cat /dev/ttyACM0 > data.txt 2>/dev/null";
-const char* cmd2 = "cat /dev/ttyACM1 > data.txt 2>/dev/null";
-const char* cmd3 = "cat /dev/ttyACM3 > data.txt 2>/dev/null";
+const char* cmd1 = "cat /dev/ttyACM0 > data.txt";
+const char* cmd2 = "cat /dev/ttyACM1 > data.txt";
+const char* cmd3 = "cat /dev/ttyACM3 > data.txt";
 
 int main(int argc, char* argv[])
 {	
-	if(argc < 2)
+	/*if(argc < 2)
 	{
 		cerr << "Not enough arguments\n";
 		return -5;
-	}
+	}*/
 	system("clear");
 	//read serial data
 	cout << "\nRetrieving serial reading...\n";
@@ -99,22 +99,19 @@ int main(int argc, char* argv[])
 
 	cout << "\nTransmitting data...";
 	//create UDP socket
-	int socketfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+	int socketfd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(socketfd < 0)
 	{
 		perror("Error creating socket, exiting");
 		return -2;
 	}
 	int brdcstena = 1;
-	setsockopt(socketfd, IPPROTO_UDP, SO_BROADCAST, &brdcstena, sizeof(brdcstena)); //enable broadcasting on socket 
-
-	/*struct sockaddr_in bcast;
-	inet_pton(AF_INET, "192.168.1.255", &(bcast.sin_addr)); */
+	setsockopt(socketfd, SOL_SOCKET, SO_BROADCAST, &brdcstena, sizeof(brdcstena)); //enable broadcasting on socket 
 
 	struct sockaddr_in myaddr;
 	memset((char*)&myaddr, 0, sizeof(myaddr)); //zero out struct
 	myaddr.sin_family = AF_INET;
-	myaddr.sin_addr.s_addr = htonl(INADDR_ANY); //almost certainly wrong for broadcast
+	myaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	myaddr.sin_port = htons(MY_PORT_NUMBER);
 	
 	//bind socket
@@ -126,15 +123,16 @@ int main(int argc, char* argv[])
 	
 	struct sockaddr_in serv_addr;
 	serv_addr.sin_family = AF_INET;
-	struct sockaddr_in bcast;
-	inet_pton(AF_INET, argv[1], &(bcast.sin_addr));
-	serv_addr.sin_addr.s_addr = bcast.sin_addr.s_addr; //@TODO fix
+	serv_addr.sin_addr.s_addr = INADDR_BROADCAST;
 	serv_addr.sin_port = htons(REM_PORT_NUMBER);
 	
 	//send data over broadcast socket
 	int ret = sendto(socketfd, JSON.c_str(), JSON.length(), 0, (struct sockaddr *)&serv_addr, sizeof(serv_addr)); 
 	if(ret < 0)
+	{
 		perror("Error sending data");
+		cerr << ret;
+	}
 	cout << "Done.\n";
 	
 	close(socketfd);
