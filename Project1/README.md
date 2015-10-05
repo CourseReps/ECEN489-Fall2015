@@ -13,3 +13,37 @@ This feedback loop continues in real-time as the embedded system strives to opti
 The underlying topic for this semester is smart water management.
 During this first project, we are primarily interested in getting microcontrollers to interact with four major components: an infrared (IR) distance sensor, a pump, a flow sensor, and a valve.
 In addition, data will have to be transferred from the microcontroller to a Linux box using a serial connection and Bluetooth.
+
+# Team Assignment
+
+## TEAM 1
+
+* Kartic Kaveripuram Ramasamy
+* Abhay Anand
+* Cooper Rehn
+
+## TEAM 2
+
+* Pranay Eedara
+* Kan Zheng
+* Anthony Ramirez
+
+## TEAM 3
+
+* Hai Li
+* Keaton Brown
+* Thomas Branyon
+
+## TEAM 4
+
+* Blade Roybal
+* Kaimen Walters
+* Steven Jinpeng You
+* Travis Taghavi
+
+## TEAM 5
+
+* Henry Xiangdong Yu
+* Udaya Bhaskar Kothapalli
+* Seungwon Yoon
+* Austin Taghavi
