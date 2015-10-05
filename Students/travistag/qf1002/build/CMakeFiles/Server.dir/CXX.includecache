@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/travistaghavi/Documents/gitRepositories/ECEN489-Fall2015/Students/travistag/qf1002/src/server.cpp
+ctime
+-
+iostream
+-
+fstream
+-
+string
+-
+vector
+-
+boost/array.hpp
+-
+boost/asio.hpp
+-
+sqlite3.h
+-
+

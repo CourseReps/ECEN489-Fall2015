@@ -1,0 +1,143 @@
+#About
+
+Qt is an open-source, cross-platform application toolkit that used to develop application software. The term "cross-platform" refers to the idea that the software can be run on multiple device platforms.
+
+Qt uses standard C++ with an added language construct to make widget implementation easier. It includes about 1000 C++ library classes. It comes with its own IDE known as Qt Creator.
+
+###Qt Essentials
+* [Qt Creator Manual](http://doc.qt.io/qtcreator/index.html)
+* [Module](http://doc.qt.io/qt-5/qtmodules.html)
+* [Classes](http://doc.qt.io/qt-5/modules-cpp.html)
+
+***
+
+###Creating a Widget
+
+Qt creator includes an application wizard that aids in the initial process. This is a basic tutorial on how to create a basic notepad widget.
+
+![](http://doc.qt.io/qt-5/images/gs-project1.png)
+
+**Applications > Qt Widgets Application > Choose**
+
+![](http://doc.qt.io/qt-5/images/gs-project2.png)
+
+The Widgets App creates a project with the following files:
+
+- notepad.pro: the project file.
+- main.cpp: the main source file for the application.
+- notepad.cpp: the source file of the notepad class of the Notepad widget.
+- notepad.h: the header file of the notepad class for the Notepad widget.
+- notepad.ui: the UI form for the Notepad widget.
+
+Next we are going to use the Qt Designer to add widgets.
+
+1. double click notepad.ui file to launch the Qt designer
+2. drag and drop **Text Edit** and **Push Button** to the main form
+3. double-click the push button to change the text
+4. In the **properties** pane, change the **object name** value to **quitButton**
+5. Press **Ctrl+A or Cmd+A** to select widgets and click **Vertical Layout**
+
+![](http://doc.qt.io/qt-5/images/gs2.png)
+
+***
+
+###Adding Push Buttons
+
+We have to add a slot to the connect the **Quit button** we've already added.
+
+1. Go to the Qt design window
+2. Right click on the button and select **Go to slot > clicked()**
+
+This adds a slot to the notepad.h header file.
+
+     private slots:
+         void on_quitButton_clicked();
+
+Next, got to the notepad.cpp file to modify the private function executed. Add **qApp->quit();** to the function body.
+
+     void Notepad::on_quitButton_clicked()
+     {
+         qApp->quit();
+     }
+
+***
+
+###Adding Menu Items
+
+You can add dropdown menus to the window. Before doing this, the following 4 classes need to be included in the notepad.cpp file
+
+   #include <QFileDialog>
+   #include <QFile>
+   #include <QMessageBox>
+   #include <QTextStream>
+
+Now follow the steps to add menu items and tool buttons to the main window.
+1. Go to the Qt designer
+2. Double click the text **Type Here**
+3. Enter *File*
+4. In the dropdown menu, enter **Open** and **Save**
+5. Right click on an action and select **Go to slot > triggered()**
+
+![](http://doc.qt.io/qt-5/images/gs3.png)
+
+Edit the Open trigger slot in the notepad.cpp file to look like the following:
+
+     void Notepad::on_actionOpen_triggered()
+     {
+         QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), QString(),
+                 tr("Text Files (*.txt);;C++ Files (*.cpp *.h)"));
+
+         if (!fileName.isEmpty()) {
+             QFile file(fileName);
+             if (!file.open(QIODevice::ReadOnly)) {
+                 QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
+                 return;
+             }
+             QTextStream in(&file);
+             ui->textEdit->setText(in.readAll());
+             file.close();
+         }
+     }
+
+Edit the Save trigger slot in the notepad.cpp file to look like the following:
+
+     void Notepad::on_actionSave_triggered()
+     {
+         QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), QString(),
+                 tr("Text Files (*.txt);;C++ Files (*.cpp *.h)"));
+
+         if (!fileName.isEmpty()) {
+             QFile file(fileName);
+             if (!file.open(QIODevice::WriteOnly)) {
+                 // error message
+             } else {
+                 QTextStream stream(&file);
+                 stream << ui->textEdit->toPlainText();
+                 stream.flush();
+                 file.close();
+             }
+         }
+     }
+
+
+This creates two dialogs allowing the user to open and save information.
+
+![](http://doc.qt.io/qt-5/images/gs4.png)  ![](http://doc.qt.io/qt-5/images/gs4.png)
+
+***
+
+###Building and Running the Project
+
+You may build and run the project using through Qt Creator by selecting **Build > Build Project Notepad** or from a command line by adding the project file (___.pro) to the directory in which the .cpp is contained then inputing the following shell commands:
+
+     qmake
+     make
+
+***
+
+##References
+
+* [Qt App. Development Website](http://www.qt.io/application-development/#section-6)
+* [Qt Examples and Tutorials](http://doc.qt.io/qt-5/qtexamplesandtutorials.html)
+* [Dowload Qt](http://www.qt.io/download-open-source/)
+
