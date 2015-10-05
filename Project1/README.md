@@ -16,32 +16,32 @@ In addition, data will have to be transferred from the microcontroller to a Linu
 
 # Team Assignment
 
-## TEAM 1
+## [Team 1](https://github.com/CourseReps/ECEN489-Fall2015/wiki/project1-team1)
 
 * Kartic Kaveripuram Ramasamy
 * Abhay Anand
 * Cooper Rehn
 
-## TEAM 2
+## [Team 2](https://github.com/CourseReps/ECEN489-Fall2015/wiki/project1-team2)
 
 * Pranay Eedara
 * Kan Zheng
 * Anthony Ramirez
 
-## TEAM 3
+## [Team 3](https://github.com/CourseReps/ECEN489-Fall2015/wiki/project1-team3)
 
 * Hai Li
 * Keaton Brown
 * Thomas Branyon
 
-## TEAM 4
+## [Team 4](https://github.com/CourseReps/ECEN489-Fall2015/wiki/project1-team4)
 
 * Blade Roybal
 * Kaimen Walters
 * Steven Jinpeng You
 * Travis Taghavi
 
-## TEAM 5
+## [Team 5](https://github.com/CourseReps/ECEN489-Fall2015/wiki/project1-team5)
 
 * Henry Xiangdong Yu
 * Udaya Bhaskar Kothapalli
