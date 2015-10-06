@@ -22,13 +22,13 @@ int main()
 {
 	//setup database
 	sqlite3 *db;
-	sqlite3_open("therm.db", &db);
-	sqlite3_exec(db, "DROP TABLE IF EXISTS TBL1;", 0, 0, 0);
-	sqlite3_exec(db, "CREATE TABLE TBL1(deviceID INT PRIMARY KEY UNIQUE, deviceType TEXT, Data INT, Timestamp INT);", 0, 0, 0);
+	sqlite3_open("db1.db", &db);
+	//sqlite3_exec(db, "DROP TABLE IF EXISTS TBL1;", 0, 0, 0);
+	sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS TBL1(deviceID INT PRIMARY KEY UNIQUE, deviceType TEXT, Data INT, Timestamp INT);", 0, 0, 0);
 	
 	//get IPs
 	vector<unsigned long> IPtable;
-	char IP1[14] = "192.168.1.144";
+	char IP1[15] = "10.201.72.73";
 	unsigned long ip1;
 	inet_pton(AF_INET, IP1, &ip1);
 	IPtable.push_back(ip1); 
@@ -146,6 +146,6 @@ int main()
 			cout << tablecmd << endl;
 			sqlite3_exec(db, tablecmd, 0, 0, 0);	
 		}
-		usleep(500000);
+		usleep(1000000);
 	}
 }

@@ -8,6 +8,9 @@
 #include <iostream>
 #include "qcustomplot.h"
 #include <QTimer>
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
 
 namespace Ui {
 class MainWindow;
@@ -20,19 +23,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     QVector<QString> entryKeys;
+    QVector<double> times[8];
+    QVector<double> ADCvals[8];
+    sqlite3 *db;
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
     QTimer timer;
-    long starttime;
-    QVector<QVector<double> > times;
-    QVector<QVector<double> > ADCvals;
+    time_t starttime;
 
 private slots:
     void readData();
     void setupGraph(QCustomPlot *graphplot);
     static int readKeys(void *na, int argc, char **argv, char **colname);
+    static int readVals(void *na, int argc, char **argv, char **colname);
 };
 
 #endif // MAINWINDOW_H

@@ -6,7 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    time(&starttime);
     setupGraph(ui->plot);
+    sqlite3_open("../db1.db", &db);
     connect(&timer, SIGNAL(timeout()), this, SLOT(readData()));
     timer.start(1000); //update every second
 }
@@ -41,57 +43,74 @@ void MainWindow::setupGraph(QCustomPlot *graphplot)
     graphplot->yAxis->setLabel("ADC Volts");
     graphplot->xAxis->setRange(0,5);  //initialize to 5 second view
     graphplot->yAxis->setRange(0,3.3); //0-3.3 Volts (full scale)
-    graphplot->axisRect()->setupFullAxesBox();
-    connect(graphplot->xAxis, SIGNAL(rangeChanged(QCPRange)), graphplot->xAxis2, SLOT(setRange(QCPRange)));
-    connect(graphplot->yAxis, SIGNAL(rangeChanged(QCPRange)), graphplot->yAxis2, SLOT(setRange(QCPRange)));
+    graphplot->xAxis->setAutoTickStep(false);
+    graphplot->xAxis->setTickStep(1);
+    //graphplot->axisRect()->setupFullAxesBox();
+    //connect(graphplot->xAxis, SIGNAL(rangeChanged(QCPRange)), graphplot->xAxis2, SLOT(setRange(QCPRange)));
+    //connect(graphplot->yAxis, SIGNAL(rangeChanged(QCPRange)), graphplot->yAxis2, SLOT(setRange(QCPRange)));
 }
 
 void MainWindow::readData()
 {
-    //open database
-    sqlite3 *db;
-    sqlite3_open("../db1.db", &db);
-
     //read db, store keys in a vector
     sqlite3_exec(db, "SELECT * FROM TBL1;", readKeys, &entryKeys, NULL);
 
-    double timestamp;
     //loop through vector of keys
+    double timestamp = 0;
+    double ADCreading = -1;
     for(int x = 0; x < entryKeys.length(); ++x)
     {
         //select line from table by key and extract values
-        long xTime = 0;
-        int ADCreading = 0;
-        ///@TODO
+        char cmd[78] = {0};
+        sprintf(cmd, "SELECT * FROM TBL1 WHERE deviceID = %s", entryKeys.at(x).toStdString().c_str());
+        double datacont[2]; //timestamp, data
+        sqlite3_exec(db, cmd, readVals, &datacont, 0);
+        time_t xTime = datacont[0];
+        ADCreading = datacont[1];
 
         //do calculations with extracted values
-        timestamp = xTime - starttime;
-        double val = 3.3 * ADCreading / 1023;
-
+        timestamp = difftime(xTime, starttime);
+        //ADCreading = std::rand() * 3.3/RAND_MAX; //debug
+        ADCreading = ADCreading * 3.3/1023;
         //pushback new values into corresponding vectors
+        std::cout << timestamp << " " << ADCreading << std::endl;
+        if(timestamp < 0)
+            return;
         times[x].push_back(timestamp);
-        ADCvals[x].push_back(val);
+        ADCvals[x].push_back(ADCreading);
 
         //assign new data to graph
-        ui->plot->graph(x)->setData(times.at(x), ADCvals.at(x));
+        ui->plot->graph(x)->setData(times[x], ADCvals[x]);
+        ui->plot->graph(x)->removeDataBefore(timestamp-5);
     }
 
     //reset and redraw graph
-    ui->plot->xAxis->setRange(timestamp-5, 5);
+    ui->plot->xAxis->setRange(timestamp, 5, Qt::AlignRight);
     ui->plot->replot();
-
-    //close database
-    sqlite3_close(db);
 }
 
 int MainWindow::readKeys(void *NA, int argc, char **argv, char **colname)
 {
-    std::cout << colname[0];
-    static_cast<QVector<QString> *>(NA)->push_back(colname[0]);
+    QVector<QString> *ptr = static_cast<QVector<QString> *>(NA);
+    if(!ptr->contains(argv[0]))
+        ptr->push_back(argv[0]);
+
+    return 0;
+}
+
+int MainWindow::readVals(void *NA, int argc, char **argv, char **colname)
+{
+    double xtimestamp = std::atof(argv[3]);
+    static_cast<double*>(NA)[0] = xtimestamp;
+    double xdata = std::atof(argv[2]);
+    static_cast<double*>(NA)[1] = xdata;
     return 0;
 }
 
 MainWindow::~MainWindow()
 {
+    //close database
+    sqlite3_close(db);
+
     delete ui;
 }
