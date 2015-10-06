@@ -36,9 +36,6 @@ int get_ADC()
 	system("echo 1 > /dev/ttyACM0");
 	usleep(50000);
 	system("cat /dev/ttyACM0 > data.txt");
-	cout << "!!";
-	usleep(200000);
-	system("killall cat");
 	FILE* fp = fopen("data.txt", "r");
 	fscanf(fp, "%d", &data);
 	fclose(fp);
@@ -69,7 +66,6 @@ string get_IP_str()
 
 string get_timestamp_str()
 {
-	cout << "Getting timestamp...\n";
 	time_t timer;
 	time(&timer);
 	char strdate[100];
@@ -84,7 +80,6 @@ string get_devID()
 {
 	//get device ID
 	//for now, we'll use the ASCII values of the first 4 characters of the hostname to form an ID
-	cout << "Getting Device ID...\n";
 	unsigned int devID = 0;
 	char hostname[4];
 	gethostname(hostname, sizeof(hostname));
@@ -127,60 +122,63 @@ int main(int argc, char* argv[])
 		return -3;
 	}
 	
-
-	struct sockaddr remote;
-	socklen_t slen = sizeof(remote);
-	char sockdata[9]; //buffer for received data
-	bzero(sockdata, sizeof(sockdata));
-	while(memcmp(sockdata,"get_data",8) != 0) //block until we receive the command
+	
+	while(1)
 	{
-		cout << "Entering read state\n";
-		int n = recvfrom(socketfd, &sockdata, 8, 0, &remote, &slen); //read from socket
-		if(n < 0)
-			cerr << "Error reading from socket\n";
+		struct sockaddr remote;
+		socklen_t slen = sizeof(remote);
+		char sockdata[9]; //buffer for received data
+		bzero(sockdata, sizeof(sockdata));
+	
+		while(memcmp(sockdata,"get_data",8) != 0) //block until we receive the command
+		{
+			cout << "Entering read state\n";
+			int n = recvfrom(socketfd, &sockdata, 8, 0, &remote, &slen); //read from socket
+			if(n < 0)
+				cerr << "Error reading from socket\n";
+		}
+		cout << "Command received!\n";
+	
+	
+		//get values and wrap into JSON object
+		char chData[10] = {0};
+		double temp = calc_temp((double)get_ADC()) - 273.15;
+		sprintf(chData, "%.1f", temp);
+		string strData = chData;
+		string timestamp = get_timestamp_str();
+		//string IP = get_IP_str();
+		string strID = "1000";
+		//create JSON string
+		cout << "JSON object is: \n";
+		string JSON = "";
+		JSON.reserve(256);
+			JSON += "{\n";
+			JSON += "\"DeviceID\": \"" + strID; JSON += "\",\n";
+			JSON += "\"DeviceType\": \"Thermistor\",\n";
+			JSON += "\"Data\": \"" + strData; JSON += "\",\n";
+			JSON += "\"Timestamp\": \"" + timestamp; JSON += "\",\n";
+			//JSON += "\"currentIP\": \"" + IP + "\",\n";
+			JSON += "}";
+		cout << JSON << endl;
+	
+		struct sockaddr_in serv_addr;
+		struct sockaddr_in *rem_addr = (struct sockaddr_in*)&remote;
+		serv_addr.sin_family = AF_INET;
+		serv_addr.sin_addr.s_addr = rem_addr->sin_addr.s_addr;
+		serv_addr.sin_port = htons(REM_PORT_NUMBER);
+	
+		char ipstr[INET_ADDRSTRLEN] = {0};
+		cout << "Request came from: " << inet_ntop(AF_INET, &(serv_addr.sin_addr), ipstr, INET_ADDRSTRLEN) << endl;
+	
+		//send data over broadcast socket
+		int ret = sendto(socketfd, JSON.c_str(), JSON.length(), 0, (struct sockaddr *)&serv_addr, sizeof(serv_addr)); 
+		if(ret < 0)
+		{
+			perror("Error sending data");
+			cerr << ret;
+		}
+		cout << "Done.\n";
 	}
-	cout << "Command received!\n";
-	
-	
-	//get values and wrap into JSON object
-	char chData[10] = {0};
-	double temp = calc_temp((double)get_ADC()) - 273.15;
-	cout << temp << endl;
-	sprintf(chData, "%.1f", temp);
-	string strData = chData;
-	string timestamp = get_timestamp_str();
-	//string IP = get_IP_str();
-	string strID = "1000";
-	//create JSON string
-	cout << "JSON object is: \n";
-	string JSON = "";
-	JSON.reserve(256);
-		JSON += "{\n";
-		JSON += "\"DeviceID\": \"" + strID; JSON += "\",\n";
-		JSON += "\"DeviceType\": \"Thermistor\",\n";
-		JSON += "\"Data\": \"" + strData; JSON += "\",\n";
-		JSON += "\"Timestamp\": \"" + timestamp; JSON += "\",\n";
-		//JSON += "\"currentIP\": \"" + IP + "\",\n";
-		JSON += "}";
-	cout << JSON << endl;
-	
-	struct sockaddr_in serv_addr;
-	struct sockaddr_in *rem_addr = (struct sockaddr_in*)&remote;
-	serv_addr.sin_family = AF_INET;
-	serv_addr.sin_addr.s_addr = rem_addr->sin_addr.s_addr;
-	serv_addr.sin_port = htons(REM_PORT_NUMBER);
-	
-	char ipstr[INET_ADDRSTRLEN] = {0};
-	cout << inet_ntop(AF_INET, &(serv_addr.sin_addr), ipstr, INET_ADDRSTRLEN);
-	
-	//send data over broadcast socket
-	int ret = sendto(socketfd, JSON.c_str(), JSON.length(), 0, (struct sockaddr *)&serv_addr, sizeof(serv_addr)); 
-	if(ret < 0)
-	{
-		perror("Error sending data");
-		cerr << ret;
-	}
-	cout << "Done.\n";
 	
 	close(socketfd);
 	
