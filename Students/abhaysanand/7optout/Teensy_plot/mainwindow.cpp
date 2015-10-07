@@ -73,29 +73,40 @@ bool MainWindow::queryDatabase(QSqlQueryModel *queryModel, QString queryString)
     }
 }
 
+void teensy_thread::run()
+{
+    MainWindow mainObj;
+    while(1)
+    {
+        QString queryString = "select * from teensydata order by DeviceID ASC, Timestamp ASC";
+        QSqlQueryModel *queryModel = new QSqlQueryModel();
+
+        bool ret = 0;
+
+        ret = mainObj.queryDatabase(queryModel, queryString);
+
+        if (ret == true)
+        {
+            /* Display contents in tableView */
+            mainObj.ui->tableView->setModel(queryModel);
+
+            /* Call plotting function */
+            mainObj.makePlot();
+        }
+        else
+        {
+            mainObj.ui->label_success->setText("Failed");
+        }
+
+        QThread::msleep(400);
+    }
+}
+
 void MainWindow::on_commandLinkButton_go_clicked()
 {
-    //ui->customPlot->legend->clearItems();
-    ui->customPlot->clearGraphs();
-    QString queryString = "select * from teensydata order by DeviceID ASC, Timestamp ASC";
-    QSqlQueryModel *queryModel = new QSqlQueryModel();
+    teensy_thread tThread;
 
-    bool ret = 0;
-
-    ret = queryDatabase(queryModel, queryString);
-
-    if (ret == true)
-    {
-        /* Display contents in tableView */
-        ui->tableView->setModel(queryModel);
-
-        /* Call plotting function */
-        makePlot();
-    }
-    else
-    {
-        ui->label_success->setText("Failed");
-    }
+    tThread.start();
 }
 
 void MainWindow::addLine(int index)
@@ -156,10 +167,10 @@ void MainWindow::makePlot()
 
     bool ret = 0;
 
-    ui->customPlot->legend->setVisible(false);
-    ui->customPlot->legend->setVisible(true);
-    ui->customPlot->legend->setFont(QFont("Helvetica", 9));
-    ui->customPlot->legend->setRowSpacing(-3);
+//    ui->customPlot->legend->setVisible(false);
+//    ui->customPlot->legend->setVisible(true);
+//    ui->customPlot->legend->setFont(QFont("Helvetica", 9));
+//    ui->customPlot->legend->setRowSpacing(-3);
 
     for (list = 0; list < listSize; list++)
     {
@@ -181,7 +192,7 @@ void MainWindow::makePlot()
 //                ui->customPlot->graph(list + listSize)->addData(x-1, y);
 //                ui->customPlot->legend->removeItem(list + listSize);
 
-                ui->customPlot->graph(list)->rescaleValueAxis(true);
+                //ui->customPlot->graph(list)->rescaleValueAxis(true);
                 ui->customPlot->replot();
                 if (x > xMax)
                 {
@@ -190,7 +201,8 @@ void MainWindow::makePlot()
             }
         }
     }
-    ui->customPlot->xAxis->setRange(xMax-5, 5, Qt::AlignLeft);
+    ui->customPlot->xAxis->setRange(xMax-10, 10, Qt::AlignLeft);
+    ui->customPlot->yAxis->setRange(0, 1023);
 }
 
 void MainWindow::on_commandLinkButton_exit_clicked()

@@ -6,14 +6,23 @@
 #include <QtSql>
 #include <QFileInfo>
 #include <string>
+#include <QtCore>
 
 namespace Ui {
 class MainWindow;
+class teensy_thread;
 }
+
+class teensy_thread : public QThread
+{
+public:
+    void run();
+};
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    friend class teensy_thread;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
