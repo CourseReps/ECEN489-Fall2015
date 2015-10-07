@@ -18,7 +18,7 @@ In addition, data will have to be transferred from the microcontroller to a Linu
 
 ## [Team 1](https://github.com/CourseReps/ECEN489-Fall2015/wiki/project1-team1)
 
-* Kartic Kaveripuram Ramasamy
+* Kartic Bhargav
 * Abhay Anand
 * Cooper Rehn
 

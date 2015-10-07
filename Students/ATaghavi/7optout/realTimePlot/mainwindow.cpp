@@ -72,7 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
   setGeometry(400*2, 250*2, 542*2, 390*2);
-  ui->verticalLayout->removeWidget(ui->customPlot);
   setupDemo(0);
 }
 

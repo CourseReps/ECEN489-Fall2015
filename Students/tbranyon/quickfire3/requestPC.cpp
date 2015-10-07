@@ -62,86 +62,90 @@ int main()
 	int id, data, timestamp;
 	string type, ip;
 	char tmp;
-	for(vector<unsigned long>::iterator x = IPtable.begin(); x != IPtable.end(); ++x)
+	while(1)
 	{
-		rem_addr.sin_addr.s_addr = *x;
-		if(sendto(socketfd, cmd, sizeof(cmd), 0, (struct sockaddr*)&rem_addr, sizeof(rem_addr)) < 0) //send request
+		for(vector<unsigned long>::iterator x = IPtable.begin(); x != IPtable.end(); ++x)
 		{
-			cerr << "Sending failed for IP #" << distance(IPtable.begin(),x) << endl;
-			continue;
-		}
-		char buffer[256] = {0};
-		if(recvfrom(socketfd, buffer, sizeof(buffer), 0, 0, 0) < 0) //receive JSON object
-		{
-			cerr << "Socket read failed for IP #" << distance(IPtable.begin(),x) << endl;
-			continue;
-		}
+			rem_addr.sin_addr.s_addr = *x;
+			if(sendto(socketfd, cmd, sizeof(cmd), 0, (struct sockaddr*)&rem_addr, sizeof(rem_addr)) < 0) //send request
+			{
+				cerr << "Sending failed for IP #" << distance(IPtable.begin(),x) << endl;
+				continue;
+			}
+			char buffer[256] = {0};
+			if(recvfrom(socketfd, buffer, sizeof(buffer), 0, 0, 0) < 0) //receive JSON object
+			{
+				cerr << "Socket read failed for IP #" << distance(IPtable.begin(),x) << endl;
+				continue;
+			}
 		
-		cout << "Packet received!\n";
-		if(buffer[0] != '{')
-		{ 
+			cout << "Packet received!\n";
+			if(buffer[0] != '{')
+			{ 
+				JSON = buffer;
+				cout << JSON;
+				continue;
+			}
+			cout << "Valid packet\n";
 			JSON = buffer;
-			cout << JSON;
-			continue;
-		}
-		cout << "Valid packet\n";
-		JSON = buffer;
-		cout << JSON << endl;
-		idpos = JSON.find("DeviceID");
-		typepos = JSON.find("DeviceType");
-		datapos = JSON.find("Data");
-		timepos = JSON.find("Timestamp");
+			cout << JSON << endl;
+			idpos = JSON.find("DeviceID");
+			typepos = JSON.find("DeviceType");
+			datapos = JSON.find("Data");
+			timepos = JSON.find("Timestamp");
 		
-		i = 0;
-		string in1 = "";
-		while(1)
-		{
-			tmp = JSON.at(idpos+12+i);
-			if(tmp == '\"')
-				break;
-			in1.push_back(tmp);
-			++i;
-		}
-		id = atoi(in1.c_str());
+			i = 0;
+			string in1 = "";
+			while(1)
+			{
+				tmp = JSON.at(idpos+12+i);
+				if(tmp == '\"')
+					break;
+				in1.push_back(tmp);
+				++i;
+			}
+			id = atoi(in1.c_str());
 		
-		type.clear();
-		i = 0;
-		while(1)
-		{
-			tmp = JSON.at(typepos+14+i);
-			if(tmp == '\"')
-				break;
-			type.push_back(tmp);
-			++i;
-		}
+			type.clear();
+			i = 0;
+			while(1)
+			{
+				tmp = JSON.at(typepos+14+i);
+				if(tmp == '\"')
+					break;
+				type.push_back(tmp);
+				++i;
+			}
 		
-		i = 0;
-		string in3 = "";
-		while(1)
-		{
-			tmp = JSON.at(datapos+8+i);
-			if(tmp == '\"')
-				break;
-			in3.push_back(tmp);
-			++i;
-		}
-		data = atoi(in3.c_str());
+			i = 0;
+			string in3 = "";
+			while(1)
+			{
+				tmp = JSON.at(datapos+8+i);
+				if(tmp == '\"')
+					break;
+				in3.push_back(tmp);
+				++i;
+			}
+			data = atoi(in3.c_str());
 		
-		i = 0;
-		string in4 = "";
-		while(1)
-		{
-			tmp = JSON.at(timepos+13+i);
-			if(tmp == '\"')
-				break;
-			in4.push_back(tmp);
-			++i;
-		}
-		timestamp = atoi(in4.c_str());
+			i = 0;
+			string in4 = "";
+			while(1)
+			{
+				tmp = JSON.at(timepos+13+i);
+				if(tmp == '\"')
+					break;
+				in4.push_back(tmp);
+				++i;
+			}
+			timestamp = atoi(in4.c_str());
 		
-		char tablecmd[256] = {0};
-		sprintf(tablecmd, "INSERT OR REPLACE INTO TBL1 VALUES(%d, \"%s\", %d, %d);", id, type.c_str(), data, timestamp);
-		cout << tablecmd << endl;
-		sqlite3_exec(db, tablecmd, 0, 0, 0);	
+			char tablecmd[256] = {0};
+			sprintf(tablecmd, "INSERT OR REPLACE INTO TBL1 VALUES(%d, \"%s\", %d, %d);", id, type.c_str(), data, timestamp);
+			cout << tablecmd << endl;
+			sqlite3_exec(db, tablecmd, 0, 0, 0);	
+		}
+		usleep(500000);
 	}
 }
