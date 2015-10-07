@@ -142,8 +142,10 @@ int main(int argc, char* argv[])
 	
 		//get values and wrap into JSON object
 		char chData[10] = {0};
-		double temp = calc_temp((double)get_ADC()) - 273.15;
-		sprintf(chData, "%.1f", temp);
+		//double temp = calc_temp((double)get_ADC()) - 273.15;
+		//sprintf(chData, "%.1f", temp);
+		int adcdata = get_ADC();
+		sprintf(chData, "%d", adcdata);
 		string strData = chData;
 		string timestamp = get_timestamp_str();
 		//string IP = get_IP_str();
@@ -154,7 +156,7 @@ int main(int argc, char* argv[])
 		JSON.reserve(256);
 			JSON += "{\n";
 			JSON += "\"DeviceID\": \"" + strID; JSON += "\",\n";
-			JSON += "\"DeviceType\": \"Thermistor\",\n";
+			JSON += "\"DeviceType\": \"Photoresistor\",\n";
 			JSON += "\"Data\": \"" + strData; JSON += "\",\n";
 			JSON += "\"Timestamp\": \"" + timestamp; JSON += "\",\n";
 			//JSON += "\"currentIP\": \"" + IP + "\",\n";
