@@ -28,14 +28,14 @@ int main(int argc, char* argv[])
 		cerr << "Not enough arguments\n";
 		return -5;
 	}*/
-	system("clear");
+	//system("clear");
 	//read serial data
 	cout << "\nRetrieving serial reading...\n";
 	int data = -1;
-	if(system(cmd1))
-		if(system(cmd2))
-			if(system(cmd3))
-				cerr << "Error finding serial device!!!! Check /dev/ttyACM#...\n";
+	system("cat /dev/ttyACM0 > data.txt");
+	cout << "!!";
+	usleep(250000);
+	system("killall cat");
 	FILE* fp = fopen("data.txt", "r");
 	fscanf(fp, "%d", &data);
 	fclose(fp);
