@@ -1,0 +1,6 @@
+cmake_minimum_required (VERSION 2.6)
+project(server)
+project(client)
+add_executable(server server.cpp)
+add_executable(client client.cpp)
+target_link_libraries(server sqlite3)
