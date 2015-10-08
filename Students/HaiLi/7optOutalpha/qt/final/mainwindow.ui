@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1111</width>
-    <height>645</height>
+    <width>754</width>
+    <height>542</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QCustomPlot" name="customPlot" native="true">
     <property name="geometry">
      <rect>
-      <x>49</x>
-      <y>29</y>
-      <width>1021</width>
-      <height>551</height>
+      <x>9</x>
+      <y>-1</y>
+      <width>741</width>
+      <height>481</height>
      </rect>
     </property>
    </widget>
@@ -30,7 +30,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1111</width>
+     <width>754</width>
      <height>25</height>
     </rect>
    </property>
