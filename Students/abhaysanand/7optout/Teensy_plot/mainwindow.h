@@ -7,17 +7,12 @@
 #include <QFileInfo>
 #include <string>
 #include <QtCore>
+#include <QTimer>
+#include <QCoreApplication>
 
 namespace Ui {
 class MainWindow;
-class teensy_thread;
 }
-
-class teensy_thread : public QThread
-{
-public:
-    void run();
-};
 
 class MainWindow : public QMainWindow
 {
@@ -39,8 +34,10 @@ private slots:
     void addDot(int index, int listSize);
     void addLine(int index);
     bool queryDatabase(QSqlQueryModel *queryModel, QString queryString);
+    void threadRun();
 private:
     Ui::MainWindow *ui;
+    QTimer threadTimer;
 };
 
 #endif // MAINWINDOW_H
