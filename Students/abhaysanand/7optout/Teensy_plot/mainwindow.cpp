@@ -73,40 +73,34 @@ bool MainWindow::queryDatabase(QSqlQueryModel *queryModel, QString queryString)
     }
 }
 
-void teensy_thread::run()
+void MainWindow::threadRun()
 {
-    MainWindow mainObj;
-    while(1)
+    QCoreApplication::flush();
+    QString queryString = "select * from teensydata order by DeviceID ASC, Timestamp ASC";
+    QSqlQueryModel *queryModel = new QSqlQueryModel();
+
+    bool ret = 0;
+
+    ret = queryDatabase(queryModel, queryString);
+
+    if (ret == true)
     {
-        QString queryString = "select * from teensydata order by DeviceID ASC, Timestamp ASC";
-        QSqlQueryModel *queryModel = new QSqlQueryModel();
+        /* Display contents in tableView */
+        ui->tableView->setModel(queryModel);
 
-        bool ret = 0;
-
-        ret = mainObj.queryDatabase(queryModel, queryString);
-
-        if (ret == true)
-        {
-            /* Display contents in tableView */
-            mainObj.ui->tableView->setModel(queryModel);
-
-            /* Call plotting function */
-            mainObj.makePlot();
-        }
-        else
-        {
-            mainObj.ui->label_success->setText("Failed");
-        }
-
-        QThread::msleep(400);
+        /* Call plotting function */
+        makePlot();
+    }
+    else
+    {
+        ui->label_success->setText("Failed");
     }
 }
 
 void MainWindow::on_commandLinkButton_go_clicked()
 {
-    teensy_thread tThread;
-
-    tThread.start();
+    connect(&threadTimer, SIGNAL(timeout()), this, SLOT(threadRun()));
+    threadTimer.start(100);
 }
 
 void MainWindow::addLine(int index)
@@ -207,6 +201,5 @@ void MainWindow::makePlot()
 
 void MainWindow::on_commandLinkButton_exit_clicked()
 {
-    teensy_db.close();
     exit(1);
 }
