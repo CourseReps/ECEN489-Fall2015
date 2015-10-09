@@ -13,6 +13,20 @@
 
 using namespace std;
 
+int get_serial_data()
+{
+  char buff[128];
+	cout << "opening\n";
+  FILE *fp = popen("cat < /dev/ttyACM0","r");
+  while(fgets( buff, 128, fp ) != NULL ) {
+    break;
+  }
+  string ret(buff);
+  ret = ret.substr(0, ret.length()-1);
+  pclose(fp);
+  return atoi(ret.c_str());
+}
+
 int main(int argc, char *argv[]) //arguments: hostname(1) portnumber(2) 
 {
 	if(argc < 3)
@@ -52,23 +66,47 @@ int main(int argc, char *argv[]) //arguments: hostname(1) portnumber(2)
 	}
 	
 	//data request/transfer
-	char cmd[10] = "get_photo";
-	int n = write(socketfd, cmd, sizeof(cmd));
+	//char cmd[10] = "get_photo
+	int data;
+	system("cat /dev/ttyACM0 > data.txt");
+	FILE* fp = fopen("data.txt", "r");
+	fscanf(fp, "%d", &data);
+	fclose(fp);
+	system("rm data.txt");
+	int n = write(socketfd, &data, sizeof(int));
 	if(n < 0)
-		cerr << "Error writing command\n";
+	{
+		cerr << "error writing to socket, exiting!\n";
+		return 2;
+	}
+	int incoming;
+	n = read(socketfd, &incoming, sizeof(int)); //blocks until data is there
+	if(n < 0)
+	{
+		cerr << "Error reading, exiting!\n";
+		return 1;
+	}
+	cout << incoming << endl;
+	char cmd[78] = {0};
+	sprintf(cmd, "echo %d > /dev/ttyACM0", incoming);
+	system(cmd);
+
+	/*int n = write(socketfd, cmd, sizeof(cmd));
+	if(n < 0)
+		cerr << "Error writing command\n";*/
 	
-	unsigned int filesize = 0;
+	/*unsigned int filesize = 0;
 	n = read(socketfd, &filesize, sizeof(int));
 	if(n < 0)
 		cerr << "Error reading size\n";
-	cout << "Size: " << n << endl;
+	cout << "Size: " << n << endl;*/
 	
-	char buffer[10240];
+	/*char buffer[10240];
 	FILE* image = fopen("remotescreenshot.jpeg", "wb");
 	struct timeval timeout = {5, 0}; //5.0000000 second max timeout
 	fd_set fds;
-	int buffer_fd, recv_size, totalbytes = 0;
-	while(totalbytes < filesize)
+	int buffer_fd, recv_size, totalbytes = 0;*/
+	/*while(1)//totalbytes < filesize)
 	{
 		FD_ZERO(&fds);
 		FD_SET(socketfd, &fds);
@@ -90,17 +128,19 @@ int main(int argc, char *argv[]) //arguments: hostname(1) portnumber(2)
 				recv_size = read(socketfd, buffer, sizeof(buffer));
 			}while(recv_size < 0);
 		}
+		if(recv_size == 0)
+			break;
 		n = fwrite(buffer, 1, recv_size, image);
 		if(n < recv_size)
 			cerr << "Error writing to file!\n";
 		totalbytes += recv_size;
-		cout << "Total: " << filesize << "\t Received: " << totalbytes << endl;
-		usleep(100000);
+		//cout << "Total: " << filesize << "\t Received: " << totalbytes << endl;
 	}
-	fclose(image);
+	fclose(image);*/
+	
 	
 	//close connection and display screenshot
 	close(socketfd);
-	system("gpicview remotescreenshot.jpeg &");
+	//system("gpicview remotescreenshot.jpeg &");
 	return 0;
 }
