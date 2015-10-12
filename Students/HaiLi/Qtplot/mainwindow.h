@@ -35,12 +35,18 @@ private:
     QSqlQuery* qry2;
     QSqlQuery* qry3;
     QSqlQuery* qy;
+    QSqlQuery* qry[5];
     int init_time;
     int count11,count21,count22,count31,count32;
     int count12;
+    int count[5][2];
     int idcount;
     int i;
+    int sum;
     QString IDlist[10];
+    double ts[5];
+    double devid[5];	
+    double maxFlow_rate,maxPump_rate,maxDistance;
 
 };
 
