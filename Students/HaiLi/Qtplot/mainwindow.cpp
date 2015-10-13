@@ -146,7 +146,7 @@ void MainWindow::realtimeDataSlot()
          int i=0;
          while(i<idcount){
          qry[i] = new QSqlQuery(accounts_db);
-         //open_qry[0]();
+         
          qry[i]->setForwardOnly(true);
 
          if (!(qry[i]->prepare("select FlowRate, PumpRate, IR_range from TBL1 where DeviceID="+IDlist[i]+";")))
