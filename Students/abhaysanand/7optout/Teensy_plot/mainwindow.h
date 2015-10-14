@@ -6,6 +6,9 @@
 #include <QtSql>
 #include <QFileInfo>
 #include <string>
+#include <QtCore>
+#include <QTimer>
+#include <QCoreApplication>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +17,7 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    friend class teensy_thread;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -30,8 +34,10 @@ private slots:
     void addDot(int index, int listSize);
     void addLine(int index);
     bool queryDatabase(QSqlQueryModel *queryModel, QString queryString);
+    void threadRun();
 private:
     Ui::MainWindow *ui;
+    QTimer threadTimer;
 };
 
 #endif // MAINWINDOW_H
