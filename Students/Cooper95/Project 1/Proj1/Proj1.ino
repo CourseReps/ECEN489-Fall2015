@@ -1,5 +1,4 @@
 #include <SoftwareSerial.h>
-#include <FreqMeasure.h>
 
 /*
  * Pin 03: Input from flow rate sensor
@@ -15,6 +14,7 @@ const String get_data = "get_data";
 const String send_data = "send_data";
 
 SoftwareSerial BTSerial(9,10);
+int FlowSens = 4;
 int RelayCtrl = 12;
 int IRin = 14;
 int PumpPWM = 23;
@@ -23,17 +23,16 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   BTSerial.begin(9600);
-  FreqMeasure.begin();
+  pinMode(FlowSens, INPUT);
+  attachInterrupt(FlowSens, rpm, RISING);
   pinMode(PumpPWM, OUTPUT);
   pinMode(IRin, INPUT);
   pinMode(RelayCtrl, OUTPUT);
 }
 
-//define variables 
-int FreqIndex = 0;
+//initialize variables 
+volatile int edges = 0;
 int count = 0;
-float sum = 0;
-float freqs[30];
 float freq = 0;
 float OutFlowRt = 0;
 float InFlowRt = 0;
@@ -42,29 +41,28 @@ bool RecData = false;
 static String BTsend = "";
 
 //define calibration constants
-float Ap = -9.896452;
-float Bp =  53.94933;
-float Cp = -.7948750;
-float Dp =  15.38008;
+const float Ap = -9.896452;
+const float Bp =  53.94933;
+const float Cp = -.7948750;
+const float Dp =  15.38008;
 
 //declare functions
 int LpmToPWM(float LPerMin);
 void GatherData();
+void rpm ();
 
 void loop() {
   
-  //measure instantanious freq., put into array holding the last 30 freq measurements
-  if (FreqMeasure.available()){
-    freqs[FreqIndex] = FreqMeasure.read();
-    //increment or roll over FreqIndex
-    if (FreqIndex < 30)
-      FreqIndex++;
-    else
-      FreqIndex = 0;
-    //count until freqs is full of last 30 measurements
-    if (count < 30)
-      count = count + 1;
+  count = count + 1;
+  if(count > 250){
+    cli();
+    freq = edges * 4;
+    sei();
+    //Serial.println(freq);
+    count = 0;
+    edges = 0;
   }
+  delay(1);
   
   //set up BT transactions
   static String BTget = "";
@@ -81,26 +79,34 @@ void loop() {
     BTget += temp;
     index++;
 
-    /* DEBUG CODE
+    /* DEBUG CODE 
     Serial.print(index);
     Serial.print(": ");
     Serial.print(BTget);
     Serial.print(": ");
     Serial.println(int(temp));
-    */
+    /**/
     if(RecData)
     {
       if(0 == int(temp))
       {
-        //Parse string recieved and put data into OutFlowRt and SolState
+        //Parse BTget and put data into OutFlowRt and SolState
+        int commaIndex = BTget.indexOf(',');
+        OutFlowRt = BTget.substring(0,commaIndex).toFloat();
+        //Default the solenoid to true (or closed)
+        if(BTget.substring(commaIndex+1) == "false")
+          SolState = false;
+        else
+          SolState = true;
         //set outputs
         analogWrite(PumpPWM, LpmToPWM(OutFlowRt));
         digitalWrite(RelayCtrl, SolState);
+        RecData = false;
       }
     }
     else
     {
-      //On line break, check if "Get data" command, if so, send data
+      //On line break, check if "Get data" or "Send data" command, if so, send or get data to/from NUC
       if(0 == int(temp))
       {
         if(0 == BTget.compareTo(get_data))
@@ -125,6 +131,15 @@ void loop() {
       }
     }
   }
+  analogWrite(PumpPWM, LpmToPWM(OutFlowRt));
+  digitalWrite(RelayCtrl, SolState);
+}
+
+//Define functions
+void rpm(){
+  //cli();
+  edges = edges + 1;
+  //sei();
 }
 
 //Convert from Liters per Minute to PWM value based on calibrated eqn.
@@ -136,37 +151,36 @@ int LpmToPWM(float LPerMin){
     lpm = 0;
   else
     lpm = LPerMin;
-  return (int) (Ap*pow(lpm,3) + Bp*pow(lpm,2) + Cp*lpm + Dp); 
+  if(lpm ==0)
+    return 0;
+  else
+    return (int) (Ap*pow(lpm,3) + Bp*pow(lpm,2) + Cp*lpm + Dp); 
 }
 
 void GatherData(){
   //BTsend should be in the order: IR range, Pump rate, Flow rate, Solenoid state
-  
+  //Serial.println("check1");
   //measure IR sensor
-  if(analogRead(IRin) > 200)
-    BTsend += '1';
-  else
+  if(analogRead(IRin) > 500)
     BTsend += '0';
+  else
+    BTsend += '1';
   BTsend += ',';
   
   //current output to pump
-  BTsend += OutFlowRt;
+  BTsend += String(OutFlowRt);
   BTsend += ',';
   
-  //get average of last 30 frequencies for flow rate
-  if (count == 30){
-    for (int i = 0; i < 30; i++){
-      sum += freqs[i];
-    }
-    freq = FreqMeasure.countToFrequency(sum/30);
-  } else
-    freq = 0;
   //Flow rate = frequency / 33 Hz/lpm
   InFlowRt = freq / 33;
-  BTsend += InFlowRt;
+  BTsend += String(InFlowRt);
   BTsend += ',';
-
+  
+  
+  
+  //Serial.println("check2");
   //current output to solenoid
-  BTsend += SolState;
+  BTsend += String(SolState);
+  Serial.println(BTsend);
 }
 
