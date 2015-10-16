@@ -70,9 +70,9 @@ std::string getJSON(std::vector<std::string> stuff){
 
   ret+="{ ";
   ret+="\"ID\": \""+stuff[0]+"\", ";
-  ret+="\"FlowRate\": \""+stuff[1]+"\", ";
+  ret+="\"IRRange\": \""+stuff[1]+"\", ";
   ret+="\"PumpRate\": \""+stuff[2]+"\", ";
-  ret+="\"IRRange\": \""+stuff[3]+"\", ";
+  ret+="\"FlowRate\": \""+stuff[3]+"\", ";
   ret+="\"SolenoidState\": \""+stuff[4]+"\", ";
   ret+="\"Timestamp\": \""+stuff[5]+"\", ";
   ret+="\"CurrentIP\": \""+stuff[6]+"\" ";
