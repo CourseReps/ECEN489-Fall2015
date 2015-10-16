@@ -68,7 +68,7 @@ std::vector<std::string> getDeviceInfo(std::string json){
 
 
 void addDeviceInfo(std::vector<std::string> inf, sqlite3 *db){
-  std::string comm = "INSERT INTO SensorData (ID, Flowrate, Pumprate, IRsensor, Solenoid, Timestamp, CurrentIP)";
+  std::string comm = "INSERT INTO SensorData (ID, IRSensor, Pumprate, Flowrate, Solenoid, Timestamp, CurrentIP)";
   comm+=" SELECT '"+inf[0]+"', '"+inf[1]+"', '"+inf[2]+"', '"+inf[3]+"', '"+inf[4]+"', '"+inf[5]+"', '"+inf[6]+"'";
   comm+=" WHERE NOT EXISTS (SELECT ID FROM SensorData WHERE ID = '"+inf[0]+"' AND IRSensor='"+inf[1]+"' AND Pumprate='"+inf[2]+"' AND FlowRate='"+inf[3]+"' AND Solenoid='"+inf[4]+"' AND Timestamp='"+inf[5]+"' AND CurrentIP='"+inf[6]+"')";
   char *err_msg = 0;
@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
 
   vector<string> IPs;
   IPs.push_back("192.168.1.108");
-  IPs.push_back("192.168.1.100");
+  //IPs.push_back("192.168.1.100");
 
   try
   {
@@ -146,7 +146,7 @@ int main(int argc, char* argv[])
           socket.connect(*endpoint_iterator++, error);
         }
         if (error)
-          throw boost::system::system_error(error);
+          cout<<"Could not connect to "<<IPs[i]<<"\n";
 
           std::vector<char> buf(10000);
           string mess="get_data";
