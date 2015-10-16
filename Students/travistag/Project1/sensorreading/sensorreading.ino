@@ -58,11 +58,11 @@ int getIRSensor(){
 
 String getDataString(){
   String s = "";
-  s+=String(getFlowRate());
+  s+=String(getIRSensor());
   s+=", ";
   s+=String(pumprate);
   s+=", ";
-  s+=String(getIRSensor());
+  s+=String(getFlowRate());
   s+=", ";
   s+=String(solenoidstate);
   return s;
@@ -70,10 +70,11 @@ String getDataString(){
 
 void loop ()    
 {
-   setPumpRate(pumpval);
+   if(Serial2.available()){
+     int p = Serial2.parseInt();
+     setPumpRate(p);
+   }
    String dat = getDataString();
-   Serial.println(dat);
    Serial2.println(dat);
-   if(pumpval>255)
-     pumpval=0;
+   
 }
