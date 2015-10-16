@@ -108,7 +108,6 @@ bool btThread::connectToClient (int i)
 
 void btThread::run()
 {
-    QString dest = "00:12:09:13:99:42";
     char *chptr = new char, ch;
     int bytes_sent, bytes_received, len;
     QString val;
@@ -159,14 +158,14 @@ void btThread::run()
             ofstream fout ("/home/karticbhargav/ClientIdentity.json");
 
 
-            if ((bytes_received = recv(sockfd[j], chptr, 1000000, 0)) == -1)
+            if ((bytes_received = recv(sockfd[j], chptr, 1000, 0)) == -1)
             {
                 perror("recv");
                 exit(1);
             }
 
 
-            len = strlen(chptr);
+            len = strlen(chptr); //len = bytes_received + 1;
             for (int i=0; i< len ; i++)
             {
                 ch = chptr[i];
@@ -187,25 +186,25 @@ void btThread::run()
             ID = JID.toString(); //JIRRange, JPumpRate, JFlowRate, JSolenoidState, JID, JTimestamp, JCurrentIP
 
             JIRRange = sett2["IRRange"];
-            IRRange = JID.toDouble();
+            IRRange = JIRRange.toDouble();
 
             JPumpRate = sett2["PumpRate"];
-            PumpRate = JID.toDouble();
+            PumpRate = JPumpRate.toDouble();
 
             JFlowRate = sett2["FlowRate"];
-            FlowRate = JID.toDouble();
+            FlowRate = JFlowRate.toDouble();
 
             JSolenoidState = sett2["SolenoidState"];
-            SolenoidState = JID.toBool();
+            SolenoidState = JSolenoidState.toBool();
 
             JTimestamp = sett2["Timestamp"];
-            Timestamp = JID.toInt();
+            Timestamp = JTimestamp.toInt();
 
             JCurrentIP = sett2["CurrentIP"];
-            CurrentIP = JID.toString();
+            CurrentIP = JCurrentIP.toString();
 
 
-            emit setParameterValues(IRRange, PumpRate, FlowRate, SolenoidState, ID, Timestamp, CurrentIP);
+            emit setParameterValues(IRRange, PumpRate, FlowRate, SolenoidState, ID, Timestamp, CurrentIP,j);
 
         }
 
