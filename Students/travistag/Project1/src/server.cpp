@@ -10,8 +10,8 @@ using namespace std;
 
 string getValue(string devi){
   string ret="NULL";
-  string comm = "sudo head -1 /dev/rfcomm0 > read.txt";
-  system(comm.c_str());
+//  string comm = "sudo head -1 /dev/rfcomm0 > read.txt";
+//  system(comm.c_str());
   ifstream myinput("read.txt");
   if(myinput.is_open()){
     string line;
@@ -23,10 +23,12 @@ string getValue(string devi){
 }
 
 void writeValue(int x){
-  system("echo "+x+" | sudo tee /dev/rfcomm0");
+  string comm = "echo " + to_string(x) + " | sudo tee /dev/rfcomm0";
+  system(comm.c_str());
 }
 
 std::string getCurrentIP(){
+  return "192.168.1.108";
   system("ifconfig en0 | grep \"inet \" > currentip.txt");
   ifstream myinput("currentip.txt");
   std::string line;
@@ -68,12 +70,12 @@ std::string getJSON(std::vector<std::string> stuff){
 
   ret+="{ ";
   ret+="\"ID\": \""+stuff[0]+"\", ";
-  ret+="\"IRRange\": \""+stuff[1]+"\", ";
+  ret+="\"FlowRate\": \""+stuff[1]+"\", ";
   ret+="\"PumpRate\": \""+stuff[2]+"\", ";
-  ret+="\"FlowRate\": \""+stuff[3]+"\", ";
-  ret+="\"SolenoidState\": \""+stuff[3]+"\", ";
-  ret+="\"Timestamp\": \""+stuff[3]+"\", ";
-  ret+="\"CurrentIP\": \""+stuff[4]+"\" ";
+  ret+="\"IRRange\": \""+stuff[3]+"\", ";
+  ret+="\"SolenoidState\": \""+stuff[4]+"\", ";
+  ret+="\"Timestamp\": \""+stuff[5]+"\", ";
+  ret+="\"CurrentIP\": \""+stuff[6]+"\" ";
   ret+="}";
 
   return ret;
@@ -103,9 +105,9 @@ int main(){
         vector<double> currentData = getDataFromString(vals);
         std::vector<string> v;
         v.push_back("Team4");
-        v.push_back(to_string(currentData[2]));
         v.push_back(to_string(currentData[0]));
         v.push_back(to_string(currentData[1]));
+        v.push_back(to_string(currentData[2]));
         v.push_back(to_string(currentData[3]));
         v.push_back(to_string(time(0)));
         v.push_back(getCurrentIP());
