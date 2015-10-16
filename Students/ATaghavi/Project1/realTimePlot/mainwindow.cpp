@@ -56,16 +56,99 @@
 #include <iostream>
 #include <math.h>
 #include <cstdlib>
+#include <boost/asio.hpp>
+
+using boost::asio::ip::tcp;
 using namespace std;
 
-map<string, vector< pair<string,string> > >sqlData;
+vector<map<string, vector< pair<string,string> > > >sqlData(5);
+map<string, int> deviceIndices;
 map<string, QCustomPlot*> plots;
+int theIndex = 0;
+vector<string> deviceNames;
+
+string hostName = "127.0.0.1";
+string portNumber =  "2222";
+
+int getIndex(string name)
+{
+    bool found = false;
+    for(int i=0; i<deviceNames.size(); i++)
+        if(deviceNames[i] == name)
+            found = true;
+
+    if(deviceIndices[name] == NULL && !found)
+    {
+        cout<<"Adding new device named "<<name<<"\n";
+        deviceIndices[name] = theIndex;
+        plots["IR Sensor"]->addGraph();
+        plots["Pump Rate"]->addGraph();
+        plots["Flow Rate"]->addGraph();
+        plots["Solenoid"]->addGraph();
+        QColor color;
+        srand(time(0)*rand());
+        color.setRgb(rand()%255, rand()%255, rand()%255);
+        plots["IR Sensor"]->graph(theIndex)->setPen(QPen(color));
+        plots["IR Sensor"]->graph(theIndex)->setName(QString(name.c_str()));
+        plots["Pump Rate"]->graph(theIndex)->setPen(QPen(color));
+        plots["Pump Rate"]->graph(theIndex)->setName(QString(name.c_str()));
+        plots["Flow Rate"]->graph(theIndex)->setPen(QPen(color));
+        plots["Flow Rate"]->graph(theIndex)->setName(QString(name.c_str()));
+        plots["Solenoid"]->graph(theIndex)->setPen(QPen(color));
+        plots["Solenoid"]->graph(theIndex)->setName(QString(name.c_str()));
+        theIndex++;
+        deviceNames.push_back(name);
+    }
+    return deviceIndices[name];
+}
+
+void addPlot(string name, QHBoxLayout *hlayout, int minY,int maxY)
+{
+    QCustomPlot *customPlot = new QCustomPlot();
+    plots[name] = customPlot;
+    customPlot->plotLayout()->insertRow(0);
+    customPlot->plotLayout()->addElement(0,0, new QCPPlotTitle(customPlot, QString(name.c_str())));
+    customPlot->xAxis->setTickLabelType(QCPAxis::ltDateTime);
+    customPlot->xAxis->setDateTimeFormat("mm:ss");
+    customPlot->xAxis->setLabel("Time");
+    customPlot->yAxis->setLabel("Value");
+    customPlot->yAxis->setRange(minY, maxY);
+    /*
+    for(int i=0; i<6; i++)
+    {
+        QColor color;
+        srand(time(0)*rand());
+        color.setRgb(rand()%255, rand()%255, rand()%255);
+        customPlot->addGraph();
+        customPlot->graph(i)->setPen(QPen(color));
+    }
+    */
+    customPlot->legend->setVisible(true);
+    hlayout->addWidget(customPlot);
+}
+
+void setUpPlots(QVBoxLayout *verticalLayout)
+{
+    QHBoxLayout *hlayout = new QHBoxLayout();
+    verticalLayout->addLayout(hlayout);
+
+    addPlot("IR Sensor", hlayout, 0,1200);
+    addPlot("Pump Rate",hlayout,0,255);
+    QHBoxLayout *hlayout2 = new QHBoxLayout();
+    verticalLayout->addLayout(hlayout2);
+    addPlot("Flow Rate", hlayout2, 0,1000);
+    addPlot("Solenoid",hlayout2,-1,2);
+}
 
 static int callback(void *data, int argc, char **argv, char **azColName){
-   sqlData["IR Sensor"].push_back( pair<string,string>( argv[5], argv[1] ));
-   sqlData["Flow Rate"].push_back( pair<string,string>( argv[5], argv[3] ));
-   sqlData["Pump Rate"].push_back( pair<string,string>( argv[5], argv[2] ));
-   sqlData["Solenoid"].push_back( pair<string,string>( argv[5], argv[4] ));
+
+   string s = argv[0];
+   int t = getIndex(s);
+
+   sqlData[t]["IR Sensor"].push_back( pair<string,string>( argv[5], argv[1] ));
+   sqlData[t]["Flow Rate"].push_back( pair<string,string>( argv[5], argv[3] ));
+   sqlData[t]["Pump Rate"].push_back( pair<string,string>( argv[5], argv[2] ));
+   sqlData[t]["Solenoid"].push_back( pair<string,string>( argv[5], argv[4] ));
    return 0;
 }
 
@@ -86,7 +169,8 @@ void MainWindow::setupDemo(int demoIndex)
   setWindowTitle("QCustomPlot: "+demoName);
   statusBar()->clearMessage();
   currentDemoIndex = demoIndex;
- setupRealtimeDataDemo(NULL);
+  setUpPlots(ui->verticalLayout);
+  setupRealtimeDataDemo(NULL);
 }
 
 
@@ -106,6 +190,7 @@ void MainWindow::setupRealtimeDataDemo(QCustomPlot *customPlot)
 
 void MainWindow::readFromDB()
 {
+
     sqlite3 *db;
        char *zErrMsg = 0;
        int rc;
@@ -144,70 +229,72 @@ void MainWindow::realtimeDataSlot()
   double key = QDateTime::currentDateTime().toMSecsSinceEpoch()/1000.0;
 #endif
 
-    QVBoxLayout *verticalLayout = ui->verticalLayout;
-    readFromDB();
-    QHBoxLayout *hlayout = new QHBoxLayout();
-    verticalLayout->addLayout(hlayout);
-    int k = 2;
-    int p =0;
-    for(map<string, vector< pair<string,string> > >::iterator it = sqlData.begin(); it != sqlData.end(); ++it) {
-            vector<pair<string, string> > vals = it->second;
+     readFromDB();
+    for(int k=0; k<theIndex; k++)
+    {
 
-            if(p == k)
-            {
-                hlayout = new QHBoxLayout();
-                verticalLayout->addLayout(hlayout);
-                 p=0;
-            }
-             p++;
-            QVector<double> x(vals.size()), y(vals.size());
-            double maxx, minx;
-            minx = maxx = atof(vals[0].first.c_str());
-            for(int i=0; i<vals.size(); i++)
-            {
-                if(vals[i].second.find("ON") != string::npos)
-                    y[i] = 100;
-                else if(vals[i].second.find("OFF") != string::npos)
-                    y[i] = 1;
-                else
+        map<string, vector< pair<string,string> > >myData = sqlData[k];
+
+        bool first = true;
+        double maxx, minx;
+        for(map<string, vector< pair<string,string> > >::iterator it = myData.begin(); it != myData.end(); ++it) {
+                vector<pair<string, string> > vals = it->second;
+                QVector<double> x(vals.size()), y(vals.size());
+
+                if(first)
+                    minx = maxx = atof(vals[0].first.c_str());
+                for(int i=0; i<vals.size(); i++)
+                {
                     y[i] = atof(vals[i].second.c_str());
 
-                x[i] = atof(vals[i].first.c_str());
+                    x[i] = atof(vals[i].first.c_str());
 
-                minx = min(minx, x[i]);
-                maxx = max(maxx, x[i]);
-            }
-            QCustomPlot *customPlot2;
-            if(plots[it->first] == NULL)
-            {
-             customPlot2 = new QCustomPlot();
-             customPlot2->addGraph();
-             plots[it->first] = customPlot2;
-             customPlot2->plotLayout()->insertRow(0);
-             customPlot2->plotLayout()->addElement(0,0, new QCPPlotTitle(customPlot2, QString(it->first.c_str())));
-             customPlot2->xAxis->setTickLabelType(QCPAxis::ltDateTime);
-             customPlot2->xAxis->setDateTimeFormat("mm:ss");
-             customPlot2->xAxis->setLabel("Time");
-             customPlot2->yAxis->setLabel("Value");
-             customPlot2->yAxis->setRange(0, 1000);
-             hlayout->addWidget(customPlot2);
-            }
-            else
-            {
-             customPlot2 = plots[it->first];
-            }
-             customPlot2->graph(0)->setData(x, y);
-             customPlot2->xAxis->setRange(maxx, 10, Qt::AlignRight);
-             customPlot2->replot();     
-       }
+                    minx = min(minx, x[i]);
+                    maxx = max(maxx, x[i]);
+                }
+
+                QCustomPlot *customPlot;
+                 customPlot = plots[it->first];
+                 customPlot->graph(k)->setData(x, y);
+                 first = false;
+           }
+            plots["IR Sensor"]->xAxis->setRange(maxx, 50, Qt::AlignRight);
+            plots["Pump Rate"]->xAxis->setRange(maxx, 50, Qt::AlignRight);
+            plots["Flow Rate"]->xAxis->setRange(maxx, 50, Qt::AlignRight);
+            plots["Solenoid"]->xAxis->setRange(maxx, 50, Qt::AlignRight);
+        }
+    plots["IR Sensor"]->replot();
+    plots["Pump Rate"]->replot();
+    plots["Flow Rate"]->replot();
+    plots["Solenoid"]->replot();
 }
 
 void MainWindow::sendVoltage(){
     int voltage = ui->spinBox->value();
 
-    string s = "echo " + to_string(voltage) + " > /dev/cu.usbmodem1076261";
+    //string s = "echo " + to_string(voltage) + " > /dev/cu.usbmodem1076261";
 
-    system(s.c_str());
+   // system(s.c_str());
+    boost::asio::io_service io_service;
+
+    tcp::resolver resolver(io_service);
+    tcp::resolver::query query(hostName, portNumber);
+    tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
+    tcp::resolver::iterator end;
+
+    tcp::socket socket(io_service);
+    boost::system::error_code error = boost::asio::error::host_not_found;
+    while (error && endpoint_iterator != end)
+    {
+      socket.close();
+      socket.connect(*endpoint_iterator++, error);
+    }
+    if (error)
+      throw boost::system::system_error(error);
+
+    boost::system::error_code ignored_error;
+    boost::asio::write(socket, boost::asio::buffer(to_string(voltage)),
+    boost::asio::transfer_all(), ignored_error);
 }
 
 void MainWindow::setupPlayground(QCustomPlot *customPlot)
