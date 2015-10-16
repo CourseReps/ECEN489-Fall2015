@@ -23,8 +23,8 @@ string getValue(string devi){
 }
 
 void writeValue(int x){
-  string comm = "echo " + to_string(x) + " | sudo tee /dev/rfcomm0";
-  system(comm.c_str());
+  //string comm = "echo " + to_string(x) + " | sudo tee /dev/rfcomm0";
+  //system(comm.c_str());
 }
 
 std::string getCurrentIP(){
@@ -118,6 +118,7 @@ int main(){
         int x = atoi(comm.c_str());
         cout<<"Setting pump to be "<<x<<"\n\n";
         message = "OK";
+        writeValue(x);
       }
       catch(exception e){
         cout<<"Voltage value must be an int!\n\n";
