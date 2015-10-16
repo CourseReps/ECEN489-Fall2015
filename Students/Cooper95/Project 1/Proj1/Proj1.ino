@@ -1,13 +1,12 @@
 #include <SoftwareSerial.h>
 
 /*
- * Pin 03: Input from flow rate sensor
- * Pin 04: Unusable with analogWrite (from freqMeasure)
+ * Pin 04: Input from flow rate sensor
  * Pin 09: Get data on Teensy from NUC via BC-06. Directly connected to TXD of BC-06
  * Pin 10: Send data from Teensy to NUC via BC-06. Connected using voltage divider circuit.
  * Pin 12: Relay control output
  * Pin 14: IR input
- * Pin 23: PWM output for pump
+ * Pin 20: PWM output for pump
  */
 
 const String get_data = "get_data";
@@ -17,7 +16,7 @@ SoftwareSerial BTSerial(9,10);
 int FlowSens = 4;
 int RelayCtrl = 12;
 int IRin = 14;
-int PumpPWM = 23;
+int PumpPWM = 20;
 
 void setup() {
   // put your setup code here, to run once:
@@ -52,6 +51,33 @@ void GatherData();
 void rpm ();
 
 void loop() {
+
+  //temp serial input code
+  static String SerGet = "";
+  if(Serial.available())
+  {
+    char temp = char(Serial.read());
+    if(10 == int(temp))
+    {
+      temp = 0;
+    }
+    SerGet += temp;
+    if(0 == int(temp))
+      {
+        //Parse SerGet and put data into OutFlowRt and SolState
+        int commaIndex = SerGet.indexOf(',');
+        OutFlowRt = SerGet.substring(0,commaIndex).toFloat();
+        //Default the solenoid to true (or closed)
+        if(SerGet.substring(commaIndex+1) == "false")
+          SolState = false;
+        else
+          SolState = true;
+        //set outputs
+        SerGet = "";
+        analogWrite(PumpPWM, LpmToPWM(OutFlowRt));
+        digitalWrite(RelayCtrl, SolState);
+      }
+  }
   
   count = count + 1;
   if(count > 250){
@@ -101,6 +127,9 @@ void loop() {
         //set outputs
         analogWrite(PumpPWM, LpmToPWM(OutFlowRt));
         digitalWrite(RelayCtrl, SolState);
+        index = 0;
+        BTget = "";
+        BTsend = "";
         RecData = false;
       }
     }
@@ -137,9 +166,7 @@ void loop() {
 
 //Define functions
 void rpm(){
-  //cli();
   edges = edges + 1;
-  //sei();
 }
 
 //Convert from Liters per Minute to PWM value based on calibrated eqn.
@@ -159,7 +186,6 @@ int LpmToPWM(float LPerMin){
 
 void GatherData(){
   //BTsend should be in the order: IR range, Pump rate, Flow rate, Solenoid state
-  //Serial.println("check1");
   //measure IR sensor
   if(analogRead(IRin) > 500)
     BTsend += '0';
@@ -176,9 +202,6 @@ void GatherData(){
   BTsend += String(InFlowRt);
   BTsend += ',';
   
-  
-  
-  //Serial.println("check2");
   //current output to solenoid
   BTsend += String(SolState);
   Serial.println(BTsend);
