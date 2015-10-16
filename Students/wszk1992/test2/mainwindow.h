@@ -3,12 +3,14 @@
 
 #include <QMainWindow>
 #include "qcustomplot.h"
-#include <QtSql/qsqlquery.h>
 #include <QDebug>
 #include <QSqlError>
 #include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QString>
+#include <QSqlQueryModel>
 
-
+#define MAXCLIENT 3
 
 namespace Ui {
 class MainWindow;
@@ -23,18 +25,25 @@ public:
     ~MainWindow();
 
 private slots:
-    void init_sql();
-    void get_query_sql(QSqlQuery *query);
     void easyplot();
     void realtimeDataSlot();
-    void get_data_sql(QSqlQuery *query);
-    void get_timestamp_sql(QSqlQuery *query);
 private:
     Ui::MainWindow *ui;
     QTimer dataTimer;
     double data;
     double timestamp;
     QSqlDatabase accounts_db;
+    QString dbaddr;
+    QSqlQuery *qry;
+    QString deviceID;
+    QString IDlist[MAXCLIENT];
+    int clientnum;
+    int clientsum;
+    int limit;
+    int select;
+    double value[MAXCLIENT];
+
+
 };
 
 #endif // MAINWINDOW_H

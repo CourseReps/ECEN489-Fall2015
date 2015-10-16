@@ -10,6 +10,7 @@
 #include <QString>
 #include <QSqlQueryModel>
 
+#define MAXCLIENT 3
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +27,6 @@ public:
 private slots:
     void easyplot();
     void realtimeDataSlot();
-    void close_qry();
-    void open_qry();
 private:
     Ui::MainWindow *ui;
     QTimer dataTimer;
@@ -35,9 +34,15 @@ private:
     double timestamp;
     QSqlDatabase accounts_db;
     QString dbaddr;
-    QSqlQuery* qry;
-    int init_time;
-    int checkqry;
+    QSqlQuery *qry;
+    QString deviceID;
+    QString IDlist[MAXCLIENT];
+    int clientnum;
+    int clientsum;
+    int limit;
+    int select;
+    double value[MAXCLIENT];
+
 
 };
 

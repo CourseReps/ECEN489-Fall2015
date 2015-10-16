@@ -73,10 +73,9 @@ bool MainWindow::queryDatabase(QSqlQueryModel *queryModel, QString queryString)
     }
 }
 
-void MainWindow::on_commandLinkButton_go_clicked()
+void MainWindow::threadRun()
 {
-    //ui->customPlot->legend->clearItems();
-    ui->customPlot->clearGraphs();
+    QCoreApplication::flush();
     QString queryString = "select * from teensydata order by DeviceID ASC, Timestamp ASC";
     QSqlQueryModel *queryModel = new QSqlQueryModel();
 
@@ -96,6 +95,12 @@ void MainWindow::on_commandLinkButton_go_clicked()
     {
         ui->label_success->setText("Failed");
     }
+}
+
+void MainWindow::on_commandLinkButton_go_clicked()
+{
+    connect(&threadTimer, SIGNAL(timeout()), this, SLOT(threadRun()));
+    threadTimer.start(100);
 }
 
 void MainWindow::addLine(int index)
@@ -156,10 +161,10 @@ void MainWindow::makePlot()
 
     bool ret = 0;
 
-    ui->customPlot->legend->setVisible(false);
-    ui->customPlot->legend->setVisible(true);
-    ui->customPlot->legend->setFont(QFont("Helvetica", 9));
-    ui->customPlot->legend->setRowSpacing(-3);
+//    ui->customPlot->legend->setVisible(false);
+//    ui->customPlot->legend->setVisible(true);
+//    ui->customPlot->legend->setFont(QFont("Helvetica", 9));
+//    ui->customPlot->legend->setRowSpacing(-3);
 
     for (list = 0; list < listSize; list++)
     {
@@ -181,7 +186,7 @@ void MainWindow::makePlot()
 //                ui->customPlot->graph(list + listSize)->addData(x-1, y);
 //                ui->customPlot->legend->removeItem(list + listSize);
 
-                ui->customPlot->graph(list)->rescaleValueAxis(true);
+                //ui->customPlot->graph(list)->rescaleValueAxis(true);
                 ui->customPlot->replot();
                 if (x > xMax)
                 {
@@ -190,11 +195,11 @@ void MainWindow::makePlot()
             }
         }
     }
-    ui->customPlot->xAxis->setRange(xMax-5, 5, Qt::AlignLeft);
+    ui->customPlot->xAxis->setRange(xMax-10, 10, Qt::AlignLeft);
+    ui->customPlot->yAxis->setRange(0, 1023);
 }
 
 void MainWindow::on_commandLinkButton_exit_clicked()
 {
-    teensy_db.close();
     exit(1);
 }
