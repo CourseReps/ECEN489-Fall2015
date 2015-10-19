@@ -25,7 +25,7 @@ relation to IR sensor. Adjust rate of pump to keep d2 at same level.
 * Under Project 2
 
 ##One person from each team
-* ME - I'll be there at 11am WEB Huff lab
+* Just meeting on Wednesday instead
 
 ##NOTES
 * Switching out the NUCs for less powerful NUCs
