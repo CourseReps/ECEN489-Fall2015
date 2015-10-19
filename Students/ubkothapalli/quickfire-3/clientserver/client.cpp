@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
         std::string devicetype = client_msg["DeviceType"].asString();
         std::string data = client_msg["Data"].asString();
         std::string timestamp = client_msg["Timestamp"].asString();
-        //std::string currentIP = client_msg["currentIP"].asString();
+        std::string currentIP = client_msg["currentIP"].asString();
 
 
         double temperature = std::stod(data);
@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
 
         std::string statement =
                 " INSERT INTO sensorData VALUES(' " + deviceid + " ',' " + devicetype + " ',' " + data + " ',' " +
-                timestamp + " ') ";
+                timestamp + "',' " + currentIP + " ') ";
         strcpy(sql4, statement.c_str());
 
 
