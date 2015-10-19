@@ -26,3 +26,6 @@ relation to IR sensor. Adjust rate of pump to keep d2 at same level.
 
 ##One person from each team
 * One hardware person from each team (3D Printing guy) - Go see HUFF
+
+##NOTES
+* Switching out the NUCs for less powerful NUCs
