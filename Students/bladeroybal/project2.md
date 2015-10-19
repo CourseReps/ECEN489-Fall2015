@@ -29,3 +29,8 @@ relation to IR sensor. Adjust rate of pump to keep d2 at same level.
 
 ##NOTES
 * Switching out the NUCs for less powerful NUCs
+
+## TO Do List
+* How short can we make measurements on the flow sensor before it breaks (currently at 1sec, reduce to 0.5sec?)
+* Develop some kind of command structure 
+* Anthony - use solenoid to shut off pump if water is at right level
