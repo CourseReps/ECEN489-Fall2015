@@ -7,7 +7,7 @@ relation to IR sensor. Adjust rate of pump to keep d2 at same level.
 
 ##NEEDS
 * 3D Printing of fluid/sensor housings (Solidworks) - **Anthony**
-* RIG Design. Harvest (Large same diameter tubing?) - Going to look like a Water Tower! - **Blade**
+* RIG Design. Harvest (Large same diameter tubing?) - Going to look like a Water Tower! - **All**
 * PCB Design using KiCAD for circuit control/power (USE LPKF inside EIC) - **Seungwon**
 * Set and Calibrate PID controller to be accurate - **Blade**
 * Modify QT to deliver set point back. Now basically have a slider (know d1+d2, whats d2?) - **Travis**
