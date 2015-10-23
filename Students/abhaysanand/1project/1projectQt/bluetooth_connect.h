@@ -24,6 +24,8 @@ using namespace std;
  * Return: returns response from remote BT device 
  *
 ***********************************************************/
-QString bluetooth_connect(QString dest_addr, QString message);
+QString bluetooth_connect(QString dest_addr, QString message, bool *conn_state);
+
+void bluetooth_close();
 
 #endif // BLUETOOTH_CONNECT_H

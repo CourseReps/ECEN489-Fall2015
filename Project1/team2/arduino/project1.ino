@@ -10,7 +10,7 @@ int IRpin = A0;
 int flowpin = 2;
 
 //output pins
-int relay = 13; // Pin 12
+int relay = 13; // Pin 13
 int pwmpin = 10; // Pin 10
  
 //ouput values

@@ -28,7 +28,7 @@ public:
     int sockfd[5];
 
 signals:
-    void setParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState, QString ID, int Timestamp, QString CurrentIP);
+    void setParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState, QString ID, int Timestamp, QString CurrentIP, int i);
 
 public slots:
 };

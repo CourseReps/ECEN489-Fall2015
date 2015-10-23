@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-    connect(mThread, SIGNAL(setParameterValues(double,double,double,bool,QString,int,QString)), this, SLOT(onSetParameterValues(double,double,double,bool, QString, int, QString)));
+    connect(mThread, SIGNAL(setParameterValues(double,double,double,bool,QString,int,QString,int)), this, SLOT(onSetParameterValues(double,double,double,bool, QString, int, QString, int)));
 }
 
 MainWindow::~MainWindow()
@@ -34,7 +34,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::onSetParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState, QString ID, int Timestamp, QString CurrentIP)
+void MainWindow::onSetParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState, QString ID, int Timestamp, QString CurrentIP, int i)
 {
 
     QString tableUpdate = " INSERT INTO ServerTable VALUES(' "+ID+" ',' " + IRRange + " ',' "+ PumpRate + " ',' "+ FlowRate +" ',' "+ SolenoidState +" ',' "+ Timestamp +" ',' " + CurrentIP + " ') " ;
@@ -43,7 +43,7 @@ void MainWindow::onSetParameterValues(double IRRange, double PumpRate, double Fl
         ui->label_success->setText("Database updation failed!");
     }
 
-    realtimeDataSlot(IRRange, FlowRate, PumpRate);
+    realtimeDataSlot(IRRange, FlowRate, PumpRate, i);
 
 }
 
@@ -61,16 +61,43 @@ void MainWindow::on_pushButton_stop_clicked()
 void MainWindow::easyplot()
 {
     //IRSensor
-    ui->customPlot->addGraph(); // blue line
-    ui->customPlot->graph(0)->setPen(QPen(Qt::blue));
-    ui->customPlot->graph(0)->setAntialiasedFill(false);
+    for(int i=0; i<5; i++)
+    {
+        ui->customPlot->addGraph();
+        ui->customPlot->graph(i)->setAntialiasedFill(false);
+
+        switch(i)
+        {
+        case 0:
+            ui->customPlot->graph(i)->setPen(QPen(Qt::red));
+            break;
+
+        case 1:
+            ui->customPlot->graph(i)->setPen(QPen(Qt::blue));
+            break;
+
+
+        case 2:
+            ui->customPlot->graph(i)->setPen(QPen(Qt::green));
+            break;
+
+
+        case 3:
+            ui->customPlot->graph(i)->setPen(QPen(Qt::yellow));
+            break;
+
+        case 4:
+            ui->customPlot->graph(i)->setPen(QPen(Qt::black));
+            break;
+        }
+    }
+
 
     ui->customPlot->xAxis->setTickLabelType(QCPAxis::ltDateTime);
     ui->customPlot->xAxis->setDateTimeFormat("hh:mm:ss");
     ui->customPlot->xAxis->setAutoTickStep(false);
     ui->customPlot->xAxis->setTickStep(2);
     ui->customPlot->axisRect()->setupFullAxesBox();
-
     ui->customPlot->yAxis->setRange(0, 150);
 
     // make left and bottom axes transfer their ranges to right and top axes:
@@ -80,57 +107,110 @@ void MainWindow::easyplot()
 
 
 
-    //FlowSensor
-    ui->customPlot_2->addGraph(); // red line
-    ui->customPlot_2->graph(0)->setPen(QPen(Qt::red));
-    ui->customPlot_2->graph(0)->setAntialiasedFill(false);
 
+
+    //FlowSensor
+    for(int i=0; i<5; i++)
+    {
+        ui->customPlot_2->addGraph();
+        ui->customPlot_2->graph(i)->setAntialiasedFill(false);
+
+        switch(i)
+        {
+        case 0:
+            ui->customPlot_2->graph(i)->setPen(QPen(Qt::red));
+            break;
+
+        case 1:
+            ui->customPlot_2->graph(i)->setPen(QPen(Qt::blue));
+            break;
+
+
+        case 2:
+            ui->customPlot_2->graph(i)->setPen(QPen(Qt::green));
+            break;
+
+
+        case 3:
+            ui->customPlot_2->graph(i)->setPen(QPen(Qt::yellow));
+            break;
+
+        case 4:
+            ui->customPlot_2->graph(i)->setPen(QPen(Qt::black));
+            break;
+        }
+    }
     ui->customPlot_2->xAxis->setTickLabelType(QCPAxis::ltDateTime);
     ui->customPlot_2->xAxis->setDateTimeFormat("hh:mm:ss");
     ui->customPlot_2->xAxis->setAutoTickStep(false);
     ui->customPlot_2->xAxis->setTickStep(2);
     ui->customPlot_2->axisRect()->setupFullAxesBox();
-
     ui->customPlot_2->yAxis->setRange(0, 150);
 
     // make left and bottom axes transfer their ranges to right and top axes:
-    connect(ui->customPlot_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot->xAxis2, SLOT(setRange(QCPRange)));
-    connect(ui->customPlot_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot->yAxis2, SLOT(setRange(QCPRange)));
+    connect(ui->customPlot_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot_2->xAxis2, SLOT(setRange(QCPRange)));
+    connect(ui->customPlot_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot_2->yAxis2, SLOT(setRange(QCPRange)));
 
 
 
 
 
-    //Pump
-    ui->customPlot_3->addGraph(); // green line
-    ui->customPlot_3->graph(0)->setPen(QPen(Qt::green));
-    ui->customPlot_3->graph(0)->setAntialiasedFill(false);
 
+    //PumpRate
+    for(int i=0; i<5; i++)
+    {
+        ui->customPlot_3->addGraph();
+        ui->customPlot_3->graph(i)->setAntialiasedFill(false);
+
+        switch(i)
+        {
+        case 0:
+            ui->customPlot_3->graph(i)->setPen(QPen(Qt::red));
+            break;
+
+        case 1:
+            ui->customPlot_3->graph(i)->setPen(QPen(Qt::blue));
+            break;
+
+
+        case 2:
+            ui->customPlot_3->graph(i)->setPen(QPen(Qt::green));
+            break;
+
+
+        case 3:
+            ui->customPlot_3->graph(i)->setPen(QPen(Qt::yellow));
+            break;
+
+        case 4:
+            ui->customPlot_3->graph(i)->setPen(QPen(Qt::black));
+            break;
+        }
+    }
     ui->customPlot_3->xAxis->setTickLabelType(QCPAxis::ltDateTime);
     ui->customPlot_3->xAxis->setDateTimeFormat("hh:mm:ss");
     ui->customPlot_3->xAxis->setAutoTickStep(false);
     ui->customPlot_3->xAxis->setTickStep(2);
     ui->customPlot_3->axisRect()->setupFullAxesBox();
-
     ui->customPlot_3->yAxis->setRange(0, 150);
 
     // make left and bottom axes transfer their ranges to right and top axes:
-    connect(ui->customPlot_3->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot->xAxis2, SLOT(setRange(QCPRange)));
-    connect(ui->customPlot_3->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot->yAxis2, SLOT(setRange(QCPRange)));
+    connect(ui->customPlot_3->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot_3->xAxis2, SLOT(setRange(QCPRange)));
+    connect(ui->customPlot_3->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->customPlot_3->yAxis2, SLOT(setRange(QCPRange)));
 
 }
 
-void MainWindow::realtimeDataSlot(double IRRange, double PumpRate, double FlowRate)
+void MainWindow::realtimeDataSlot(double IRRange, double PumpRate, double FlowRate, int i)
 {
 
      static double lastPointKey = 0;
      double key=QDateTime::currentDateTime().toMSecsSinceEpoch()/1000.0;;
 
     // add IRRange to lines:
-    ui->customPlot->graph(0)->addData(key, IRRange);
+    ui->customPlot->graph(i)->addData(key, IRRange);
 
     // remove IRRange that's outside visible range:
-    ui->customPlot->graph(0)->removeDataBefore(key-15);
+    ui->customPlot->graph(i)->removeDataBefore(key-15);
 
     // make key axis range scroll with the Data (at a constant range size of 8):
     ui->customPlot->xAxis->setRange(key+0.25, 15, Qt::AlignRight);
@@ -141,10 +221,10 @@ void MainWindow::realtimeDataSlot(double IRRange, double PumpRate, double FlowRa
 
 
     // add FlowRate to lines:
-    ui->customPlot_2->graph(0)->addData(key, FlowRate);
+    ui->customPlot_2->graph(i)->addData(key, FlowRate);
 
     // remove FlowRate data that's outside visible range:
-    ui->customPlot_2->graph(0)->removeDataBefore(key-15);
+    ui->customPlot_2->graph(i)->removeDataBefore(key-15);
 
     // make key axis range scroll with the Data (at a constant range size of 8):
     ui->customPlot_2->xAxis->setRange(key+0.25, 15, Qt::AlignRight);
@@ -155,10 +235,10 @@ void MainWindow::realtimeDataSlot(double IRRange, double PumpRate, double FlowRa
 
 
     // add PumpRate to lines:
-    ui->customPlot_3->graph(0)->addData(key, PumpRate);
+    ui->customPlot_3->graph(i)->addData(key, PumpRate);
 
     // remove PumpRate data that's outside visible range:
-    ui->customPlot_3->graph(0)->removeDataBefore(key-15);
+    ui->customPlot_3->graph(i)->removeDataBefore(key-15);
 
     // make key axis range scroll with the Data (at a constant range size of 8):
     ui->customPlot_3->xAxis->setRange(key+0.25, 15, Qt::AlignRight);
