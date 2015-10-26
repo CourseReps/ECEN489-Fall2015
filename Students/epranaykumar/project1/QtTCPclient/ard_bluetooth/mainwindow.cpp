@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "tcpsocket.h"
+
 #include <qbluetoothserver.h>
 #include <qbluetoothsocket.h>
 #include <QBluetoothSocket>
@@ -20,8 +22,13 @@
 #include <QFileInfo>
 #include <QtCore>
 
-#include  <unistd.h>
+#include <boost/asio.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/thread.hpp>
+#include <fstream>
+#include "json/json.h"
 
+#include  <unistd.h>
 #include <time.h>
 
 
@@ -40,6 +47,9 @@ void MainWindow::startDeviceDiscovery(const QBluetoothAddress &localAdapter)
 
     // Start a discovery
     discoveryAgent->start();
+
+    qDebug() << "\tService started";
+
 }
 
 // In your local slot, read information about the found devices
@@ -61,11 +71,7 @@ void MainWindow::serviceDiscovered(const QBluetoothServiceInfo &serviceInfo)
 
           qDebug() << "discovery agent stopped";
 
-
-          QByteArray text =  "1\n";
-          socket->write(text);
-
-           qDebug("sent connected signal to teensy");
+          // qDebug("sent connected signal to teensy");
 
           connect(socket, SIGNAL(readyRead()), this, SLOT(readSocket()));
           connect(socket, SIGNAL(connected()), this, SLOT(connected()));
@@ -92,17 +98,9 @@ void MainWindow::readSocket()
 
 
              if(  rec_data[dt_ind] == "200000"){
-
-                     dt_ind=0;
-                     // call add to database function
+                    dt_ind=0;
                     addtodb();
-                    qDebug( "calledaddtodb" );
-
-                     // send the received signal to teensy
-                     QByteArray text =  "1\n";
-                     socket->write(text);
-                     qDebug("sent 1 to teensy");
-
+                    qDebug( "calledaddtodb" );                   
              }
 
              else  dt_ind++;
@@ -174,6 +172,12 @@ void MainWindow::addtodb(){
 
 }
 
+
+ void MainWindow::sendDatabase(){
+ }
+
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -181,6 +185,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     initializedb(); // initialize the database
+
+    // start tcp socket
+    QThread* thread = new QThread;
+    tcpsocket = new TCPSocket();
+
+
+     tcpsocket->moveToThread(thread);
+    connect(thread, SIGNAL(started()),  tcpsocket, SLOT(ConnecttoTCPserver()));
+    connect(tcpsocket, SIGNAL(finished()), thread, SLOT(quit()));
+    connect(tcpsocket, SIGNAL(finished()), tcpsocket, SLOT(deleteLater()));
+    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+    thread->start();
+
+
+
 
     QBluetoothLocalDevice localDevice;
     QString localDeviceName;
@@ -212,9 +231,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
         qDebug("started service discovery");
 
-
-
     }
+
+
 }
 
 MainWindow::~MainWindow()

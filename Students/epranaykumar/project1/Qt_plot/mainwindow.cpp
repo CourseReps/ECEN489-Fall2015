@@ -10,11 +10,7 @@
 
 #include <time.h>
 
-// query the database periodically
-// update the curve for every deviceID found
-// add new curve or plot if new deviceID is found
 
-bool xLessThan( double p1, double p2){ return p1<p2;}
 int num_dev = 0;//  query.size() not supported with sqlite
 int prev_last_row=0;
 QVector<QString> dev_id(10);
@@ -25,9 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-          setgraphs( ui->qtplot,"Time","Flowrate",2000);
-          setgraphs( ui->qtplot_2,"Time","Voltage",20);
-          setgraphs( ui->qtplot_3,"Time","IRvalue",20);
+          setgraphs( ui->qtplot,"Time","Flowrate",14);
+          setgraphs( ui->qtplot_2,"Time","Voltage",12);
+          setgraphs( ui->qtplot_3,"Time","IRvalue",2);
 
        // setup a timer that repeatedly calls MainWindow::realtimeDataSlot:
           connect(&dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
@@ -85,8 +81,7 @@ void MainWindow::addData(QCustomPlot *customPlot, QString dev_name,double x, dou
 
 
         // position x-axis on the right at x+10 and with the range of (x+10)-50 to (x+10)
-         customPlot->xAxis->setRange(x+3, 15, Qt::AlignRight);
-        // customPlot->yAxis->setRange(0,1000);
+        customPlot->xAxis->setRange(x+3, 15, Qt::AlignRight);
         customPlot->replot();
 }
 
@@ -100,7 +95,7 @@ void MainWindow::realtimeDataSlot(){
        QString dev_name;
 
        // open the specified database
-        db.setDatabaseName(  "/home/pranaykumar/data.db");
+        db.setDatabaseName(  "/home/team2/Desktop/data.db");
 
         if(!db.open()){
              qDebug("Failed to open the database");
@@ -115,7 +110,7 @@ void MainWindow::realtimeDataSlot(){
          * select the querries greater than previous timestamp and
          * add the data to the graph corresponding to the device
          **/
-            //DeviceID TEXT,Timestamp TEXT, IR_sensor TEXT, RelayState TEXT,  Voltage TEXT, Flowrate TEXT)
+
         QString stmt =QString("SELECT  Flowrate, Voltage, IR_sensor, RelayState, DeviceID,Timestamp FROM DATA ORDER BY Timestamp;");
         qDebug() <<"Query:"<< stmt;
         QSqlQuery query;
@@ -165,23 +160,6 @@ void MainWindow::realtimeDataSlot(){
                          }
                          num_dev=cur_num_dev+1;
                       }
-
-
-
-
-                     /*  for(int i=prev_last_row; i<cur_last_row+1;i++){
-
-                           query.seek(i);
-                           x[i]=query.value(0).toDouble();
-                           y[i]=query.value(1).toDouble();
-                           qDebug()<<x[i]<<y[i];
-                           a[i]=query.value(2).toString();
-                            qDebug()<<a[i];
-                           // add the current data to the corresponding curve
-                           addData(ui->qtplot,a[i],x[i],y[i]);
-                           sleep(1);
-                       }
-                       */
 
                        query.seek(prev_last_row);
                        flowrate=query.value(0).toDouble();//flowrate,voltage,irvalue,timestamp,relaystate
