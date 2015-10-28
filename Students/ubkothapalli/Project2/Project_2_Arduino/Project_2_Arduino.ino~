@@ -19,12 +19,11 @@ int FlowSens = 4;
 int RelayCtrl = 15;
 int IRin = 14;
 int PumpPWM = 20;
-int powerLED = 23;
 
 
 double Setpoint, Input;
 double Output; 
-float Kp = 12;
+float Kp = 20;
 float Ki = 5;
 float Kd = 2;
 
@@ -37,8 +36,8 @@ void setup() {
   BTSerial.begin(9600);
   pinMode(FlowSens, INPUT);
   attachInterrupt(FlowSens, rpm, RISING);
-  //pinMode(Level1, OUTPUT);
-  //pinMode(Level2, OUTPUT);
+  pinMode(Level1, OUTPUT);
+  pinMode(Level2, OUTPUT);
   pinMode(PumpPWM, OUTPUT);
   pinMode(IRin, INPUT);
   pinMode(RelayCtrl, OUTPUT);
@@ -47,9 +46,6 @@ void setup() {
   Setpoint = 1;
   
   myPID.SetOutputLimits(0, 250); 
-  
-  pinMode (powerLED,OUTPUT);
-
 }
 
 //initialize variables 
@@ -76,7 +72,6 @@ void rpm ();
 int voltToLevel(double voltage);
 void loop() {
   
-  digitalWrite(powerLED,HIGH);
   //count = count + 1;
   //if(count > 1000){
    /* if(analogRead(Level2) > 7){
@@ -88,14 +83,10 @@ void loop() {
     }
     */
     
-    
     double IRvolt = analogRead(IRin);
-    Serial.print(IRvolt);
-    Serial.print("\t");
-      delay (10);
-
     level = voltToLevel(IRvolt);
     
+    Setpoint = 4;
     if (Serial.available()){
   
       char TempSetpoint = Serial.read();
@@ -132,19 +123,19 @@ void loop() {
     Input = level;
     
     
-     //Serial.print(level);
-    //Serial.print("\t");
+     Serial.print(level);
+    Serial.print("\t");
     myPID.Compute();
     int Output1 = map(Output,0,350,10,250);
     OutFlowRt = Output1;
   
-    Serial.print(Input);
-    Serial.print("\t");
+    
     Serial.print((Setpoint));
     Serial.print("\t");
-    
-    //Serial.print(FlowSens);
-    //Serial.print("\t");
+    Serial.print(Input);
+    Serial.print("\t");
+    Serial.print(FlowSens);
+    Serial.print("\t");
     Serial.println(OutFlowRt);
     cli();
     freq = edges * 4;
@@ -206,10 +197,7 @@ void GatherData(){
 int voltToLevel(double voltage){
   double dist;
   int level1 = 0;
-  dist = 1030* pow(voltage,-0.947);
-  //dist = 5.3041308916 * pow(voltage,-1.1563920336);
-  //Serial.print(dist);
-   Serial.print("\t");
+  dist = 5.3041308916 * pow(voltage,-1.1563920336);
   if (dist >= 14.0 ){
     level1 = 0;
     
