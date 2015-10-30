@@ -24,11 +24,11 @@ int powerLED = 23;
 
 double Setpoint, Input;
 double Output; 
-float Kp = 12;
-float Ki = 5;
-float Kd = 2;
+float Kp = 2;
+float Ki = 3;
+float Kd = 1;
 
-const int sampleRate = 250;
+//const int sampleRate = 250;
 PID myPID(&Input,&Output, &Setpoint, Kp, Ki, Kd, DIRECT);
 
 void setup() {
@@ -43,7 +43,7 @@ void setup() {
   pinMode(IRin, INPUT);
   pinMode(RelayCtrl, OUTPUT);
   myPID.SetMode(AUTOMATIC);
-  myPID.SetSampleTime(sampleRate);
+  //myPID.SetSampleTime(sampleRate);
   Setpoint = 1;
   
   myPID.SetOutputLimits(0, 250); 
@@ -73,7 +73,7 @@ const float Dp =  15.38008;
 int LpmToPWM(float LPerMin);
 void GatherData();
 void rpm ();
-int voltToLevel(double voltage);
+double voltToLevel(int levelSetpoint);
 void loop() {
   
   digitalWrite(powerLED,HIGH);
@@ -90,52 +90,85 @@ void loop() {
     
     
     double IRvolt = analogRead(IRin);
-    Serial.print(IRvolt);
-    Serial.print("\t");
+    
+    double IRtemp = map(IRvolt,0,650,0,400);    //Serial.print(IRvolt);
+    //Serial.print("\t");
       delay (10);
 
-    level = voltToLevel(IRvolt);
+    int commandSetpoint=6.5;
     
+    Setpoint = voltToLevel(commandSetpoint);
+    
+    if (BTSerial.available()){
+    
+      char testCommand = BTSerial.read();
+      if (testCommand == 'y'){
+        BTSerial.write('K');
+      }
+    }
+    
+    /*
     if (Serial.available()){
   
-      char TempSetpoint = Serial.read();
-      if (TempSetpoint == '0'){
+      int TempSetpoint = Serial.parseInt();
+      if (TempSetpoint == 0){
         Setpoint = 0;
       }
-      else if (TempSetpoint == '1'){
+      else if (TempSetpoint == 1){
         Setpoint = 1;
       }
-      else if (TempSetpoint=='2'){
+      else if (TempSetpoint==2){
        Setpoint = 2;
       }
-      else if (TempSetpoint == '3'){
+      else if (TempSetpoint == 3){
         Setpoint = 3;
       }
-      else if (TempSetpoint=='4'){
+      else if (TempSetpoint==4){
        Setpoint = 4;
       }
-      else if (TempSetpoint == '5'){
+      else if (TempSetpoint == 5){
         Setpoint = 5;
       }
-      else if (TempSetpoint=='6'){
+      else if (TempSetpoint==6){
        Setpoint = 6;
       }
-      else if (TempSetpoint == '7'){
+      else if (TempSetpoint == 7){
         Setpoint = 7;
       }
-      else if (TempSetpoint=='8'){
+      else if (TempSetpoint==8){
        Setpoint = 8;
       }
+	else if (TempSetpoint==9){
+       Setpoint = 9;
+      }
+      else if (TempSetpoint==10){
+       Setpoint = 10;
+      }
+      else if (TempSetpoint==11){
+       Setpoint = 11;
+      }
+      else if (TempSetpoint==12){
+       Setpoint = 12;
+      }
+
       //level = tempinput;
     
         }
-    Input = level;
+        
+	else { 
+	Setpoint = 4; 
+	}
+*/
+    Input = IRtemp;
+   
     
     
      //Serial.print(level);
     //Serial.print("\t");
     myPID.Compute();
-    int Output1 = map(Output,0,350,10,250);
+    Serial.print(Output);
+    Serial.print("\t");
+    int Output1 = map(Output,0,250,0,100);
     OutFlowRt = Output1;
   
     Serial.print(Input);
@@ -203,49 +236,73 @@ void GatherData(){
 }
 
 
-int voltToLevel(double voltage){
+double voltToLevel(int levelSetpoint){
   double dist;
-  int level1 = 0;
-  dist = 1030* pow(voltage,-0.947);
+  //int level1 = 0;
+  dist = 1193.8* pow(levelSetpoint,-0.905);
   //dist = 5.3041308916 * pow(voltage,-1.1563920336);
   //Serial.print(dist);
-   Serial.print("\t");
+  // Serial.print("\t");
+  /*
   if (dist >= 14.0 ){
-    level1 = 0;
+    level1 = 12;
     
   }
-  else if (dist >= 12.0 && dist < 14.0){
-      level1 = 2;
+  else if (dist >= 12.0 && dist < 13.0){
+      level1 = 11;
      
   }
   
-  else if (dist >= 10.0 && dist < 12.0){
-      level1 = 3;
+  else if (dist >= 11.0 && dist < 12.0){
+      level1 = 10;
      
   }
   
-  else if (dist >= 8.0 && dist < 10.0){
-      level1 = 4;
+  else if (dist >= 10.0 && dist < 11.0){
+      level1 = 9;
      
   }
   
-  else if (dist >= 6.0 && dist < 8.0){
-      level1 = 5;
+  else if (dist >= 9.0 && dist < 10.0){
+      level1 = 8;
      
   }
 
-  else if (dist >= 4.0 && dist < 6.0){
-      level1 = 6;
-     
-  }
-  else if (dist >= 2.0 && dist < 4.0){
+  else if (dist >= 8.0 && dist < 9.0){
       level1 = 7;
      
   }
+  else if (dist >= 7.0 && dist < 8.0){
+      level1 = 6;
+     
+  }
+  else if (dist >= 6.0 && dist < 7.0){
+      level1 = 5;
+     
+  }
+  else if (dist >= 5.0 && dist < 6.0){
+      level1 = 4;
+     
+  }
+  else if (dist >= 4.0 && dist < 5.0){
+      level1 = 3;
+     
+  }
+  else if (dist >= 3.0 && dist < 4.0){
+      level1 = 2;
+     
+  }
+  else if (dist >= 2.0 && dist < 3.0){
+      level1 = 1;
+     
+  }
+
   else if (dist < 2.0 ){
-      level1 = 8;
+      level1 = 0;
    
   }
-  return level1;
+  */
+  dist = map(dist,0,650,0,400);
+  return dist;
 }
 
