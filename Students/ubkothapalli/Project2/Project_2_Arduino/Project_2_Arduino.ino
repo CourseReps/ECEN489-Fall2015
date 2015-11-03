@@ -61,7 +61,9 @@ float OutFlowRt = 0;
 float InFlowRt = 0;
 int SolState = 0;
 bool RecData = false;
+int commandSetpoint=6.5;
 static String BTsend = "";
+static String BTget = "";
 
 //define calibration constants
 const float Ap = -9.896452;
@@ -74,19 +76,11 @@ int LpmToPWM(float LPerMin);
 void GatherData();
 void rpm ();
 double voltToLevel(int levelSetpoint);
+
+
 void loop() {
   
   digitalWrite(powerLED,HIGH);
-  //count = count + 1;
-  //if(count > 1000){
-   /* if(analogRead(Level2) > 7){
-      level = 2;
-    } else if (analogRead(Level1) > 7){
-      level = 1;
-    } else {
-      level = 0;
-    }
-    */
     
     
     double IRvolt = analogRead(IRin);
@@ -94,71 +88,32 @@ void loop() {
     double IRtemp = map(IRvolt,0,650,0,400);    //Serial.print(IRvolt);
     //Serial.print("\t");
       delay (10);
+    
 
-    int commandSetpoint=6.5;
-    
-    Setpoint = voltToLevel(commandSetpoint);
-    
+
+    //Bluetooth communication
     if (BTSerial.available()){
-    
-      char testCommand = BTSerial.read();
-      if (testCommand == 'y'){
-        BTSerial.write('K');
+      char in = BTSerial.read();
+      if (!RecData){
+        if (in == 's'){
+          GatherData();
+        } else if (in == 'g'){
+          RecData = true;
+        }
+      } else {
+        if (in == '\n'){
+          commandSetpoint = BTget.toFloat();
+          Setpoint = voltToLevel(commandSetpoint);
+          BTget = "";
+          RecData = false;
+        } else {
+          BTget += in;
+        }
       }
     }
-    
-    /*
-    if (Serial.available()){
-  
-      int TempSetpoint = Serial.parseInt();
-      if (TempSetpoint == 0){
-        Setpoint = 0;
-      }
-      else if (TempSetpoint == 1){
-        Setpoint = 1;
-      }
-      else if (TempSetpoint==2){
-       Setpoint = 2;
-      }
-      else if (TempSetpoint == 3){
-        Setpoint = 3;
-      }
-      else if (TempSetpoint==4){
-       Setpoint = 4;
-      }
-      else if (TempSetpoint == 5){
-        Setpoint = 5;
-      }
-      else if (TempSetpoint==6){
-       Setpoint = 6;
-      }
-      else if (TempSetpoint == 7){
-        Setpoint = 7;
-      }
-      else if (TempSetpoint==8){
-       Setpoint = 8;
-      }
-	else if (TempSetpoint==9){
-       Setpoint = 9;
-      }
-      else if (TempSetpoint==10){
-       Setpoint = 10;
-      }
-      else if (TempSetpoint==11){
-       Setpoint = 11;
-      }
-      else if (TempSetpoint==12){
-       Setpoint = 12;
-      }
 
-      //level = tempinput;
     
-        }
-        
-	else { 
-	Setpoint = 4; 
-	}
-*/
+
     Input = IRtemp;
    
     
@@ -232,7 +187,7 @@ void GatherData(){
   
   //current output to solenoid
   BTsend += String(SolState);
-  Serial.println(BTsend);
+  BTSerial.println(BTsend);
 }
 
 
@@ -240,68 +195,6 @@ double voltToLevel(int levelSetpoint){
   double dist;
   //int level1 = 0;
   dist = 1193.8* pow(levelSetpoint,-0.905);
-  //dist = 5.3041308916 * pow(voltage,-1.1563920336);
-  //Serial.print(dist);
-  // Serial.print("\t");
-  /*
-  if (dist >= 14.0 ){
-    level1 = 12;
-    
-  }
-  else if (dist >= 12.0 && dist < 13.0){
-      level1 = 11;
-     
-  }
-  
-  else if (dist >= 11.0 && dist < 12.0){
-      level1 = 10;
-     
-  }
-  
-  else if (dist >= 10.0 && dist < 11.0){
-      level1 = 9;
-     
-  }
-  
-  else if (dist >= 9.0 && dist < 10.0){
-      level1 = 8;
-     
-  }
-
-  else if (dist >= 8.0 && dist < 9.0){
-      level1 = 7;
-     
-  }
-  else if (dist >= 7.0 && dist < 8.0){
-      level1 = 6;
-     
-  }
-  else if (dist >= 6.0 && dist < 7.0){
-      level1 = 5;
-     
-  }
-  else if (dist >= 5.0 && dist < 6.0){
-      level1 = 4;
-     
-  }
-  else if (dist >= 4.0 && dist < 5.0){
-      level1 = 3;
-     
-  }
-  else if (dist >= 3.0 && dist < 4.0){
-      level1 = 2;
-     
-  }
-  else if (dist >= 2.0 && dist < 3.0){
-      level1 = 1;
-     
-  }
-
-  else if (dist < 2.0 ){
-      level1 = 0;
-   
-  }
-  */
   dist = map(dist,0,650,0,400);
   return dist;
 }
