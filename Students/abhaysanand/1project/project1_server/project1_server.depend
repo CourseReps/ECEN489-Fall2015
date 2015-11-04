@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1444682185 source:/home/mjolnir/Projects/project1_server/main.cpp
+	<iostream>
+	<sstream>
+	<stdio.h>
+	<unistd.h>
+	<sys/socket.h>
+	<bluetooth/bluetooth.h>
+	<bluetooth/rfcomm.h>
+	"sqlite3.h"
+
+1438243618 /home/mjolnir/Projects/project1_server/sqlite3.h
+	<stdarg.h>
+

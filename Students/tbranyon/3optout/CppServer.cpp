@@ -71,12 +71,12 @@ int main()
 			cerr << "Error opening screenshot file\n";
 			continue; //exits this iteration of the socket connection loop
 		}
-		fseek(image, 0, SEEK_END);
+		/*fseek(image, 0, SEEK_END);
 		int size = ftell(image);
 		fseek(image, 0, SEEK_SET);
 		cout << sizeof(int); //DEBUG
 		if(write(newsocketfd, (void*)&size, sizeof(int)) < 0)
-			cerr << "Error writing length to socket\n";
+			cerr << "Error writing length to socket\n";*/
 		char buffer[10240];
 		int readsize = 0;
 		while(!feof(image))

@@ -1,0 +1,858 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:teensy_3.1
+LIBS:relays
+LIBS:w_rtx
+LIBS:Project2-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L BARREL_JACK CON1
+U 1 1 5626B07E
+P 1200 1300
+F 0 "CON1" H 1200 1550 60  0000 C CNN
+F 1 "BARREL_JACK" H 1200 1100 60  0000 C CNN
+F 2 "Connect:BARREL_JACK" H 1200 1300 60  0001 C CNN
+F 3 "" H 1200 1300 60  0000 C CNN
+	1    1200 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Teensy_3.1 U2
+U 1 1 5626B476
+P 2950 5000
+F 0 "U2" H 3000 6050 60  0000 C CNN
+F 1 "Teensy_3.1" H 3050 6500 60  0000 C CNN
+F 2 "Teensy:Teensy-3.1" H 3050 5000 60  0001 C CNN
+F 3 "" H 3050 5000 60  0000 C CNN
+	1    2950 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L LM7805CT U1
+U 1 1 5626B52E
+P 2150 1950
+F 0 "U1" H 1950 2150 40  0000 C CNN
+F 1 "LM7805CT" H 2150 2150 40  0000 L CNN
+F 2 "Power_Integrations:TO-220" H 2150 2050 30  0000 C CIN
+F 3 "" H 2150 1950 60  0000 C CNN
+	1    2150 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L BS170 Q2
+U 1 1 5626BAED
+P 9650 1700
+F 0 "Q2" H 9850 1775 50  0000 L CNN
+F 1 "BS170" H 9850 1700 50  0000 L CNN
+F 2 "Housings_TO-92:TO-92_Inline_Narrow_Oval" H 9850 1625 50  0001 L CIN
+F 3 "" H 9650 1700 50  0000 L CNN
+	1    9650 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L MMBT3906 Q1
+U 1 1 5626D707
+P 7100 1650
+F 0 "Q1" H 7300 1725 50  0000 L CNN
+F 1 "MMBT3906" H 7300 1650 50  0000 L CNN
+F 2 "Diodes_ThroughHole:Diode_TO-220_Dual_CommonCathode_Vertical" H 7300 1575 50  0001 L CIN
+F 3 "" H 7100 1650 50  0000 L CNN
+	1    7100 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X04 P1
+U 1 1 5626DC5D
+P 4700 1500
+F 0 "P1" H 4700 1750 50  0000 C CNN
+F 1 "CONN_01X04" V 4800 1500 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x04" H 4700 1500 60  0001 C CNN
+F 3 "" H 4700 1500 60  0000 C CNN
+	1    4700 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D1
+U 1 1 5626DCD4
+P 7550 1300
+F 0 "D1" H 7550 1400 50  0000 C CNN
+F 1 "D" H 7550 1200 50  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 7550 1300 60  0001 C CNN
+F 3 "" H 7550 1300 60  0000 C CNN
+	1    7550 1300
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R3
+U 1 1 5626DD83
+P 6650 1650
+F 0 "R3" V 6730 1650 50  0000 C CNN
+F 1 "R" V 6650 1650 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 6580 1650 30  0001 C CNN
+F 3 "" H 6650 1650 30  0000 C CNN
+	1    6650 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L +12V #PWR01
+U 1 1 5626F385
+P 1650 1200
+F 0 "#PWR01" H 1650 1050 50  0001 C CNN
+F 1 "+12V" H 1650 1340 50  0000 C CNN
+F 2 "" H 1650 1200 60  0000 C CNN
+F 3 "" H 1650 1200 60  0000 C CNN
+	1    1650 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR02
+U 1 1 5626F3D5
+P 1650 1400
+F 0 "#PWR02" H 1650 1150 50  0001 C CNN
+F 1 "GND" H 1650 1250 50  0000 C CNN
+F 2 "" H 1650 1400 60  0000 C CNN
+F 3 "" H 1650 1400 60  0000 C CNN
+	1    1650 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR03
+U 1 1 5626F3FD
+P 2750 1900
+F 0 "#PWR03" H 2750 1750 50  0001 C CNN
+F 1 "+5V" H 2750 2040 50  0000 C CNN
+F 2 "" H 2750 1900 60  0000 C CNN
+F 3 "" H 2750 1900 60  0000 C CNN
+	1    2750 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR04
+U 1 1 5626F466
+P 1600 1900
+F 0 "#PWR04" H 1600 1750 50  0001 C CNN
+F 1 "+12V" H 1600 2040 50  0000 C CNN
+F 2 "" H 1600 1900 60  0000 C CNN
+F 3 "" H 1600 1900 60  0000 C CNN
+	1    1600 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR05
+U 1 1 5626F48F
+P 2150 2300
+F 0 "#PWR05" H 2150 2050 50  0001 C CNN
+F 1 "GND" H 2150 2150 50  0000 C CNN
+F 2 "" H 2150 2300 60  0000 C CNN
+F 3 "" H 2150 2300 60  0000 C CNN
+	1    2150 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 5626F59B
+P 1500 3700
+F 0 "#PWR06" H 1500 3450 50  0001 C CNN
+F 1 "GND" H 1500 3550 50  0000 C CNN
+F 2 "" H 1500 3700 60  0000 C CNN
+F 3 "" H 1500 3700 60  0000 C CNN
+	1    1500 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR07
+U 1 1 5626F5C4
+P 4400 3850
+F 0 "#PWR07" H 4400 3600 50  0001 C CNN
+F 1 "GND" H 4400 3700 50  0000 C CNN
+F 2 "" H 4400 3850 60  0000 C CNN
+F 3 "" H 4400 3850 60  0000 C CNN
+	1    4400 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR08
+U 1 1 5626F636
+P 4400 3700
+F 0 "#PWR08" H 4400 3550 50  0001 C CNN
+F 1 "+5V" H 4400 3840 50  0000 C CNN
+F 2 "" H 4400 3700 60  0000 C CNN
+F 3 "" H 4400 3700 60  0000 C CNN
+	1    4400 3700
+	1    0    0    -1  
+$EndComp
+Text Notes 4900 1350 0    60   ~ 0
+Vcc
+Text Notes 4900 1450 0    60   ~ 0
+GND
+Text Notes 4900 1550 0    60   ~ 0
+TX
+Text Notes 4900 1650 0    60   ~ 0
+RX
+$Comp
+L +5V #PWR09
+U 1 1 5626F7D2
+P 4400 1300
+F 0 "#PWR09" H 4400 1150 50  0001 C CNN
+F 1 "+5V" H 4400 1440 50  0000 C CNN
+F 2 "" H 4400 1300 60  0000 C CNN
+F 3 "" H 4400 1300 60  0000 C CNN
+	1    4400 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR010
+U 1 1 5626F858
+P 4150 1300
+F 0 "#PWR010" H 4150 1050 50  0001 C CNN
+F 1 "GND" H 4150 1150 50  0000 C CNN
+F 2 "" H 4150 1300 60  0000 C CNN
+F 3 "" H 4150 1300 60  0000 C CNN
+	1    4150 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR011
+U 1 1 5626F911
+P 7200 1850
+F 0 "#PWR011" H 7200 1600 50  0001 C CNN
+F 1 "GND" H 7200 1700 50  0000 C CNN
+F 2 "" H 7200 1850 60  0000 C CNN
+F 3 "" H 7200 1850 60  0000 C CNN
+	1    7200 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR012
+U 1 1 5626FF89
+P 8000 1250
+F 0 "#PWR012" H 8000 1100 50  0001 C CNN
+F 1 "+12V" H 8000 1390 50  0000 C CNN
+F 2 "" H 8000 1250 60  0000 C CNN
+F 3 "" H 8000 1250 60  0000 C CNN
+	1    8000 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR013
+U 1 1 56270E7C
+P 9750 1900
+F 0 "#PWR013" H 9750 1650 50  0001 C CNN
+F 1 "GND" H 9750 1750 50  0000 C CNN
+F 2 "" H 9750 1900 60  0000 C CNN
+F 3 "" H 9750 1900 60  0000 C CNN
+	1    9750 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R4
+U 1 1 56271016
+P 9400 1900
+F 0 "R4" V 9480 1900 50  0000 C CNN
+F 1 "R" V 9400 1900 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 9330 1900 30  0001 C CNN
+F 3 "" H 9400 1900 30  0000 C CNN
+	1    9400 1900
+	-1   0    0    1   
+$EndComp
+$Comp
+L +12V #PWR014
+U 1 1 562710F9
+P 10600 1350
+F 0 "#PWR014" H 10600 1200 50  0001 C CNN
+F 1 "+12V" H 10600 1490 50  0000 C CNN
+F 2 "" H 10600 1350 60  0000 C CNN
+F 3 "" H 10600 1350 60  0000 C CNN
+	1    10600 1350
+	1    0    0    -1  
+$EndComp
+Text Notes 7150 3200 0    60   ~ 0
++5V
+Text Notes 7150 3300 0    60   ~ 0
+GND
+Text Notes 7150 3400 0    60   ~ 0
+IR in
+Text Notes 7150 3500 0    60   ~ 0
++12V
+Text Notes 7150 3600 0    60   ~ 0
+PumpGND
+$Comp
+L GND #PWR015
+U 1 1 562722DB
+P 9400 2050
+F 0 "#PWR015" H 9400 1800 50  0001 C CNN
+F 1 "GND" H 9400 1900 50  0000 C CNN
+F 2 "" H 9400 2050 60  0000 C CNN
+F 3 "" H 9400 2050 60  0000 C CNN
+	1    9400 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L D D2
+U 1 1 56272406
+P 10200 1400
+F 0 "D2" H 10200 1500 50  0000 C CNN
+F 1 "D" H 10200 1300 50  0000 C CNN
+F 2 "Diodes_ThroughHole:Diode_DO-41_SOD81_Horizontal_RM10" H 10200 1400 60  0001 C CNN
+F 3 "" H 10200 1400 60  0000 C CNN
+	1    10200 1400
+	-1   0    0    1   
+$EndComp
+Text Notes 7150 3700 0    60   ~ 0
+Solenoid Out
+Text Notes 7150 3800 0    60   ~ 0
+GND
+Text Notes 7150 3900 0    60   ~ 0
++12V
+Text Notes 7150 4000 0    60   ~ 0
+GND
+Text Notes 7150 4100 0    60   ~ 0
+FS1
+Text Notes 7150 4200 0    60   ~ 0
++12V
+Text Notes 7150 4300 0    60   ~ 0
+GND
+Text Notes 7150 4400 0    60   ~ 0
+FS2
+$Comp
+L +5V #PWR016
+U 1 1 56272DAA
+P 6700 3100
+F 0 "#PWR016" H 6700 2950 50  0001 C CNN
+F 1 "+5V" H 6700 3240 50  0000 C CNN
+F 2 "" H 6700 3100 60  0000 C CNN
+F 3 "" H 6700 3100 60  0000 C CNN
+	1    6700 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR017
+U 1 1 56273408
+P 6400 3100
+F 0 "#PWR017" H 6400 2950 50  0001 C CNN
+F 1 "+12V" H 6400 3240 50  0000 C CNN
+F 2 "" H 6400 3100 60  0000 C CNN
+F 3 "" H 6400 3100 60  0000 C CNN
+	1    6400 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR018
+U 1 1 5627347B
+P 6550 4950
+F 0 "#PWR018" H 6550 4700 50  0001 C CNN
+F 1 "GND" H 6550 4800 50  0000 C CNN
+F 2 "" H 6550 4950 60  0000 C CNN
+F 3 "" H 6550 4950 60  0000 C CNN
+	1    6550 4950
+	1    0    0    -1  
+$EndComp
+Text Notes 7850 3300 0    60   ~ 0
+IR Sensor
+Text Notes 7850 3550 0    60   ~ 0
+Pump
+Text Notes 7850 3750 0    60   ~ 0
+Solenoid
+Text Notes 7850 4000 0    60   ~ 0
+Flow Sensor 1
+Text Notes 7850 4200 0    60   ~ 0
+Flow Sensor 2
+Text Notes 800  850  0    118  ~ 0
+Power Rails
+Text Notes 3100 850  0    118  ~ 0
+Bluetooth Module
+Text Notes 5650 850  0    118  ~ 0
+Pump Control
+Text Notes 8750 850  0    118  ~ 0
+Solenoid Control
+Text Notes 750  2750 0    118  ~ 0
+Teensy 3.1 Connections
+Text Notes 5600 2750 0    118  ~ 0
+External Connections Block
+NoConn ~ 1950 3850
+NoConn ~ 1950 4000
+NoConn ~ 1950 4150
+NoConn ~ 1950 4300
+NoConn ~ 1950 4750
+NoConn ~ 1950 4900
+NoConn ~ 1950 5050
+NoConn ~ 1950 5500
+NoConn ~ 1950 5650
+NoConn ~ 3950 5650
+NoConn ~ 3950 5200
+NoConn ~ 3950 4450
+NoConn ~ 3950 4000
+Text Notes 7850 4350 0    39   ~ 0
+(This may or may not\nend up being used)
+NoConn ~ 2700 6200
+NoConn ~ 2850 6200
+NoConn ~ 3000 6200
+NoConn ~ 3150 6200
+NoConn ~ 3300 6200
+Text Notes 7100 7050 0    98   ~ 0
+ECEN 489 Project 2\nGroup 5\nCooper Rehn
+Text Notes 7400 7500 0    59   ~ 0
+Water Level Controller
+Text Notes 8200 7650 0    59   ~ 0
+10/20/2015
+$Comp
+L PWR_FLAG #FLG019
+U 1 1 5627A984
+P 1950 1150
+F 0 "#FLG019" H 1950 1245 50  0001 C CNN
+F 1 "PWR_FLAG" H 1950 1330 50  0000 C CNN
+F 2 "" H 1950 1150 60  0000 C CNN
+F 3 "" H 1950 1150 60  0000 C CNN
+	1    1950 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L PWR_FLAG #FLG020
+U 1 1 5627A9EF
+P 1950 1450
+F 0 "#FLG020" H 1950 1545 50  0001 C CNN
+F 1 "PWR_FLAG" H 1950 1630 50  0000 C CNN
+F 2 "" H 1950 1450 60  0000 C CNN
+F 3 "" H 1950 1450 60  0000 C CNN
+	1    1950 1450
+	-1   0    0    1   
+$EndComp
+Text Label 3650 1550 0    59   ~ 0
+BT_TX
+Text Label 1550 5200 0    59   ~ 0
+BT_TX
+Text Label 3650 1650 0    59   ~ 0
+BT_RX
+Text Label 6000 1650 0    60   ~ 0
+PumpPWM
+Text Label 6650 1100 0    60   ~ 0
+PumpGND
+Text Label 9150 1250 0    60   ~ 0
+SolenoidOut
+Text Label 8750 1750 0    60   ~ 0
+SolenoidCtrl
+Text Label 6000 3350 0    60   ~ 0
+IR_In
+Text Label 5700 3650 0    60   ~ 0
+SolenoidOut
+Text Label 6100 4050 0    60   ~ 0
+FS1
+Text Label 6100 4350 0    60   ~ 0
+FS2
+Text Label 1650 4450 0    60   ~ 0
+FS1
+Text Label 1650 4600 0    60   ~ 0
+FS2
+Text Label 1550 5350 0    60   ~ 0
+BT_RX
+Text Label 4600 4600 2    60   ~ 0
+PumpPWM
+Text Label 4700 5350 2    60   ~ 0
+SolenoidCtrl
+Text Label 4350 5500 2    60   ~ 0
+IR_In
+Text Label 5800 3550 0    59   ~ 0
+PumpGND
+$Comp
+L CONN_01X17 P2
+U 1 1 56282363
+P 7000 3950
+F 0 "P2" H 7000 4850 50  0000 C CNN
+F 1 "CONN_01X17" V 7100 3950 50  0000 C CNN
+F 2 "w_conn_screw:mors_17p" H 7000 3950 60  0001 C CNN
+F 3 "" H 7000 3950 60  0000 C CNN
+	1    7000 3950
+	1    0    0    -1  
+$EndComp
+Text Notes 7150 4500 0    60   ~ 0
+LED_R
+Text Notes 7150 4600 0    60   ~ 0
+LED_G
+Text Notes 7150 4700 0    60   ~ 0
+LED_B
+Text Notes 7150 4800 0    60   ~ 0
+GND
+Text Label 5650 4450 0    60   ~ 0
+LED_R
+Text Label 5650 4550 0    60   ~ 0
+LED_G
+Text Label 5650 4650 0    60   ~ 0
+LED_B
+Text Label 4400 4750 2    60   ~ 0
+LED_R
+Text Label 4400 4900 2    60   ~ 0
+LED_G
+Text Label 4400 5050 2    60   ~ 0
+LED_B
+$Comp
+L R R2
+U 1 1 562834E0
+P 6050 4650
+F 0 "R2" V 6130 4650 50  0000 C CNN
+F 1 "R" V 6050 4650 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 5980 4650 30  0001 C CNN
+F 3 "" H 6050 4650 30  0000 C CNN
+	1    6050 4650
+	0    1    1    0   
+$EndComp
+$Comp
+L R R5
+U 1 1 5628355B
+P 6350 4550
+F 0 "R5" V 6430 4550 50  0000 C CNN
+F 1 "R" V 6350 4550 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 6280 4550 30  0001 C CNN
+F 3 "" H 6350 4550 30  0000 C CNN
+	1    6350 4550
+	0    1    1    0   
+$EndComp
+$Comp
+L R R1
+U 1 1 562835A0
+P 6050 4450
+F 0 "R1" V 6130 4450 50  0000 C CNN
+F 1 "R" V 6050 4450 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 5980 4450 30  0001 C CNN
+F 3 "" H 6050 4450 30  0000 C CNN
+	1    6050 4450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1500 1200 1950 1200
+Wire Wire Line
+	1500 1400 1950 1400
+Wire Wire Line
+	1500 1300 1550 1300
+Wire Wire Line
+	1550 1300 1550 1400
+Connection ~ 1550 1400
+Wire Wire Line
+	2550 1900 2750 1900
+Wire Wire Line
+	1600 1900 1750 1900
+Wire Wire Line
+	2150 2200 2150 2300
+Wire Wire Line
+	1500 3700 1950 3700
+Wire Wire Line
+	3950 3850 4400 3850
+Wire Wire Line
+	3950 3700 4400 3700
+Wire Wire Line
+	1550 5350 1950 5350
+Wire Wire Line
+	1650 4450 1950 4450
+Wire Wire Line
+	3950 4600 4600 4600
+Wire Wire Line
+	3950 5500 4350 5500
+Wire Wire Line
+	3650 1550 4500 1550
+Wire Wire Line
+	7700 1300 8000 1300
+Wire Wire Line
+	8000 1300 8000 1250
+Wire Wire Line
+	6800 1650 6900 1650
+Wire Wire Line
+	6000 1650 6500 1650
+Wire Wire Line
+	7200 1100 7200 1450
+Wire Wire Line
+	7200 1300 7400 1300
+Wire Wire Line
+	6650 1100 7200 1100
+Connection ~ 7200 1300
+Wire Wire Line
+	3650 1650 4500 1650
+Wire Wire Line
+	4500 1350 4400 1350
+Wire Wire Line
+	4400 1350 4400 1300
+Wire Wire Line
+	4500 1450 4300 1450
+Wire Wire Line
+	4300 1450 4300 1250
+Wire Wire Line
+	4300 1250 4150 1250
+Wire Wire Line
+	4150 1250 4150 1300
+Wire Wire Line
+	8750 1750 9450 1750
+Connection ~ 9400 1750
+Wire Wire Line
+	1650 4600 1950 4600
+Wire Wire Line
+	6800 3150 6700 3150
+Wire Wire Line
+	6700 3150 6700 3100
+Wire Wire Line
+	6800 3450 6400 3450
+Wire Wire Line
+	6400 3100 6400 4150
+Wire Wire Line
+	6400 3850 6800 3850
+Connection ~ 6400 3450
+Wire Wire Line
+	6400 4150 6800 4150
+Connection ~ 6400 3850
+Wire Wire Line
+	6800 3250 6550 3250
+Wire Wire Line
+	6550 3250 6550 4950
+Wire Wire Line
+	6800 3750 6550 3750
+Connection ~ 6550 3750
+Wire Wire Line
+	6800 3950 6550 3950
+Connection ~ 6550 3950
+Wire Wire Line
+	6800 4250 6550 4250
+Connection ~ 6550 4250
+Wire Wire Line
+	6000 3350 6800 3350
+Wire Wire Line
+	5700 3650 6800 3650
+Wire Wire Line
+	6100 4050 6800 4050
+Wire Wire Line
+	6100 4350 6800 4350
+Wire Notes Line
+	7150 3100 7150 4800
+Wire Notes Line
+	7150 3100 8550 3100
+Wire Notes Line
+	8550 3100 8550 4800
+Wire Notes Line
+	8550 3400 7150 3400
+Wire Notes Line
+	8550 4400 7150 4400
+Wire Notes Line
+	7150 3600 8550 3600
+Wire Notes Line
+	7150 3800 8550 3800
+Wire Notes Line
+	7150 4100 8550 4100
+Wire Notes Line
+	700  650  700  7050
+Wire Notes Line
+	700  2550 11000 2550
+Wire Notes Line
+	11000 650  11000 5500
+Wire Notes Line
+	11000 650  700  650 
+Wire Notes Line
+	8650 650  8650 5500
+Wire Notes Line
+	5550 650  5550 7050
+Wire Notes Line
+	3000 2550 3000 650 
+Wire Notes Line
+	5550 7050 700  7050
+Wire Notes Line
+	11000 5500 5550 5500
+Wire Wire Line
+	9150 1250 9750 1250
+Wire Wire Line
+	9750 1250 9750 1500
+Wire Wire Line
+	10050 1400 9750 1400
+Connection ~ 9750 1400
+Wire Wire Line
+	10350 1400 10600 1400
+Wire Wire Line
+	10600 1400 10600 1350
+Wire Wire Line
+	1950 1200 1950 1150
+Connection ~ 1650 1200
+Wire Wire Line
+	1950 1400 1950 1450
+Connection ~ 1650 1400
+Wire Wire Line
+	1550 5200 1950 5200
+Wire Wire Line
+	3950 5350 4700 5350
+Wire Wire Line
+	6800 3550 5800 3550
+Wire Wire Line
+	6800 4750 6550 4750
+Connection ~ 6550 4750
+Wire Wire Line
+	3950 5050 4400 5050
+Wire Wire Line
+	3950 4900 4400 4900
+Wire Wire Line
+	3950 4750 4400 4750
+Wire Wire Line
+	6800 4450 6200 4450
+Wire Wire Line
+	5900 4450 5650 4450
+Wire Wire Line
+	6500 4550 6800 4550
+Wire Wire Line
+	6200 4550 5650 4550
+Wire Wire Line
+	5650 4650 5900 4650
+Wire Wire Line
+	6200 4650 6800 4650
+Text Label 4500 4150 2    60   ~ 0
+PWR_LED
+Wire Wire Line
+	4500 4150 3950 4150
+Wire Notes Line
+	8550 4800 7150 4800
+Text Notes 7850 4650 0    60   ~ 0
+RGB LED
+Text Notes 8750 2750 0    118  ~ 0
+Status LEDs
+$Comp
+L R R6
+U 1 1 56285015
+P 9600 3300
+F 0 "R6" V 9680 3300 50  0000 C CNN
+F 1 "R" V 9600 3300 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 9530 3300 30  0001 C CNN
+F 3 "" H 9600 3300 30  0000 C CNN
+	1    9600 3300
+	0    1    1    0   
+$EndComp
+$Comp
+L R R7
+U 1 1 562850DB
+P 9600 3650
+F 0 "R7" V 9680 3650 50  0000 C CNN
+F 1 "R" V 9600 3650 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 9530 3650 30  0001 C CNN
+F 3 "" H 9600 3650 30  0000 C CNN
+	1    9600 3650
+	0    1    1    0   
+$EndComp
+$Comp
+L LED D3
+U 1 1 56285153
+P 10100 3300
+F 0 "D3" H 10100 3400 50  0000 C CNN
+F 1 "LED" H 10100 3200 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 10100 3300 60  0001 C CNN
+F 3 "" H 10100 3300 60  0000 C CNN
+	1    10100 3300
+	-1   0    0    1   
+$EndComp
+$Comp
+L LED D4
+U 1 1 5628521B
+P 10100 3650
+F 0 "D4" H 10100 3750 50  0000 C CNN
+F 1 "LED" H 10100 3550 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 10100 3650 60  0001 C CNN
+F 3 "" H 10100 3650 60  0000 C CNN
+	1    10100 3650
+	-1   0    0    1   
+$EndComp
+Text Label 8800 3300 0    60   ~ 0
+SolenoidCtrl
+Text Label 8950 3650 0    60   ~ 0
+PWR_LED
+Wire Wire Line
+	8800 3300 9450 3300
+Wire Wire Line
+	8950 3650 9450 3650
+Wire Wire Line
+	9750 3300 9900 3300
+Wire Wire Line
+	9750 3650 9900 3650
+$Comp
+L GND #PWR021
+U 1 1 56287E9F
+P 10500 4200
+F 0 "#PWR021" H 10500 3950 50  0001 C CNN
+F 1 "GND" H 10500 4050 50  0000 C CNN
+F 2 "" H 10500 4200 60  0000 C CNN
+F 3 "" H 10500 4200 60  0000 C CNN
+	1    10500 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10300 3650 10500 3650
+Wire Wire Line
+	10500 3300 10500 4200
+Wire Wire Line
+	10300 3300 10500 3300
+Connection ~ 10500 3650
+Text Label 4650 4300 2    60   ~ 0
+LowLevelLED
+Wire Wire Line
+	3950 4300 4650 4300
+$Comp
+L R R8
+U 1 1 562890B5
+P 9600 4000
+F 0 "R8" V 9680 4000 50  0000 C CNN
+F 1 "R" V 9600 4000 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 9530 4000 30  0001 C CNN
+F 3 "" H 9600 4000 30  0000 C CNN
+	1    9600 4000
+	0    1    1    0   
+$EndComp
+$Comp
+L LED D5
+U 1 1 56289112
+P 10100 4000
+F 0 "D5" H 10100 4100 50  0000 C CNN
+F 1 "LED" H 10100 3900 50  0000 C CNN
+F 2 "LEDs:LED-3MM" H 10100 4000 60  0001 C CNN
+F 3 "" H 10100 4000 60  0000 C CNN
+	1    10100 4000
+	-1   0    0    1   
+$EndComp
+Text Label 8800 4000 0    60   ~ 0
+LowLevelLED
+Wire Wire Line
+	8800 4000 9450 4000
+Wire Wire Line
+	9750 4000 9900 4000
+Wire Wire Line
+	10300 4000 10500 4000
+Connection ~ 10500 4000
+$EndSCHEMATC
