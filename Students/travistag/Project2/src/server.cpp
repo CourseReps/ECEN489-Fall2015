@@ -3,9 +3,9 @@
 #include <string>
 #include <fstream>
 #include <stdlib.h>
-//#include <boost/asio.hpp>
 #include <sqlite3.h>
 #include <vector>
+#include <unistd.h>
 
 using namespace std;
 
@@ -141,7 +141,7 @@ int main(){
     v.push_back(to_string(time(0)));
     v.push_back(getCurrentIP());
     addDeviceInfo(v, db);
-    sleep(1);
+    usleep(1000000);
   }
 
 
