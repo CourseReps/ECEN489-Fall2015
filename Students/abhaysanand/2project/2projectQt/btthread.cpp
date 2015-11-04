@@ -59,6 +59,8 @@ void btThread::run()
             }
         }
 
+        msleep(100);
+
         /* Get current IR value from teensy */
         btRead = bluetooth_connect(dest, get_data, &conn_state);
 
@@ -67,9 +69,9 @@ void btThread::run()
             label = "Connected to BT device";
             emit setLabel(label);
 
-            this->IRCurrent = btRead.toDouble();
+            cout << btRead.toDouble();
 
-            emit setParameterValues(this->IRCurrent);
+            emit setParameterValues(btRead.toDouble());
         }
         else
         {
@@ -77,7 +79,7 @@ void btThread::run()
             emit setLabel(label);
         }
 
-        msleep(200);
+        msleep(100);
     }
 
     label = "BT Stopped";
