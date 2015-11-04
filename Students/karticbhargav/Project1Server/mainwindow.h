@@ -31,7 +31,7 @@ public:
     btThread *mThread;
 
     void easyplot();
-    void realtimeDataSlot(double IRRange, double PumpRate, double FlowRate);
+    void realtimeDataSlot(double IRRange, double PumpRate, double FlowRate, int i);
     bool databaseCreator(QString queryString);
 
 private slots:
@@ -43,7 +43,7 @@ private:
     Ui::MainWindow *ui;
 
 public slots:
-    void onSetParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState, QString ID, int Timestamp, QString CurrentIP);
+    void onSetParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState, QString ID, int Timestamp, QString CurrentIP, int i);
 };
 
 #endif // MAINWINDOW_H

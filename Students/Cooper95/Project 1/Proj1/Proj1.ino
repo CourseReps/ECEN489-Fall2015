@@ -4,8 +4,8 @@
  * Pin 04: Input from flow rate sensor
  * Pin 09: Get data on Teensy from NUC via BC-06. Directly connected to TXD of BC-06
  * Pin 10: Send data from Teensy to NUC via BC-06. Connected using voltage divider circuit.
- * Pin 12: Relay control output
  * Pin 14: IR input
+ * Pin 15: Relay control output
  * Pin 20: PWM output for pump
  */
 
@@ -14,7 +14,7 @@ const String send_data = "send_data";
 
 SoftwareSerial BTSerial(9,10);
 int FlowSens = 4;
-int RelayCtrl = 12;
+int RelayCtrl = 15;
 int IRin = 14;
 int PumpPWM = 20;
 
@@ -38,6 +38,7 @@ float InFlowRt = 0;
 int SolState = 0;
 bool RecData = false;
 static String BTsend = "";
+//int up = 1;
 
 //define calibration constants
 const float Ap = -9.896452;
@@ -52,6 +53,7 @@ void rpm ();
 
 void loop() {
 
+  /**/
   //temp serial input code
   static String SerGet = "";
   if(Serial.available())
@@ -68,7 +70,7 @@ void loop() {
         int commaIndex = SerGet.indexOf(',');
         OutFlowRt = SerGet.substring(0,commaIndex).toFloat();
         //Default the solenoid to true (or closed)
-        if(SerGet.substring(commaIndex+1) == "false")
+        if(SerGet.substring(commaIndex+1) == '0')
           SolState = false;
         else
           SolState = true;
@@ -78,6 +80,7 @@ void loop() {
         digitalWrite(RelayCtrl, SolState);
       }
   }
+  /**/
   
   count = count + 1;
   if(count > 250){
@@ -87,6 +90,12 @@ void loop() {
     //Serial.println(freq);
     count = 0;
     edges = 0;
+    /*
+    if (OutFlowRt > 2)
+      OutFlowRt = 0.1;
+    else
+      OutFlowRt = OutFlowRt + .01;
+    /**/
   }
   delay(1);
   
@@ -187,6 +196,7 @@ int LpmToPWM(float LPerMin){
 void GatherData(){
   //BTsend should be in the order: IR range, Pump rate, Flow rate, Solenoid state
   //measure IR sensor
+  //Serial.println(analogRead(IRin));
   if(analogRead(IRin) > 500)
     BTsend += '0';
   else

@@ -9,12 +9,20 @@ using namespace std;
 
 vector<pair<string, map<int, vector<double> > > >  globdata;
 vector<int> numPlots;
-
+string currentString="";
+string btname = "~/hello.txt";
 
 
 string MainWindow::getDBLoc(){return dbloc;}
 
 void MainWindow::setDBLoc(string loc){dbloc = loc;}
+
+void MainWindow::writeToBT(int x){
+    string comm = "echo \"";
+    comm+=to_string(x);
+    comm+="\" | sudo tee "+btname+"\n";
+    system(comm.c_str());
+}
 
 void MainWindow::addToGlobal(string id, pair<int, vector<double> > dta){
     bool isFound = false;
@@ -34,17 +42,16 @@ void MainWindow::addToGlobal(string id, pair<int, vector<double> > dta){
 }
 
     int MainWindow::callback(void *NotUsed, int argc, char **argv, char **azColName){
-        string ID = argv[4];
-        int id = stoi(ID);
-        vector<double> dt;
-        for(int i=0; i<argc; i++){
-            //cout<<i<<":\t"<<argv[i]<<"\n";
-            dt.push_back(stod(argv[i]));
-        }
-        pair<int, vector<double> > tp(id, dt);
-        addToGlobal("333", tp);
+        string ID = argv[0];
+            vector<double> dt;
+            for(int i=1; i<argc-1; i++){
+                cout<<i<<":\t"<<argv[i]<<"\n";
+                dt.push_back(stod(argv[i]));
+            }
+            pair<int, vector<double> > tp(stoi(argv[5]), dt);
+            addToGlobal(ID, tp);
 
-        return 0;
+            return 0;
       }
 
    void MainWindow::refreshGlobalDB(){
@@ -148,16 +155,16 @@ void MainWindow::realtimeDataSlot(){
     }
     // make key axis range scroll with the data (at a constant range size of 10):
     ui->widget->xAxis->setRange(maxkey+0.25, 10, Qt::AlignRight);
-    ui->widget->yAxis->setRange(0,1050);
+    ui->widget->yAxis->setRange(-0.5,75);
     ui->widget->replot();
     ui->widget_2->xAxis->setRange(maxkey+0.25, 10, Qt::AlignRight);
-    ui->widget_2->yAxis->setRange(0,1050);
+    ui->widget_2->yAxis->setRange(0,500);
     ui->widget_2->replot();
     ui->widget_3->xAxis->setRange(maxkey+0.25, 10, Qt::AlignRight);
-    ui->widget_3->yAxis->setRange(0,1050);
+    ui->widget_3->yAxis->setRange(0,800);
     ui->widget_3->replot();
     ui->widget_4->xAxis->setRange(maxkey+0.25, 10, Qt::AlignRight);
-    ui->widget_4->yAxis->setRange(0,1050);
+    ui->widget_4->yAxis->setRange(-0.25,1.25);
     ui->widget_4->replot();
 }
 
@@ -170,6 +177,14 @@ MainWindow::MainWindow(QWidget *parent) :
     setUpPlot(ui->widget_2);
     setUpPlot(ui->widget_3);
     setUpPlot(ui->widget_4);
+    ui->widget->plotLayout()->insertRow(0);
+    ui->widget->plotLayout()->addElement(0, 0, new QCPPlotTitle(ui->widget, "IR Range"));
+    ui->widget_2->plotLayout()->insertRow(0);
+    ui->widget_2->plotLayout()->addElement(0, 0, new QCPPlotTitle(ui->widget_2, "Pump Rate"));
+    ui->widget_3->plotLayout()->insertRow(0);
+    ui->widget_3->plotLayout()->addElement(0, 0, new QCPPlotTitle(ui->widget_3, "Flow Rate"));
+    ui->widget_4->plotLayout()->insertRow(0);
+    ui->widget_4->plotLayout()->addElement(0, 0, new QCPPlotTitle(ui->widget_4, "Solenoid"));
     // setup a timer that repeatedly calls MainWindow::realtimeDataSlot:
     connect(&dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
     dataTimer.start(1000); // Interval 0 means to refresh as fast as possible
@@ -178,4 +193,21 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+    currentString = arg1.toStdString();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    try{
+        int k = stoi(currentString);
+        writeToBT(k);
+    }
+
+    catch(exception e){
+        cout<<"An int value must be specified!, not \""<<currentString<<"\"\n";
+    }
 }

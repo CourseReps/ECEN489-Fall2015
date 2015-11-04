@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include <string>
 #include "btthread.h"
+#include "clientthread.h"
 #include <QBluetoothAddress>
 #include <QBluetoothSocket>
 #include "qcustomplot.h"
@@ -18,6 +19,10 @@
 #include <QSqlQuery>
 #include <QString>
 #include <QSqlQueryModel>
+#include <QFile>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +36,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     btThread *mThread;
+    clientThread *cThread;
 
     void easyplot();
     void realtimeDataSlot(double IRRange, double PumpRate, double FlowRate);
@@ -47,6 +53,7 @@ private:
 public slots:
     void onSetLabel(QString label);
     void onSetParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState);
+    void onsetLabelClient(QString label);
 };
 
 #endif // MAINWINDOW_H
