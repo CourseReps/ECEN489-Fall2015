@@ -24,9 +24,9 @@ int powerLED = 23;
 
 double Setpoint, Input;
 double Output; 
-float Kp = 2;
-float Ki = 3;
-float Kd = 1;
+float Kp = 4.8;
+float Ki = 1.5;
+float Kd = 0;
 
 //const int sampleRate = 250;
 PID myPID(&Input,&Output, &Setpoint, Kp, Ki, Kd, DIRECT);
@@ -46,7 +46,7 @@ void setup() {
   //myPID.SetSampleTime(sampleRate);
   Setpoint = 1;
   
-  myPID.SetOutputLimits(0, 250); 
+  myPID.SetOutputLimits(0, 100); 
   
   pinMode (powerLED,OUTPUT);
 
@@ -81,6 +81,8 @@ double voltToLevel(int levelSetpoint);
 void loop() {
   
   digitalWrite(powerLED,HIGH);
+
+  Setpoint = voltToLevel(5.5);
     
     
     double IRvolt = analogRead(IRin);
@@ -101,7 +103,7 @@ void loop() {
           RecData = true;
         }
       } else {
-        if (in == '\n'){
+        if (in == ' '){
           commandSetpoint = BTget.toFloat();
           Setpoint = voltToLevel(commandSetpoint);
           BTget = "";
@@ -123,8 +125,8 @@ void loop() {
     myPID.Compute();
     Serial.print(Output);
     Serial.print("\t");
-    int Output1 = map(Output,0,250,0,100);
-    OutFlowRt = Output1;
+    //int Output1 = map(Output,0,250,0,100);
+    OutFlowRt = Output;
   
     Serial.print(Input);
     Serial.print("\t");
