@@ -39,7 +39,9 @@ QString bluetooth_connect(QString dest_addr, QString message, bool *conn_state)
     }
 
     /* Initiate handshake */
-    status = write(s, message.toStdString().c_str(), sizeof(message.toStdString())+1);
+    int a = message.length() + 1;
+
+    status = write(s, message.toStdString().c_str(), a);
 
     if(status > 0)
     {
@@ -49,6 +51,11 @@ QString bluetooth_connect(QString dest_addr, QString message, bool *conn_state)
     {
         cout << "\nFailed to send handshaking message!";
         return NULL;
+    }
+
+    for(int i = 0; i < INT_MAX/10; i++)
+    {
+
     }
 
     char buf;

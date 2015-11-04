@@ -14,7 +14,6 @@ public:
     void run();
     bool btThreadStop;
     double IRSetpoint;
-    double IRCurrent;
 
 signals:
     void setLabel(QString label);

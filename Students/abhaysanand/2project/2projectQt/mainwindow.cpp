@@ -35,6 +35,7 @@ void MainWindow::on_button_BTstart_clicked()
     if(true == mThread->btThreadStop)
     {
         mThread->btThreadStop = false;
+        mThread->IRSetpoint = 2;
         mThread->start();
     }
 }
@@ -59,6 +60,7 @@ void MainWindow::on_slider_setpoint_valueChanged(int value)
 void MainWindow::onSetParameterValues(double IRCurrent)
 {
     /* Set current value to slider and spinBox */
-    int current = int(IRCurrent * 2) + 2;
+    int current = int((IRCurrent - 2) * 2);
     ui->slider_current->setValue(current);
+    ui->spin_current->setValue(IRCurrent);
 }

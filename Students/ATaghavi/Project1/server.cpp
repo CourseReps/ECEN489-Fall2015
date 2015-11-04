@@ -123,7 +123,6 @@ int main(int argc, char* argv[])
         json_values.push_back(pair<string, string>("SolenoidState", values[4]));
         json_values.push_back(pair<string, string>("Timestamp", to_string(time(0))));
         json_values.push_back(pair<string, string>("CurrentIP", get_ip()));
-
       }
 
       boost::system::error_code ignored_error;
@@ -137,6 +136,7 @@ int main(int argc, char* argv[])
       }
       else
       {
+        cout<<"Sending command to Arduino!\n";
         int voltage = stoi(command);
         if(voltage >-1 && voltage <256)
         {
