@@ -9,12 +9,20 @@ using namespace std;
 
 vector<pair<string, map<int, vector<double> > > >  globdata;
 vector<int> numPlots;
-
+string currentString="";
+string btname = "~/hello.txt";
 
 
 string MainWindow::getDBLoc(){return dbloc;}
 
 void MainWindow::setDBLoc(string loc){dbloc = loc;}
+
+void MainWindow::writeToBT(int x){
+    string comm = "echo \"";
+    comm+=to_string(x);
+    comm+="\" | sudo tee "+btname+"\n";
+    system(comm.c_str());
+}
 
 void MainWindow::addToGlobal(string id, pair<int, vector<double> > dta){
     bool isFound = false;
@@ -185,4 +193,21 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+    currentString = arg1.toStdString();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    try{
+        int k = stoi(currentString);
+        writeToBT(k);
+    }
+
+    catch(exception e){
+        cout<<"An int value must be specified!, not \""<<currentString<<"\"\n";
+    }
 }
