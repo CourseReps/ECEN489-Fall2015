@@ -1,6 +1,6 @@
 #include <PID_v1.h>
 
-#include <SoftwareSerial.h>
+//#include <SoftwareSerial.h>
 
 
 /*
@@ -12,7 +12,7 @@
  * Pin 20: PWM output for pump
  */
 
-SoftwareSerial BTSerial(9,10);
+//SoftwareSerial BTSerial(9,10);
 //int Level1 = 16;
 //int Level2 = 17;
 int FlowSens = 4;
@@ -34,7 +34,8 @@ PID myPID(&Input,&Output, &Setpoint, Kp, Ki, Kd, DIRECT);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  BTSerial.begin(9600);
+  Serial1.begin(9600);
+  //BTSerial.begin(9600);
   pinMode(FlowSens, INPUT);
   attachInterrupt(FlowSens, rpm, RISING);
   //pinMode(Level1, OUTPUT);
@@ -46,9 +47,11 @@ void setup() {
   //myPID.SetSampleTime(sampleRate);
   Setpoint = 1;
   
-  myPID.SetOutputLimits(0, 100); 
+  myPID.SetOutputLimits(0, 250); 
   
   pinMode (powerLED,OUTPUT);
+  float commandSetpoint=6.5;
+
 
 }
 
@@ -61,7 +64,7 @@ float OutFlowRt = 0;
 float InFlowRt = 0;
 int SolState = 0;
 bool RecData = false;
-int commandSetpoint=6.5;
+float commandSetpoint=6.5;
 static String BTsend = "";
 static String BTget = "";
 
@@ -73,16 +76,14 @@ const float Dp =  15.38008;
 
 //declare functions
 int LpmToPWM(float LPerMin);
-void GatherData();
+void GatherData(double Input, int OutFlowRt);
 void rpm ();
-double voltToLevel(int levelSetpoint);
+double voltToLevel(float levelSetpoint);
 
 
 void loop() {
   
   digitalWrite(powerLED,HIGH);
-
-  Setpoint = voltToLevel(5.5);
     
     
     double IRvolt = analogRead(IRin);
@@ -91,50 +92,21 @@ void loop() {
     //Serial.print("\t");
       delay (10);
     
-
-
-    //Bluetooth communication
-    if (BTSerial.available()){
-      char in = BTSerial.read();
-      if (!RecData){
-        if (in == 's'){
-          GatherData();
-        } else if (in == 'g'){
-          RecData = true;
-        }
-      } else {
-        if (in == ' '){
-          commandSetpoint = BTget.toFloat();
-          Setpoint = voltToLevel(commandSetpoint);
-          BTget = "";
-          RecData = false;
-        } else {
-          BTget += in;
-        }
-      }
-    }
-
-    
-
     Input = IRtemp;
    
-    
-    
-     //Serial.print(level);
-    //Serial.print("\t");
+     
     myPID.Compute();
     Serial.print(Output);
     Serial.print("\t");
-    //int Output1 = map(Output,0,250,0,100);
-    OutFlowRt = Output;
+    int Output1 = map(Output,0,250,0,100);
+    OutFlowRt = Output1;
   
     Serial.print(Input);
     Serial.print("\t");
     Serial.print((Setpoint));
     Serial.print("\t");
     
-    //Serial.print(FlowSens);
-    //Serial.print("\t");
+    
     Serial.println(OutFlowRt);
     cli();
     freq = edges * 4;
@@ -145,8 +117,41 @@ void loop() {
   delay(500);
     analogWrite(PumpPWM, (OutFlowRt));
 
-  //analogWrite(PumpPWM, LpmToPWM(OutFlowRt));
+  
   digitalWrite(RelayCtrl, SolState);
+  
+  
+  
+  GatherData(Input,OutFlowRt);
+  
+    //Bluetooth communication
+    //if (BTSerial.available()){
+          if (Serial1.available()){
+
+      //char in = BTSerial.read();
+      char in = Serial1.read();
+      
+      Serial.println(in);
+      if (!RecData){
+        if (in == 'g'){
+          RecData = true;
+        }
+      } 
+      else {
+        if (in == '\n'){
+          commandSetpoint = BTget.toFloat();
+          Setpoint = voltToLevel(commandSetpoint);
+          BTget = "";
+          RecData = false;
+        } else {
+          BTget += in;
+        }
+      }
+    }
+    
+    
+  
+  
 }
 //Define functions
 void rpm(){
@@ -168,36 +173,56 @@ int LpmToPWM(float LPerMin){
     return (int) (Ap*pow(lpm,3) + Bp*pow(lpm,2) + Cp*lpm + Dp); 
 }
 
-void GatherData(){
-  //BTsend should be in the order: IR range, Pump rate, Flow rate, Solenoid state
-  //measure IR sensor
-  //Serial.println(analogRead(IRin));
-  if(analogRead(IRin) > 500)
-    BTsend += '0';
-  else
-    BTsend += '1';
-  BTsend += ',';
+void GatherData(double Input, int OutFlowRt){
   
+
+// Order IR_sensor TEXT, RelayState TEXT,  Voltage TEXT, Flowrate TEXT
+  
+  
+  
+  //BTsend += String(Input);
+  //BTSerial.println(Input);
+  Serial1.println(Input);
+  
+  
+	// solenoid state
+	//BTsend += String(SolState);
+//BTSerial.println(SolState);
+Serial1.println(SolState);
+
   //current output to pump
-  BTsend += String(OutFlowRt);
-  BTsend += ',';
+ // BTsend += String(OutFlowRt);
+//BTSerial.println(OutFlowRt);
+Serial1.println(OutFlowRt);
+
+  //BTsend += ',';
   
   //Flow rate = frequency / 33 Hz/lpm
   InFlowRt = freq / 33;
-  BTsend += String(InFlowRt);
-  BTsend += ',';
+ // BTsend += String(InFlowRt);
+  //BTSerial.println(InFlowRt);
+  Serial1.println(InFlowRt);
+
+  //BTsend += ',';
   
   //current output to solenoid
-  BTsend += String(SolState);
-  BTSerial.println(BTsend);
+  
+ // BTsend += '}';
+  //BTSerial.println(BTsend);
+const char endP = 's';
+//BTsend += String(endP);
+ //BTSerial.println(endP);
+ Serial1.println(endP);
+  delay(50);
 }
 
 
-double voltToLevel(int levelSetpoint){
+double voltToLevel(float levelSetpoint){
   double dist;
   //int level1 = 0;
   dist = 1193.8* pow(levelSetpoint,-0.905);
   dist = map(dist,0,650,0,400);
   return dist;
 }
+
 
