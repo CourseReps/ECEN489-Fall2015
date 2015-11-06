@@ -75,6 +75,27 @@ string readFromBt()
 
 }
 
+string readFromBt2()
+{
+  
+  char buff[128];
+  string command = "head -n 2 " + deviceName;
+  FILE *fp = popen(command.c_str(),"r");
+
+  while ( fgets( buff, 128, fp ) != NULL ) {
+
+    //printf("%s", buff );
+
+  }
+  string ret(buff);
+  ret = ret.substr(ret.find("\n")+1);
+
+  cout<<ret<<"\n";
+
+  return ret;
+
+}
+
 int main(int argc, char* argv[])
 {
 
@@ -110,7 +131,7 @@ int main(int argc, char* argv[])
 
       vector<pair<string, string> > json_values;
       vector<string> values;
-      string vals = readFromBt();
+      string vals = readFromBt2();
       //vals.erase(std::remove(vals.begin(), vals.end(), '\n'), vals.end());
 
       values = split(values,vals, boost::is_any_of(","));
