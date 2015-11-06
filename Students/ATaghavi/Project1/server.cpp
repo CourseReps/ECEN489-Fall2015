@@ -75,6 +75,27 @@ string readFromBt()
 
 }
 
+string readFromBt2()
+{
+  
+  char buff[128];
+  string command = "head -n 2 " + deviceName;
+  FILE *fp = popen(command.c_str(),"r");
+
+  while ( fgets( buff, 128, fp ) != NULL ) {
+
+    //printf("%s", buff );
+
+  }
+  string ret(buff);
+  ret = ret.substr(ret.find("\n")+1);
+
+  cout<<ret<<"\n";
+
+  return ret;
+
+}
+
 int main(int argc, char* argv[])
 {
 
@@ -110,7 +131,7 @@ int main(int argc, char* argv[])
 
       vector<pair<string, string> > json_values;
       vector<string> values;
-      string vals = readFromBt();
+      string vals = readFromBt2();
       //vals.erase(std::remove(vals.begin(), vals.end(), '\n'), vals.end());
 
       values = split(values,vals, boost::is_any_of(","));
@@ -123,7 +144,6 @@ int main(int argc, char* argv[])
         json_values.push_back(pair<string, string>("SolenoidState", values[4]));
         json_values.push_back(pair<string, string>("Timestamp", to_string(time(0))));
         json_values.push_back(pair<string, string>("CurrentIP", get_ip()));
-
       }
 
       boost::system::error_code ignored_error;
@@ -137,6 +157,7 @@ int main(int argc, char* argv[])
       }
       else
       {
+        cout<<"Sending command to Arduino!\n";
         int voltage = stoi(command);
         if(voltage >-1 && voltage <256)
         {

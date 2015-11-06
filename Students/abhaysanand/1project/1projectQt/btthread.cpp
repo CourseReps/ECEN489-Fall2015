@@ -11,24 +11,32 @@ void btThread::run()
     QString dest = "00:12:09:13:99:42";
     QString get_data = "get_data";
     QString label = "Waiting for Bluetooth connection";
+    emit setLabel(label);
     QString btRead;
     QStringList btReadParameters;
+    static bool conn_state = false;
 
     while(1)
     {
         QMutex mutex;
+        bool btThreadStopLocal;
 
         mutex.lock();
+        btThreadStopLocal = this->btThreadStop;
+        mutex.unlock();
 
-        if(this->btThreadStop)
+        if(btThreadStopLocal)
         {
+            bluetooth_close();
+            conn_state = false;
+
+            label = "Stopped";
+            emit setLabel(label);
+
             break;
         }
 
-        mutex.unlock();
-
-        //btRead = QString(bluetooth_connect(dest, get_data).c_str());
-        btRead = bluetooth_connect(dest, get_data);
+        btRead = bluetooth_connect(dest, get_data, &conn_state);
 
         if (NULL != btRead)
         {
@@ -50,12 +58,9 @@ void btThread::run()
             emit setLabel(label);
         }
 
-
-
-        msleep(1000);
+        msleep(200);
     }
 
     label = "Stopped";
-
     emit setLabel(label);
 }

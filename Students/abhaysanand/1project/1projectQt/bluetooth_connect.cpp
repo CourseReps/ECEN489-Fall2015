@@ -1,15 +1,15 @@
 #include "bluetooth_connect.h"
 
-QString bluetooth_connect(QString dest_addr, QString message)
+static int s = 0;
+
+QString bluetooth_connect(QString dest_addr, QString message, bool *conn_state)
 {
     static struct sockaddr_rc addr = { 0 };
-    static int s = 0;
     static int status = 0;
     static int len=1;
-    static bool conn_state = false;
 
     // allocate a socket
-    if(false == conn_state)
+    if(false == *conn_state)
     {
         cout << "\nConnecting to device: 'team1'...";
 
@@ -24,15 +24,16 @@ QString bluetooth_connect(QString dest_addr, QString message)
         status = connect(s, (struct sockaddr *)&addr, sizeof(addr));
 
 
-        if(status)
+        if(status == -1)
         {
-            conn_state = false;
+            *conn_state = false;
+            close(s);
             cout <<"\nFailed to connect the device!";
             return NULL;
         }
         else
         {
-            conn_state = true;
+            *conn_state = true;
             cout << "\nConnected to device...\n\nInitiating handshake...";
         }
     }
@@ -69,4 +70,9 @@ QString bluetooth_connect(QString dest_addr, QString message)
     QString readBuf = QString::fromStdString(buffer.str());
 
     return readBuf;
+}
+
+void bluetooth_close()
+{
+    close(s);
 }

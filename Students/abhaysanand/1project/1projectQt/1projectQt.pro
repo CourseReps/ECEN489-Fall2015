@@ -16,12 +16,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     qcustomplot.cpp \
     btthread.cpp \
-    bluetooth_connect.cpp
+    bluetooth_connect.cpp \
+    clientthread.cpp \
+    client_connect.cpp
 
 HEADERS  += mainwindow.h \
     qcustomplot.h \
     btthread.h \
-    bluetooth_connect.h
+    bluetooth_connect.h \
+    clientthread.h \
+    client_connect.h
 
 FORMS    += mainwindow.ui
 

@@ -29,12 +29,17 @@ public:
     void refreshGlobalDB();
     void setDBLoc(string);
     string getDBLoc();
+    void writeToBT(int);
 
 
 private slots:
     void realtimeDataSlot();
 
 
+
+    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
