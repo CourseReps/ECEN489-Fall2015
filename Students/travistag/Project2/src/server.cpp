@@ -10,12 +10,13 @@
 using namespace std;
 
 string getValue(string devi){
-  string ret="NULL";
-//  string comm = "sudo head -1 /dev/rfcomm0 > read.txt";
-//  system(comm.c_str());
+  string ret="0,0,0,0";
+  string comm = "sudo head -2 /dev/rfcomm0 > read.txt";
+  system(comm.c_str());
   ifstream myinput("read.txt");
   if(myinput.is_open()){
     string line;
+    getline(myinput, line);
     if (getline(myinput, line))
       ret = line;
     return ret;
@@ -24,8 +25,8 @@ string getValue(string devi){
 }
 
 void writeValue(int x){
-  //string comm = "echo " + to_string(x) + " | sudo tee /dev/rfcomm0";
-  //system(comm.c_str());
+  string comm = "echo " + to_string(x) + " | sudo tee /dev/rfcomm0";
+  system(comm.c_str());
 }
 
 std::string getCurrentIP(){
