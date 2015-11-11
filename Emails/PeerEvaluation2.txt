@@ -1,0 +1,23 @@
+Hello,
+
+At the end of a project, every student is required to complete a Peer
+Evaluation Form to assess the individual contributions the members of
+their team. A rubric that explains the four evaluation criteria is
+provided below.
+
+• Effort & Quality: Work diligently, professional contributions,
+well-documented code, pertinent and reusable elements.
+• Creativity & Resourcefulness: Ingenious, imaginative, resourceful
+and efficient.
+• Participation & Human Interactions: Share responsibilities, prepare
+for meetings, eloquent and precise in interactions, conscientious,
+respectful, enthusiastic and positive.
+• Deliverables & Timeliness: Present and punctual during work
+sessions, respect deadlines, work on assigned targets.
+
+You have a maximum of (number of members x 12) points to allocate to
+the columns. These points can only be assigned as integers. The
+maximum grade per member-criterion is five points. The total should be
+the sum of the four grades per team member.
+
+Jean-Francois Chamberland
