@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/bluetoothToDb.dir/bluetoothToDb.cpp.o  -o bluetoothToDb -rdynamic -lboost_system -lsqlite3 
