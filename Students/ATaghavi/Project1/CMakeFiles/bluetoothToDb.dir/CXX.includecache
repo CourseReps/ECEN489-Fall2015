@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kaimen-walters/Desktop/ecen489/ECEN489-Fall2015/Students/ATaghavi/Project1/bluetoothToDb.cpp
+ctime
+-
+iostream
+-
+string
+-
+boost/asio.hpp
+-
+boost/array.hpp
+-
+fstream
+-
+sstream
+-
+stdio.h
+-
+stdlib.h
+-
+sqlite3.h
+-
+boost/algorithm/string/split.hpp
+-
+boost/algorithm/string/classification.hpp
+-
+vector
+-
+

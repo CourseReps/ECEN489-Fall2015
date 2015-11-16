@@ -1,0 +1,3 @@
+/home/kaimen-walters/Desktop/ecen489/ECEN489-Fall2015/Students/ATaghavi/Project1/build/CMakeFiles/client.dir
+/home/kaimen-walters/Desktop/ecen489/ECEN489-Fall2015/Students/ATaghavi/Project1/build/CMakeFiles/server.dir
+/home/kaimen-walters/Desktop/ecen489/ECEN489-Fall2015/Students/ATaghavi/Project1/build/CMakeFiles/bluetoothToDb.dir

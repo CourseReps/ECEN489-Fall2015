@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kaimen-walters/Desktop/ecen489/ECEN489-Fall2015/Students/ATaghavi/Project1/client.cpp
+iostream
+-
+boost/array.hpp
+-
+fstream
+-
+sstream
+-
+boost/asio.hpp
+-
+ctime
+-
+sqlite3.h
+-
+
