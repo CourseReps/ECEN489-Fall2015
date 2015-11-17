@@ -8,9 +8,9 @@
  * Pin 14: IR input
  * Pin 20: PWM output for pump
  */
-#define ALPHA 0.0018  /* filtering constant */
-#define CUPMAX 12 /* CUPMAX defines the height of cup */
-#define SEP 2     /* Separation between IR sensor and cup top */
+#define ALPHA 0.0042  /* filtering constant */
+#define CUPMAX 8 /* CUPMAX defines the height of cup */
+#define SEP 1     /* Separation between IR sensor and cup top */
 #define IRMIN 2   /* minimum measurable distance by IR */
 #define IRMAX 15  /* maximum measurable distance by IR */
 //#define IRHEIGHT ((CUPMAX > IRMAX) ? IRMAX : CUPMAX)
@@ -20,9 +20,9 @@
 /* define pin configurations */
 #define FlowSens 4
 #define IRin 14
-#define PumpPWM 20
-#define RX 9
-#define TX 10
+#define PumpPWM 23
+#define RX 0
+#define TX 1
 
 SoftwareSerial BTSerial(RX, TX);
 
@@ -66,29 +66,38 @@ void loop()
   a++;
   /* Get IR Sensor Value */
   static double IRvalFilt = 0;
-  double IRval = (double)analogRead(IRin);
+  double IRval = (double)analogRead(IRin) * 12 / 1023;
   /* Filter the IR value */
   shortFilter(&IRvalFilt, IRval, (double)ALPHA);
 
   /* convert IR values to cm */
-  double height = 2770.1 * pow(IRvalFilt, -1.116);
-  if (height > MAXSETPOINT)
+  double height = 32.222 * pow(IRvalFilt, -1.327);
+  if (height > IRMAX)
   {
-    height = MAXSETPOINT;
+    height = IRMAX;
   }
-  else if (height < MINSETPOINT)
+  else if (height < IRMIN)
   {
-    height = MINSETPOINT;
+    height = IRMIN;
   }
   
-  Input = (double)CUPMAX - height;
+  Input = (double)(CUPMAX - (height - SEP));
+
+  if(Input < 0)
+  {
+    Input = 0;
+  }
+  else if(Input > CUPMAX)
+  {
+    Input = CUPMAX;
+  }
 
   if(a%500 == 0)
   {
-    /*Serial.print("Height: ");
+    Serial.print("Height: ");
     Serial.println(height);
     Serial.print("Input: ");
-    Serial.println(Input);*/
+    Serial.println(Input);
   }
 
   if(a%500 == 0)
@@ -99,7 +108,7 @@ void loop()
   
   /* Compute the PID output value */
   myPID.Compute();
-  
+ 
   if(Output > MAXSETPOINT)
   {
     Output = MAXSETPOINT;
@@ -108,14 +117,14 @@ void loop()
   {
     Output = MINSETPOINT;
   }
-  if(a%500 == 0)
+  /*if(a%500 == 0)
   {
     Serial.print("Output: ");
     Serial.println(Output);
-  }
+  }*/
 
   /* Write PID controlled PWN value to PumpPWM */
-  int pumpControl = (int)(Output * (80-35) / (MAXSETPOINT-MINSETPOINT)) + 35;
+  int pumpControl = (int)(Output * (80-30) / (MAXSETPOINT-MINSETPOINT)) + 30;
 
   /*if(a%500 == 0)
   {
@@ -186,6 +195,21 @@ void loop()
       }
     }
   }
+  static String SerGet = "";
+  if(Serial.available())
+  {
+    char temp = char(Serial.read());
+    if(10 == int(temp))
+    {
+      temp = 0;
+    }
+    SerGet += temp;
+    if(0 == int(temp))
+    {
+      //Parse SerGet and put data into OutFlowRt and SolState
+      Setpoint = SerGet.toFloat();
+    }
+  }
 }
 
 //Define functions
@@ -198,7 +222,7 @@ void shortFilter(double *out, double in, double t)
 {
   double out1 = *out;
 
-  out1 = ((in - out1) * ALPHA) + out1;
+  out1 = ((in - out1) * t) + out1;
 
   *out = out1;
 }
