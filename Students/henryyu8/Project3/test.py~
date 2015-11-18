@@ -63,8 +63,6 @@ time = toc;
 
 plt.figure()
 plt.plot( T[:], Q2[:])
-plt.xlabel('time(s)')
-plt.ylabel('Net Flow Rate')
-plt.savefig('div2.png',dpi=300, bbox_inches='tight')
+plt.savefig('div2.png',dpi=300)
 plt.show()
 
