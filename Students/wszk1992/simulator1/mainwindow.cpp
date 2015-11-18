@@ -6,11 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setGeometry(400, 250, 1300, 600);
+    setGeometry(300, 250, 1400, 600);
     timer=0;
-    system = new Watersystem(0.15,0.15);
-    setpoint1 = 12;
-    setpoint2 = 10;
+    system = new Watersystem(INIT_H1/100.0,INIT_H2/100.0);
+    setpoint1 = SETPOINT1;
+    setpoint2 = SETPOINT2;
     controller1 = new PIDController(4000,3000,0,setpoint1/100.0);
     controller2 = new PIDController(4000,3000,0,setpoint2/100.0);
     plotvector<<ui->customPlot<<ui->customPlot_Vin1<<ui->customPlot_Vin2<<ui->customPlot_Vout1<<ui->customPlot_Vout2<<ui->customPlot_V3;
@@ -88,12 +88,29 @@ void MainWindow::setupRealtimeDataDemo(QVector<QCustomPlot*> plotvector)
         connect(plotvector[i]->xAxis, SIGNAL(rangeChanged(QCPRange)), plotvector[i]->xAxis2, SLOT(setRange(QCPRange)));
         connect(plotvector[i]->yAxis, SIGNAL(rangeChanged(QCPRange)), plotvector[i]->yAxis2, SLOT(setRange(QCPRange)));
 }
-        ui->setpoint1->setValue(15);
-        ui->setpoint2->setRange(0,20);
+        //setup sliders
+        ui->setpoint1->setValue(SETPOINT1);
+        ui->setpoint1->setRange(0,MAX_H1);
+        ui->setpoint2->setValue(SETPOINT1);
+        ui->setpoint2->setRange(0,MAX_H2);
+
+        //setup spinbox
+        ui->spinBox_1->setMaximum(MAX_H1);
+        ui->spinBox_1->setMinimum(0);
+        ui->spinBox_1->setValue(SETPOINT1);
+        ui->spinBox_2->setMaximum(MAX_H2);
+        ui->spinBox_2->setMinimum(0);
+        ui->spinBox_2->setValue(SETPOINT2);
+
+
           // setup a timer that repeatedly calls MainWindow::realtimeDataSlot:
           connect(&dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
-          connect(ui->setpoint1, SIGNAL(valueChanged(int)), this, SIGNAL(value(int)));
- //         connect(ui->setpoint2, SIGNAL(valueChanged(int)), this, SIGNAL(valueChanged(int)));
+          connect(ui->setpoint1, SIGNAL(valueChanged(int)), this, SLOT(value1(int)));
+          connect(ui->setpoint2, SIGNAL(valueChanged(int)), this, SLOT(value2(int)));
+          connect(ui->spinBox_1,SIGNAL(valueChanged(int)),ui->setpoint1,SLOT(setValue(int)));
+          connect(ui->setpoint1,SIGNAL(valueChanged(int)),ui->spinBox_1,SLOT(setValue(int)));
+          connect(ui->spinBox_2,SIGNAL(valueChanged(int)),ui->setpoint2,SLOT(setValue(int)));
+          connect(ui->setpoint2,SIGNAL(valueChanged(int)),ui->spinBox_2,SLOT(setValue(int)));
           dataTimer.start(0); // Interval 0 means to refresh as fast as possible
 
 
@@ -179,7 +196,14 @@ void MainWindow::addCurve(QCustomPlot* customPlot,double upper_level, double ran
     customPlot->yAxis->setRange(upper_level, range, Qt::AlignRight);
     customPlot->replot();
 }
-void MainWindow::value(int value)
+void MainWindow::value1(int value)
 {
-    cout<<value<<endl;
+    controller1->setSetpoint(value/100.0);
+//    cout<<value<<endl;
+}
+
+void MainWindow::value2(int value)
+{
+    controller2->setSetpoint(value/100.0);
+//    cout<<value<<endl;
 }

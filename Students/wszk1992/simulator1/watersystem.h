@@ -11,7 +11,7 @@ public:
     #define G 9.8
     #define D1 0.010
     #define D2 0.010
-    #define D3 0.005
+    #define D3 0.008
     #define R1 0.04
     #define R2 0.04
     #define T1 0.01

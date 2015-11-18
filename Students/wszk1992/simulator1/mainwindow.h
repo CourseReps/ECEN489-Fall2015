@@ -13,7 +13,12 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+    #define SETPOINT1 10
+    #define SETPOINT2 10
+    #define MAX_H1 20
+    #define MAX_H2 20
+    #define INIT_H1 0
+    #define INIT_H2 0
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -23,7 +28,8 @@ public:
     void addCurve(QCustomPlot *customPlot, double upper_level, double range, double key);
 public slots:
     void realtimeDataSlot();
-    void value(int);
+    void value1(int);
+    void value2(int);
 
 private:
     Ui::MainWindow *ui;

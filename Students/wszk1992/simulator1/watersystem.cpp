@@ -33,7 +33,8 @@ void Watersystem::compute()
     Qin2 = flowrate2;
     Qout1 = Pi*D1*D1/4*Fi*sqrt(2*G*h1);
     Qout2 = Pi*D2*D2/4*Fi*sqrt(2*G*h2);
-    Q3 = Pi*D3*D3*D3*D3/128/YITA*1000*G*dh/L;
+//    Q3 = Pi*D3*D3*D3*D3/128/YITA*1000*G*dh/L;
+    Q3 = Pi*D3*D3/4*Fi*sqrt(2*G*dh);
     dQ1 = Qin1+flag*Q3-Qout1;
     dQ2 = Qin2+(-1)*flag*Q3-Qout2;
     Vol1 = Vol1 + dQ1*T1;
