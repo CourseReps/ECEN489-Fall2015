@@ -34,7 +34,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title ""
 Date ""
 Rev ""
@@ -830,4 +830,16 @@ F 3 "" H 3650 3450 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	3950 3450 4050 3450
+Text Notes 7050 7050 0    157  ~ 0
+Project 3 - Team 4\nCooper Rehn
+Text Notes 7400 7500 0    60   ~ 0
+Dual PID Volume Calculator
+Text Notes 8150 7650 0    60   ~ 0
+11/17/2015
+$Sheet
+S 1100 6500 1300 800 
+U 564C30A2
+F0 "BlockDiagram" 60
+F1 "BlockDiagram.sch" 60
+$EndSheet
 $EndSCHEMATC

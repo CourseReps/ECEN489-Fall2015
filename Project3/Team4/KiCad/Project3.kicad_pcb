@@ -3,7 +3,7 @@
   (general
     (links 48)
     (no_connects 0)
-    (area 86.944287 73.35 197.213 133.2992)
+    (area 106.604999 86.284999 195.655001 129.615001)
     (thickness 1.6)
     (drawings 8)
     (tracks 161)
@@ -962,10 +962,10 @@
   (segment (start 161.29 104.14) (end 175.26 104.14) (width 0.508) (layer B.Cu) (net 21) (tstamp 56466009))
   (segment (start 139.7 116.332) (end 139.7 116.84) (width 0.508) (layer B.Cu) (net 39))
   (segment (start 139.7 116.84) (end 142.24 119.38) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1E6))
-  (segment (start 142.24 119.38) (end 171.45 119.38) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1E7))
-  (segment (start 171.45 119.38) (end 172.72 118.11) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1EC))
-  (segment (start 172.72 118.11) (end 189.23 118.11) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1F1))
   (segment (start 189.23 118.11) (end 193.04 114.3) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1F4))
+  (segment (start 172.72 118.11) (end 189.23 118.11) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1F1))
+  (segment (start 171.45 119.38) (end 172.72 118.11) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1EC))
+  (segment (start 142.24 119.38) (end 171.45 119.38) (width 0.508) (layer B.Cu) (net 39) (tstamp 5648E1E7))
   (segment (start 139.7 111.76) (end 139.7 116.332) (width 0.508) (layer B.Cu) (net 39))
 
   (zone (net 2) (net_name Earth) (layer F.Cu) (tstamp 564660C0) (hatch edge 0.508)
