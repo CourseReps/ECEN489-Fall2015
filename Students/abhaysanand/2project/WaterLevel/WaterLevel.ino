@@ -1,5 +1,5 @@
 #define IRin A0
-#define ALPHA 0.1
+#define ALPHA 0.0042
 
 void setup()
 {
@@ -11,7 +11,7 @@ void shortFilter(double *out, double in, double t)
 {
   double out1 = *out;
 
-  out1 = ((in - out1) * ALPHA) + out1;
+  out1 = ((in - out1) * t) + out1;
 
   *out = out1;
 }
@@ -22,12 +22,12 @@ void loop()
   a++;
   static double IRvalFilt = 0;
 
-  double IRval = (double)analogRead(IRin) * 5 / 1023;
+  double IRval = (double)analogRead(IRin) * 12 / 1023;
   
   shortFilter(&IRvalFilt, IRval, (double)ALPHA);
 
-  if(a%25 == 0)
+  if(a%100 == 0)
     Serial.println(IRvalFilt);
     
-  delay(20);
+  delay(3);
 }

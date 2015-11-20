@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/client.dir/client.cpp.o  -o client -rdynamic -lboost_system -lsqlite3 

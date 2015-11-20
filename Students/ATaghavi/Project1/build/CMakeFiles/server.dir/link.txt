@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/server.dir/server.cpp.o  -o server -rdynamic -lboost_system -lsqlite3 

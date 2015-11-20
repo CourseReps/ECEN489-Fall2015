@@ -79,7 +79,7 @@ string readFromBt2()
 {
   
   char buff[128];
-  string command = "head -n 2 " + deviceName;
+  string command = "sudo head -n 2 " + deviceName;
   FILE *fp = popen(command.c_str(),"r");
 
   while ( fgets( buff, 128, fp ) != NULL ) {
@@ -88,6 +88,10 @@ string readFromBt2()
 
   }
   string ret(buff);
+<<<<<<< HEAD
+=======
+  cout<<ret<<"\n";
+>>>>>>> 7feb8f27ab7b8c6d743351f59b4d144877b19a56
   //ret = ret.substr(ret.find("\n")+1);
 
   cout<<ret<<"\n";
