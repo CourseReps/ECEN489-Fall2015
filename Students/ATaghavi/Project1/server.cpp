@@ -88,7 +88,7 @@ string readFromBt2()
 
   }
   string ret(buff);
-  ret = ret.substr(ret.find("\n")+1);
+  //ret = ret.substr(ret.find("\n")+1);
 
   cout<<ret<<"\n";
 
