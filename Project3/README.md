@@ -41,6 +41,16 @@ For the single-bucket volume estimation problem, we define the model to have the
 * Max flowrate - 3.5 L/min
     - Flowrate is assumed to be linear with PWM value between 0 and 255. i.e., PWM of 255 will yield a flowrate of 3.5L/min, and a PWM of 0 will yield a flow of 0L/min
 
-Our input to the simulation will just be two values - a setpoint, and a height "jump" that occurs when the object is dropped in. To start, we will use the following test cases:
+Our input to the simulation will just be these four values, plus two more - a setpoint, and a height "jump" that occurs when the object is dropped in. To start, we will use the following test cases:
 * Setpoint = 6cm, jump = 1cm
 * Setpoint = 3cm, jump = 2cm
+
+The input file will be all 6 values comma-separated. Example:
+
+File 1:
+
+    8, 12, 5, 3.5, 6, 1
+    
+File 2:
+
+    8, 12, 5, 3.5, 3, 2
