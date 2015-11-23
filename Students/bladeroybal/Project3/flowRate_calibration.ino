@@ -59,17 +59,19 @@ void loop ()
   //analogWrite(pumpPin,PWMval);            //sets the PWM for the pumpPin
   delay(15);
 if (Serial.available()){
- PWMval = Serial.parseInt(); 
- analogWrite(pumpPin,PWMval);            //sets the PWM for the pumpPin
- previousMillis = currentMillis;
-}
-if (Serial.available() && Serial.parseInt()==0) {
-  PWMval = 0;
-  analogWrite(pumpPin,PWMval);
-  long timeTaken = currentMillis - previousMillis;
-  Serial.print(" Time taken: ");
-  Serial.print(timeTaken, DEC);
-  delay(99999);
+  if (Serial.parseInt()>=5){
+    PWMval = Serial.parseInt();
+    analogWrite(pumpPin,PWMval); //sets the PWM for the pumpPin
+    previousMillis = currentMillis;
+  }
+  if (Serial.parseInt()==1){
+    PWMval = 0;
+    analogWrite(pumpPin,PWMval);
+    long timeTaken = currentMillis - previousMillis;
+    Serial.print(" Time taken: ");
+    Serial.print(timeTaken, DEC);
+    delay(99999);
+  }
 }
 }
   
