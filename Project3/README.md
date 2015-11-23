@@ -39,6 +39,7 @@ For the single-bucket volume estimation problem, we define the model to have the
 * Bucket height - 12cm
 * Hole/leak diameter - 5mm
 * Max flowrate - 3.5 L/min
+    - Flowrate is assumed to be linear with PWM value between 0 and 255. i.e., PWM of 255 will yield a flowrate of 3.5L/min, and a PWM of 0 will yield a flow of 0L/min
 
 Our input to the simulation will just be two values - a setpoint, and a height "jump" that occurs when the object is dropped in. To start, we will use the following test cases:
 * Setpoint = 6cm, jump = 1cm
