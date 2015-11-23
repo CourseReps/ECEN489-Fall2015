@@ -31,3 +31,15 @@
 * Cooper Rehn
 * Seungwon Yoon
 
+# Simulation/Model Testing
+In order to verify our models and algorithms, all the teams will test their models using the same values/input files.
+##Problem 1
+For the single-bucket volume estimation problem, we define the model to have the following parameters (equivalent to a standart 500ml beaker):
+* Bucket diameter - 8cm
+* Bucket height - 12cm
+* Hole/leak diameter - 5mm
+* Max flowrate - 3.5 L/min
+
+Our input to the simulation will just be two values - a setpoint, and a height "jump" that occurs when the object is dropped in. To start, we will use the following test cases:
+* Setpoint = 6cm, jump = 1cm
+* Setpoint = 3cm, jump = 2cm
