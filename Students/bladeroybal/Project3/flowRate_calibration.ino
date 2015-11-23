@@ -1,10 +1,10 @@
 volatile int NbTopsFan; //measuring the rising edges of the signal
 int Calc;                               
-int hallsensor = 2;    //The pin location of the sensor
+int hallsensor = 5;    //The pin location of the sensor
 
 //PWM Integration
 int in = 0;
-int fan = 3;
+int pumpPin= 20;
 int val = 0;
 int PWMval = 0;
 
@@ -25,8 +25,9 @@ void setup() //
   attachInterrupt(hallsensor, rpm, RISING); //and the interrupt is attached
   
   //Adding PWM stuff
-  pinMode(fan, OUTPUT);
-  PWMval = 255;
+  pinMode(pumpPin, OUTPUT);
+  PWMval = 0;
+  analogWrite(pumpPin,PWMval);            //sets the PWM for the pumpPin
 } 
 // the loop() method runs over and over again,
 // as long as the Arduino has power
@@ -55,14 +56,19 @@ void loop ()
   
   //adding PWM stuff
   //PWMval = 255;  //and to use for PWM (0-255)
-  analogWrite(fan,PWMval);            //sets the PWM for the fan
+  //analogWrite(pumpPin,PWMval);            //sets the PWM for the pumpPin
   delay(15);
-
+if (Serial.available()){
+ PWMval = Serial.parseInt(); 
+ analogWrite(pumpPin,PWMval);            //sets the PWM for the pumpPin
+ previousMillis = currentMillis;
+}
 if (Serial.available() && Serial.parseInt()==0) {
   PWMval = 0;
-  long timeTaken = currentMillis;
+  analogWrite(pumpPin,PWMval);
+  long timeTaken = currentMillis - previousMillis;
   Serial.print(" Time taken: ");
-  Serial.print(timeTaken);
+  Serial.print(timeTaken, DEC);
   delay(99999);
 }
 }
