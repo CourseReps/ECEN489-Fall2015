@@ -103,8 +103,12 @@ while(Y.isInSS()==False):
 	X.step(Y.getOutput())
 	Y.pushInput(X.getHeight())
 	#print("Flow: "+str(Y.getOutput())+"  Height: "+str(X.getHeight())+"  Error: "+str(Y.e[-1]))
-	sleep(0.05)
+	sleep(0.03)
+	#conn = sqlite3.connect('Project3.db')
+	#c = conn.cursor()
 	c.execute("INSERT INTO SYSTEM_DATA (ID,IRRange,PumpRate,FlowRate,SolenoidState,Timestamp,CurrentIP) ""VALUES ('" + "Team2" + "','"+ str(X.getHeight()) + "','"+ "0" + "','"+ str(Y.getOutput()) + "','"+ "0" + "','" + str(int(time.time())) +"','"+"127.0.0.1"+"');")
+	conn.commit()
+	#conn.close();
 
 SSflow = X.getAvgFlow()
 st = len(X.inFlows)	
@@ -117,8 +121,12 @@ while(Y.isInSS()==False):
 	X.step(Y.getOutput())
 	Y.pushInput(X.getHeight())
 	#print("Flow: "+str(Y.getOutput())+"  Height: "+str(X.getHeight())+"  Error: "+str(Y.e[-1]))
-	sleep(0.05)
+	sleep(0.03)
+	#conn = sqlite3.connect('Project3.db')
+	#c = conn.cursor()
 	c.execute("INSERT INTO SYSTEM_DATA (ID,IRRange,PumpRate,FlowRate,SolenoidState,Timestamp,CurrentIP) ""VALUES ('" + "Team2" + "','"+ str(X.getHeight()) + "','"+ "0" + "','"+ str(Y.getOutput()) + "','"+ "0" + "','" + str(int(time.time())) +"','"+"127.0.0.1"+"');")
+	conn.commit()
+	#conn.close()
 et = len(X.inFlows)
 objVol = 0
 for i in range(st, et):
@@ -126,5 +134,4 @@ for i in range(st, et):
 objVol/=(60*10)
 
 print("\n\n"+str(objVol*1000))
-conn.commit()
 conn.close()
