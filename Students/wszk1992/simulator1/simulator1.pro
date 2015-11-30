@@ -21,6 +21,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     qcustomplot.h \
     pid_controller.h \
-    watersystem.h
+    watersystem.h \
+    macro_value.h
 
 FORMS    += mainwindow.ui
