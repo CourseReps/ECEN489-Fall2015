@@ -9,7 +9,7 @@
 #define INIT_H2 0
 #define D1 5 //mm
 #define D2 5 //mm
-#define D3 3 //mm
+#define D3 0 //mm
 #define MAX_D1 10
 #define MAX_D2 10
 #define MAX_D3 10
