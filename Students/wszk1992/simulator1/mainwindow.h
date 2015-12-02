@@ -45,7 +45,6 @@ private:
     PIDController *controller2;
     QString demoName;
     QTimer dataTimer;
-    QTimer abc;
     double setpoint1;
     double setpoint2;
     int timer;
