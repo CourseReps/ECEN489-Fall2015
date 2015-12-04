@@ -536,7 +536,7 @@ F 3 "" H 4050 3450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3350 3450 3350 3450
+	3350 3450 3400 3450
 $Comp
 L Switch_SPDT_x2 SW1
 U 1 1 56477804
@@ -604,7 +604,7 @@ Text Notes 6250 3950 0    60   ~ 0
 Text Notes 6250 4050 0    60   ~ 0
 GND
 Text Notes 6250 4150 0    60   ~ 0
-+12V
++5V
 Text Notes 6250 4250 0    60   ~ 0
 GND
 Text Notes 6250 4350 0    60   ~ 0
@@ -672,12 +672,7 @@ F 3 "" H 5700 5450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5700 4100 5850 4100
-Wire Wire Line
-	5700 3600 5700 4100
-Wire Wire Line
 	5850 3900 5700 3900
-Connection ~ 5700 3900
 Wire Wire Line
 	5850 3700 5700 3700
 Connection ~ 5700 3700
@@ -820,16 +815,14 @@ $EndComp
 $Comp
 L SW_PUSH SW3
 U 1 1 5648E131
-P 3650 3450
-F 0 "SW3" H 3800 3560 50  0000 C CNN
-F 1 "SW_PUSH" H 3650 3370 50  0000 C CNN
-F 2 "Buttons_Switches_ThroughHole:SW_PUSH_SMALL" H 3650 3450 60  0001 C CNN
-F 3 "" H 3650 3450 60  0000 C CNN
-	1    3650 3450
+P 3700 3450
+F 0 "SW3" H 3850 3560 50  0000 C CNN
+F 1 "SW_PUSH" H 3700 3370 50  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_PUSH_SMALL" H 3700 3450 60  0001 C CNN
+F 3 "" H 3700 3450 60  0000 C CNN
+	1    3700 3450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3950 3450 4050 3450
 Text Notes 7050 7050 0    157  ~ 0
 Project 3 - Team 4\nCooper Rehn
 Text Notes 7400 7500 0    60   ~ 0
@@ -842,4 +835,11 @@ U 564C30A2
 F0 "BlockDiagram" 60
 F1 "BlockDiagram.sch" 60
 $EndSheet
+Wire Wire Line
+	5700 3900 5700 3600
+Wire Wire Line
+	5850 4100 5500 4100
+Connection ~ 5500 4100
+Wire Wire Line
+	4050 3450 4000 3450
 $EndSCHEMATC
