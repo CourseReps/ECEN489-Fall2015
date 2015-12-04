@@ -6,13 +6,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setGeometry(300, 250, 1400, 600);
+    setGeometry(300, 250, 1500, 700);
     timer=0;
-    system = new Watersystem(INIT_H1/100.0,INIT_H2/100.0);
+    stablestate_1 = 0;
+    stablestate_2 = 0;
+    check_stable_time_1=0;
+    check_stable_time_2=0;
+    start_estimate_volumn = 0;
+    estimated_volumn = 0;
+    item_volumn = 0;
+    system = new Watersystem(INIT_H1/100.0,INIT_H2/100.0,D1/1000.0,D2/1000.0,D3/1000.0);
     setpoint1 = SETPOINT1;
     setpoint2 = SETPOINT2;
-    controller1 = new PIDController(4000,3000,0,setpoint1/100.0);
-    controller2 = new PIDController(4000,3000,0,setpoint2/100.0);
+    controller1 = new PIDController(4000,800,0,setpoint1/100.0);
+    controller2 = new PIDController(4000,800,0,setpoint2/100.0);
     plotvector<<ui->customPlot<<ui->customPlot_Vin1<<ui->customPlot_Vin2<<ui->customPlot_Vout1<<ui->customPlot_Vout2<<ui->customPlot_V3;
     setupRealtimeDataDemo(plotvector);
     setWindowTitle("QCustomPlot: realtimedata");
@@ -77,7 +84,7 @@ void MainWindow::setupRealtimeDataDemo(QVector<QCustomPlot*> plotvector)
             label = "Qout2";
             break;
         case 5:
-            label = "Q3";
+            label = "Q12";
             break;
         default:
             break;
@@ -93,6 +100,13 @@ void MainWindow::setupRealtimeDataDemo(QVector<QCustomPlot*> plotvector)
         ui->setpoint1->setRange(0,MAX_H1);
         ui->setpoint2->setValue(SETPOINT1);
         ui->setpoint2->setRange(0,MAX_H2);
+        ui->d1->setValue(D1);
+        ui->d1->setRange(0,MAX_D1);
+        ui->d2->setValue(D2);
+        ui->d2->setRange(0,MAX_D2);
+        ui->d3->setValue(D3);
+        ui->d3->setRange(0,MAX_D3);
+
 
         //setup spinbox
         ui->spinBox_1->setMaximum(MAX_H1);
@@ -101,7 +115,19 @@ void MainWindow::setupRealtimeDataDemo(QVector<QCustomPlot*> plotvector)
         ui->spinBox_2->setMaximum(MAX_H2);
         ui->spinBox_2->setMinimum(0);
         ui->spinBox_2->setValue(SETPOINT2);
+        ui->d1_box->setMaximum(MAX_D1);
+        ui->d1_box->setMinimum(0);
+        ui->d1_box->setValue(D1);
+        ui->d2_box->setMaximum(MAX_D2);
+        ui->d2_box->setMinimum(0);
+        ui->d2_box->setValue(D2);
+        ui->d3_box->setMaximum(MAX_D3);
+        ui->d3_box->setMinimum(0);
+        ui->d3_box->setValue(D3);
 
+        ui->Volumn_box->setMaximum(int(MAX_H1*Pi*R1*R1*10000));
+        ui->Volumn_box->setMinimum(0);
+        ui->Volumn_box->setValue(0);
 
           // setup a timer that repeatedly calls MainWindow::realtimeDataSlot:
           connect(&dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
@@ -111,6 +137,22 @@ void MainWindow::setupRealtimeDataDemo(QVector<QCustomPlot*> plotvector)
           connect(ui->setpoint1,SIGNAL(valueChanged(int)),ui->spinBox_1,SLOT(setValue(int)));
           connect(ui->spinBox_2,SIGNAL(valueChanged(int)),ui->setpoint2,SLOT(setValue(int)));
           connect(ui->setpoint2,SIGNAL(valueChanged(int)),ui->spinBox_2,SLOT(setValue(int)));
+
+          connect(ui->d1, SIGNAL(valueChanged(int)), this, SLOT(value_d1(int)));
+          connect(ui->d1_box,SIGNAL(valueChanged(int)),ui->d1,SLOT(setValue(int)));
+          connect(ui->d1,SIGNAL(valueChanged(int)),ui->d1_box,SLOT(setValue(int)));
+
+          connect(ui->d2, SIGNAL(valueChanged(int)), this, SLOT(value_d2(int)));
+          connect(ui->d2_box,SIGNAL(valueChanged(int)),ui->d2,SLOT(setValue(int)));
+          connect(ui->d2,SIGNAL(valueChanged(int)),ui->d2_box,SLOT(setValue(int)));
+
+          connect(ui->d3, SIGNAL(valueChanged(int)), this, SLOT(value_d3(int)));
+          connect(ui->d3_box,SIGNAL(valueChanged(int)),ui->d3,SLOT(setValue(int)));
+          connect(ui->d3,SIGNAL(valueChanged(int)),ui->d3_box,SLOT(setValue(int)));
+
+          connect(ui->Volumn_box,SIGNAL(valueChanged(int)),this,SLOT(change_volumn(int)));
+
+
           dataTimer.start(0); // Interval 0 means to refresh as fast as possible
 
 
@@ -157,6 +199,35 @@ void MainWindow::realtimeDataSlot()
         addData(plotvector[5],value,key);
         value.clear();
 
+        if(check_stablestate(1))
+        {
+            ui->textBrowser_1->setText("stable");
+            stablestate_1 = true;
+        }
+        else
+        {
+            ui->textBrowser_1->setText("not stable");
+            stablestate_1 = false;
+        }
+        if(check_stablestate(2))
+        {
+            ui->textBrowser_2->setText("stable");
+            stablestate_2 = true;
+        }
+        else
+        {
+            ui->textBrowser_2->setText("not stable");
+            stablestate_2 = false;
+        }
+
+        if(start_estimate_volumn)
+        {
+            compute_volumn();
+        }
+//        cout<<"estimated volumn: "<<estimated_volumn<<endl;
+        ui->estimated_value->setText(QString::number(estimated_volumn));
+        if(start_estimate_volumn==0&&estimated_volumn!=0)
+            ui->relative_error->setText(QString::number((item_volumn-estimated_volumn)/item_volumn*100));
 
         lastPointKey = key;
 
@@ -199,11 +270,99 @@ void MainWindow::addCurve(QCustomPlot* customPlot,double upper_level, double ran
 void MainWindow::value1(int value)
 {
     controller1->setSetpoint(value/100.0);
+    setpoint1 = value;
 //    cout<<value<<endl;
 }
 
 void MainWindow::value2(int value)
 {
     controller2->setSetpoint(value/100.0);
+    setpoint2 = value;
 //    cout<<value<<endl;
+}
+
+void MainWindow::value_d1(int value)
+{
+    system->set_d1(value/1000.0);
+}
+void MainWindow::value_d2(int value)
+{
+    system->set_d2(value/1000.0);
+}
+void MainWindow::value_d3(int value)
+{
+    system->set_d3(value/1000.0);
+}
+
+bool MainWindow::check_stablestate(int flag)
+{
+    int* ptime;
+    double h;
+    double setpoint;
+    if(flag==1)
+    {
+       ptime = &check_stable_time_1;
+       h=system->h1*100;
+       setpoint=setpoint1;
+    }
+    else if(flag==2)
+    {
+        ptime = &check_stable_time_2;
+        h=system->h2*100;
+        setpoint=setpoint2;
+    }
+
+    if(abs(h-setpoint)<stable_err)
+    {
+        (*ptime)++;
+        if(*ptime<100)
+            return false;
+        else
+            return true;
+    }
+    else
+    {
+        *ptime=0;
+        return false;
+    }
+}
+
+void MainWindow::change_volumn(int volumn)
+{
+    item_volumn = volumn;
+}
+
+void MainWindow::put_item(int volumn)  //ml
+{
+    if(system->put_item(volumn/1000000.0)==-1)
+    {
+        cout<<"too large!"<<endl;
+    }
+    else
+        cout<<"Put item successfully!"<<endl;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    if(stablestate_1)
+    {
+        put_item(item_volumn);
+        start_estimate_volumn = 1;
+        estimated_volumn = 0;
+    }
+    else
+        cout<<"not stable now!"<<endl;
+}
+
+void MainWindow::compute_volumn()
+{
+    if(!stablestate_1)
+    {
+        estimated_volumn += (-system->dQ1) * 0.01*1000000;
+    }
+    else
+    {
+        cout<<"estimated over!"<<endl;
+        start_estimate_volumn = 0;
+    }
 }

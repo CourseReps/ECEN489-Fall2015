@@ -84,6 +84,7 @@ void loop() {
   
   count = count + 1;
   if(count > 250){
+    GatherData(); 
     cli();
     freq = edges * 4;
     sei();

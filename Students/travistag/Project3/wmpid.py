@@ -1,5 +1,7 @@
 import numpy as np
 import time
+import sqlite3
+from time import sleep
 
 class PIDController:
 	def __init__(self, pp, ii, dd, sp, maxv, minv, start):
@@ -91,14 +93,22 @@ class WaterModel:
 				avgf+=self.inFlows[len(self.inFlows)-i]
 			avgf/=5
 		return avgf
-
+conn = sqlite3.connect('Project3.db')
+c = conn.cursor()
+c.execute("CREATE TABLE IF NOT EXISTS SYSTEM_DATA("  "ID           TEXT    NOT NULL," "IRRange            TEXT     NOT NULL," "PumpRate           TEXT    NOT NULL," "FlowRate           TEXT    NOT NULL," "SolenoidState           TEXT    NOT NULL," "Timestamp           TEXT    NOT NULL," "CurrentIP            TEXT     NOT NULL);")
 X = WaterModel(6, 25.13, 0, 0.3)
 Y = PIDController(5,0.1,0,6,3.5,0,0)
 while(Y.isInSS()==False):
 	Y.compute()
 	X.step(Y.getOutput())
 	Y.pushInput(X.getHeight())
-	print("Flow: "+str(Y.getOutput())+"  Height: "+str(X.getHeight())+"  Error: "+str(Y.e[-1]))
+	#print("Flow: "+str(Y.getOutput())+"  Height: "+str(X.getHeight())+"  Error: "+str(Y.e[-1]))
+	sleep(0.03)
+	#conn = sqlite3.connect('Project3.db')
+	#c = conn.cursor()
+	c.execute("INSERT INTO SYSTEM_DATA (ID,IRRange,PumpRate,FlowRate,SolenoidState,Timestamp,CurrentIP) ""VALUES ('" + "Team2" + "','"+ str(X.getHeight()) + "','"+ "0" + "','"+ str(Y.getOutput()) + "','"+ "0" + "','" + str(int(time.time())) +"','"+"127.0.0.1"+"');")
+	conn.commit()
+	#conn.close();
 
 SSflow = X.getAvgFlow()
 st = len(X.inFlows)	
@@ -110,7 +120,13 @@ while(Y.isInSS()==False):
 	Y.compute()
 	X.step(Y.getOutput())
 	Y.pushInput(X.getHeight())
-	print("Flow: "+str(Y.getOutput())+"  Height: "+str(X.getHeight())+"  Error: "+str(Y.e[-1]))
+	#print("Flow: "+str(Y.getOutput())+"  Height: "+str(X.getHeight())+"  Error: "+str(Y.e[-1]))
+	sleep(0.03)
+	#conn = sqlite3.connect('Project3.db')
+	#c = conn.cursor()
+	c.execute("INSERT INTO SYSTEM_DATA (ID,IRRange,PumpRate,FlowRate,SolenoidState,Timestamp,CurrentIP) ""VALUES ('" + "Team2" + "','"+ str(X.getHeight()) + "','"+ "0" + "','"+ str(Y.getOutput()) + "','"+ "0" + "','" + str(int(time.time())) +"','"+"127.0.0.1"+"');")
+	conn.commit()
+	#conn.close()
 et = len(X.inFlows)
 objVol = 0
 for i in range(st, et):
@@ -118,3 +134,4 @@ for i in range(st, et):
 objVol/=(60*10)
 
 print("\n\n"+str(objVol*1000))
+conn.close()
