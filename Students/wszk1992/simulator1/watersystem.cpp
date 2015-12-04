@@ -1,9 +1,12 @@
 #include "watersystem.h"
 
-Watersystem::Watersystem(double init_h1,double init_h2)
+Watersystem::Watersystem(double init_h1,double init_h2, double dd1, double dd2, double dd3)
 {
     h1 = init_h1;
     h2 = init_h2;
+    d1 = dd1;
+    d2 = dd2;
+    d3 = dd3;
     Vol1 = h1*Pi*R1*R1;
     Vol2 = h2*Pi*R1*R1;
     pumpvolt1 = 0;
@@ -31,16 +34,32 @@ void Watersystem::compute()
     }
     Qin1 = flowrate1;
     Qin2 = flowrate2;
-    Qout1 = Pi*D1*D1/4*Fi*sqrt(2*G*h1);
-    Qout2 = Pi*D2*D2/4*Fi*sqrt(2*G*h2);
+    Qout1 = Pi*d1*d1/4*Fi*sqrt(2*G*h1);
+    Qout2 = Pi*d2*d2/4*Fi*sqrt(2*G*h2);
 //    Q3 = Pi*D3*D3*D3*D3/128/YITA*1000*G*dh/L;
-    Q3 = Pi*D3*D3/4*Fi*sqrt(2*G*dh);
+    Q3 = Pi*d3*d3/4*Fi*sqrt(2*G*dh);
     dQ1 = Qin1+flag*Q3-Qout1;
     dQ2 = Qin2+(-1)*flag*Q3-Qout2;
     Vol1 = Vol1 + dQ1*T1;
     Vol2 = Vol2 + dQ2*T1;
     h1 = Vol1/(Pi*R1*R1);
     h2 = Vol2/(Pi*R2*R2);
+}
+
+void Watersystem::set_d1(double dd1)
+{
+    d1 = dd1;
+//    cout<<"d1="<<d1<<endl;
+}
+void Watersystem::set_d2(double dd2)
+{
+    d2 = dd2;
+//    cout<<"d2="<<d2<<endl;
+}
+void Watersystem::set_d3(double dd3)
+{
+    d3 = dd3;
+//    cout<<"d3="<<d3<<endl;
 }
 
 void Watersystem::printheight()
@@ -65,10 +84,22 @@ void Watersystem::printheight()
     cout<<endl;
 }
 
-void Watersystem::put_item(int tank)
+int Watersystem::put_item(double volumn)
 {
-    if(tank==1)
-        h1 += STONE_HEIGHT;
-    else if(tank==2)
-        h2 += STONE_HEIGHT;
+    if(!check_volumn(volumn))
+        return -1;
+    else
+    {
+        Vol1 = Vol1+volumn;
+        h1 = h1+volumn/(Pi*R1*R1);
+        return 1;
+    }
+}
+
+bool Watersystem::check_volumn(double volumn)
+{
+    if(volumn/(Pi*R1*R1)+h1>MAX_H1/100.0)
+        return false;
+    else
+        return true;
 }
