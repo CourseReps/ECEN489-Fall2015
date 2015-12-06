@@ -46,7 +46,9 @@ void btThread::run()
             btReadParameters = btRead.split(",", QString::SkipEmptyParts);
 
             this->IRRange = btReadParameters[0].toDouble();
+            //IR2
             this->PumpRate = btReadParameters[1].toDouble();
+            //PumpRate2
             this->FlowRate = btReadParameters[2].toDouble();
             this->SolenoidState = btReadParameters[3].toInt();
 
