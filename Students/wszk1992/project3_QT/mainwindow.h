@@ -37,15 +37,30 @@ public:
     btThread *mThread;
     clientThread *cThread;
 
+    void easyplot();
+    bool compute_volumn();
 private:
     Ui::MainWindow *ui;
+    int max_1;
+    int max_2;
+    int max_3;
+    int check_stable_time_1;
+    int check_stable_time_2;
+    double stable_err;
+    bool stablestate1;
+    bool stablestate2;
+    bool readytoput;
+    bool estimate_state;
+    double estimate_volumn;
 
 public slots:
     void onSetLabel(QString label);
-    void onSetParameterValues(double IRCurrent);
+    void realtimeDataSlot(double IRRange1, double IRRange2, double PumpRate1, double PumpRate2, double FlowRate);
 private slots:
     void on_button_BTstart_clicked();
     void on_button_BTstop_clicked();
+    void on_slider_setpoint1_valueChanged(int value);
+    void on_pushButton_toggled(bool checked);
 };
 
 #endif // MAINWINDOW_H
