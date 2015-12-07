@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Data Acquisition &amp; Embedded Systems
 
 

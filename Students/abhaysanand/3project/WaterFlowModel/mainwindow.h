@@ -32,6 +32,8 @@ private slots:
 
     void on_pushButton_drop_clicked();
 
+    void on_spinBox_setpoint2_valueChanged(double arg1);
+
 private:
     Ui::MainWindow *ui;
     modelThread *mThread;

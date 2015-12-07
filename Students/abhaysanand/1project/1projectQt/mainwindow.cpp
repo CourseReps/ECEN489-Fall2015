@@ -57,7 +57,7 @@ void MainWindow::onsetLabelClient(QString label)
     ui->label_ServerState->setText(label);
 }
 
-void MainWindow::onSetParameterValues(double IRRange, double PumpRate, double FlowRate, bool SolenoidState_b)
+void MainWindow::onSetParameterValues(double IRRange1, double PumpRate1, double FlowRate1, double PumpRate2, double IRRange2,bool SolenoidState_b)
 {
     QString ID = "Team1";
     QDateTime dateTime;
@@ -199,7 +199,7 @@ void MainWindow::easyplot()
 
 
 
-    //Pump
+    //Pump1
     ui->customPlot_3->addGraph(); // green line
     ui->customPlot_3->plotLayout()->insertRow(0);
     ui->customPlot_3->plotLayout()->addElement(0, 0, new QCPPlotTitle(ui->customPlot_3, "Flow Sensor Rate"));

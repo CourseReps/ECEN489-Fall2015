@@ -14,11 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
     check_stable_time_2=0;
     start_estimate_volumn = 0;
     estimated_volumn = 0;
+    item_volumn = 0;
     system = new Watersystem(INIT_H1/100.0,INIT_H2/100.0,D1/1000.0,D2/1000.0,D3/1000.0);
     setpoint1 = SETPOINT1;
     setpoint2 = SETPOINT2;
-    controller1 = new PIDController(4000,3000,0,setpoint1/100.0);
-    controller2 = new PIDController(4000,3000,0,setpoint2/100.0);
+    controller1 = new PIDController(4000,800,0,setpoint1/100.0);
+    controller2 = new PIDController(4000,800,0,setpoint2/100.0);
     plotvector<<ui->customPlot<<ui->customPlot_Vin1<<ui->customPlot_Vin2<<ui->customPlot_Vout1<<ui->customPlot_Vout2<<ui->customPlot_V3;
     setupRealtimeDataDemo(plotvector);
     setWindowTitle("QCustomPlot: realtimedata");
@@ -83,7 +84,7 @@ void MainWindow::setupRealtimeDataDemo(QVector<QCustomPlot*> plotvector)
             label = "Qout2";
             break;
         case 5:
-            label = "Q3";
+            label = "Q12";
             break;
         default:
             break;
@@ -225,6 +226,8 @@ void MainWindow::realtimeDataSlot()
         }
 //        cout<<"estimated volumn: "<<estimated_volumn<<endl;
         ui->estimated_value->setText(QString::number(estimated_volumn));
+        if(start_estimate_volumn==0&&estimated_volumn!=0)
+            ui->relative_error->setText(QString::number((item_volumn-estimated_volumn)/item_volumn*100));
 
         lastPointKey = key;
 
