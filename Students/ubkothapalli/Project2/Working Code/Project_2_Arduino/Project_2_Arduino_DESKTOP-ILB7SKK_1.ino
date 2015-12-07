@@ -45,12 +45,15 @@ void setup() {
   pinMode(RelayCtrl, OUTPUT);
   myPID.SetMode(AUTOMATIC);
   //myPID.SetSampleTime(sampleRate);
-  Setpoint = 1;
+  Setpoint = 5;
   
   myPID.SetOutputLimits(0, 250); 
   
   pinMode (powerLED,OUTPUT);
   float commandSetpoint=6.5;
+	
+  pinMode(FlowSens, INPUT);
+  attachInterrupt(FlowSens, rpm, RISING);
 
 
 }
@@ -147,7 +150,7 @@ double voltToLevel(float levelSetpoint){
   return dist;
 }
 
-
+/*
 double stateFinder(double setpoint, double input){
   //double setpointDist = voltToLevel(setpoint);
   if (input - setpoint<= 10){
@@ -158,7 +161,7 @@ double stateFinder(double setpoint, double input){
   }
 }
 
-
+*/
 
 
 void loop() {
@@ -173,11 +176,27 @@ void loop() {
       delay (10);
     
     Input = IRtemp;
-   
+    commandSetpoint = 5;
+   Setpoint = voltToLevel(commandSetpoint);
      
+
+ cli();
+    freq = edges * 4;
+    sei();
+    count = 0;
+    edges = 0;
+
+
     myPID.Compute();
-    Serial.print(Output);
-    Serial.print("\t");
+
+if (Serial.available()){
+    char commtemp = Serial.read();
+if (commtemp='y')
+{
+	int ci = 0;
+    while(ci<=9){
+    //Serial.print(Output);
+    //Serial.print("\t");
     int Output1 = map(Output,0,250,0,100);
     OutFlowRt = Output1;
   
@@ -187,15 +206,20 @@ void loop() {
     Serial.print("\t");
     
     
-    Serial.println(OutFlowRt);
-    cli();
-    freq = edges * 4;
-    sei();
-    count = 0;
-    edges = 0;
+    Serial.print(OutFlowRt);
+   
+
+	InFlowRt = freq / 33;
+
+	Serial.print("\t");
+	Serial.println(InFlowRt);
   //}
-  delay(500);
-    analogWrite(PumpPWM, (OutFlowRt));
+   ci = ci+1;
+}
+}
+}
+  	delay(10);
+    	analogWrite(PumpPWM, (OutFlowRt));
 
   
   digitalWrite(RelayCtrl, SolState);
@@ -206,12 +230,12 @@ void loop() {
   
     //Bluetooth communication
     //if (BTSerial.available()){
-          if (Serial1.available()){
+          if (Serial.available()){
 
       //char in = BTSerial.read();
-      char in = Serial1.read();
+      char in = Serial.read();
       
-      Serial.println(in);
+      Serial1.println(in);
       if (!RecData){
         if (in == 'g'){
           RecData = true;
@@ -229,7 +253,7 @@ void loop() {
       }
     }
     
-     stateFinder(Setpoint, Input);
+     //stateFinder(Setpoint, Input);
      // write the volume measuring trigger function
   
   
