@@ -1,4 +1,4 @@
-# Opt-out 6
+# Opt-out 5
 
 For this opt-out challenge you will be putting together several of the pieces from past opt-outs and quick-fire challenges to collectively create a network of sensors with remote databases. 
 
