@@ -41,6 +41,7 @@ unsigned long state1_counts;
 double sigmaQ;
 double objectVolume;
 double deltaLevel;
+int volFlag = 0;
 
 /* PID variables */
 double Setpoint, Input, Output;
@@ -96,6 +97,7 @@ void loop()
   shortFilter(&IRvalFilt, IRval, (double)ALPHA);
   /* Convert to cm */
   double height = .0293*pow(IRvalFilt,5) - 0.5663*pow(IRvalFilt,4) + 4.4136*pow(IRvalFilt,3) - 17.7419*pow(IRvalFilt,2) + 38.7313*IRvalFilt - 28.8534; //Poly fit
+  height -= 1.6;
   Input = height;
   myPID.Compute();
   if(Output > MAXSETPOINT)
@@ -145,7 +147,7 @@ void loop()
     count = 0;
     edges = 0;
   }
-  flow_sense = (double)freq/33; //flow meter reading in l/min
+  flow_sense = (double)freq/88; //flow meter reading in l/min
   
   if(a%100 == 0)  //decreased from 500 to 100 to improve counter performance for volume calculation
   {
@@ -155,6 +157,7 @@ void loop()
 
     deltaLevel = abs(height - Setpoint);
     Qout = -.00215*pow(height,4)+0.0699*pow(height,3)-0.8287*pow(height,2)+4.4372*height-5.2091;
+    Qout = Qout * 33/88;
     //steady state detection
     switch(state)
     {
@@ -201,6 +204,7 @@ void loop()
                   Serial.print("Object Volume = ");
                   Serial.print(objectVolume*1000);
                   Serial.println(" cm^3");
+                  volFlag = 1;
                   break;
                 }
          default:
@@ -250,7 +254,16 @@ void loop()
         BTSerial.print(Input2); BTSerial.print(",");
         BTSerial.print(pumpControl); BTSerial.print(",");
         BTSerial.print(pumpControl2); BTSerial.print(",");
-        BTSerial.println(flow_sense);
+        BTSerial.print(flow_sense); BTSerial.print(",");
+        if(volFlag)
+        {
+          BTSerial.print(objectVolume*1000);
+          Serial.println(objectVolume*1000);
+          volFlag = 0;
+        }
+        else
+          BTSerial.print(0.0);
+        BTSerial.println();
         Serial.print("get_data!");
         
         index = 0;
