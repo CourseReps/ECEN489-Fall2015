@@ -10,6 +10,18 @@
     <height>482</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>704</width>
+    <height>482</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>704</width>
+    <height>482</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -18,7 +30,7 @@
     <item row="0" column="2">
      <widget class="QPushButton" name="pushButton_drop">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Drop Object</string>
@@ -69,7 +81,20 @@
      </spacer>
     </item>
     <item row="2" column="0" colspan="4">
-     <widget class="QWidget" name="widget" native="true"/>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>340</width>
+        <height>415</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>340</width>
+        <height>415</height>
+       </size>
+      </property>
+     </widget>
     </item>
     <item row="0" column="5">
      <widget class="QDoubleSpinBox" name="spinBox_setpoint">
@@ -107,7 +132,20 @@
      </widget>
     </item>
     <item row="2" column="4" colspan="3">
-     <widget class="QWidget" name="widget_2" native="true"/>
+     <widget class="QWidget" name="widget_2" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>340</width>
+        <height>415</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>340</width>
+        <height>415</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
